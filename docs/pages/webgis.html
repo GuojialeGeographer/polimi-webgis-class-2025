@@ -3,33 +3,49 @@
 
 <head>
     <base href="">
-    <title>My WebGIS - Map</title>
+    <title>Milan Air Quality - WebGIS</title>
 
     <meta charset="utf-8">
 
     <!--StyleSheets-->
-    <!-- <link rel="stylesheet" href="../assets/libraries/ol-v6.14.1-dist/ol.css"> -->
 
-    <!-- Static files are imported from public folder -->
+    <!-- Static files are imported from assets folder -->
 
     <!-- Modules are imported normally -->
-  <script type="module" crossorigin src="/polimi-webgis-class-2025/assets/webgis-DHEoMFRC.js"></script>
+  <script type="module" crossorigin src="/polimi-webgis-class-2025/assets/webgis-iqJk2X3y.js"></script>
   <link rel="stylesheet" crossorigin href="/polimi-webgis-class-2025/assets/webgis-D16rCtO5.css">
-  <link rel="stylesheet" crossorigin href="/polimi-webgis-class-2025/assets/custom-styles-DLM4DqXn.css">
+  <link rel="stylesheet" crossorigin href="/polimi-webgis-class-2025/assets/custom-styles-0WQMwnGk.css">
 </head>
 
 <body>
     <div class="w-100 vh-100">
         <div class="floating-button">
-            <a href="../index.html" class="btn btn-success">Go Home</a>
+            <a href="../index.html" class="btn btn-primary">Back</a>
         </div>
         <div id="map"></div>
 
-        <!--Add here the popup HTML-->
-        
+        <!--The structure for the popup-->
+        <div id="popup" class="ol-popup">
+            <a href="#" id="popup-closer" class="ol-popup-closer">&times;</a>
+            <div id="popup-content">
+            </div>
+        </div>
 
-        <!--Add here the legend HTML-->
+        <!--The legend-->
+        <div id="legend" class="legend">
+            <h4>Legend</h4>
+            <div id="legend-content">
+                <!-- Legend content will be added dynamically -->
+            </div>
+        </div>
         
+        <!-- Information panel -->
+        <div id="info-panel" class="info-panel">
+            <h4>Milan Air Quality WebGIS</h4>
+            <p>This interactive map displays air quality data for the Milan metropolitan area.</p>
+            <p>Use the layer switcher to view different air quality parameters and related data.</p>
+            <p>Click on the map to get detailed information for specific locations.</p>
+        </div>
     </div>
 </body>
 

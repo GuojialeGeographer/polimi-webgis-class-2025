@@ -1,0 +1,211 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Workflow - Air Quality Analysis</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" crossorigin href="/polimi-webgis-class-2025/assets/custom-styles-0WQMwnGk.css">
+		<link rel="stylesheet" crossorigin href="/polimi-webgis-class-2025/assets/main-D-tutOHh.css">
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1 id="logo"><a href="../index.html">Milan Air Quality</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="../index.html">HOME</a></li>
+							<li class="current"><a href="workflow.html">WORKFLOW</a></li>
+							<li><a href="results.html">RESULTS</a></li>
+							<li><a href="webgis.html">WEBGIS</a></li>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<article id="main">
+
+					<header class="special container">
+						<span class="icon solid fa-chart-area"></span>
+						<h2>Project Workflow</h2>
+						<p>The methodology and steps followed in our air quality analysis</p>
+					</header>
+
+					<!-- One -->
+						<section class="wrapper style4 container">
+
+							<!-- Content -->
+								<div class="content">
+									<section>
+										<header>
+											<h3>1. Data Collection</h3>
+										</header>
+										<p>The first step in our analysis involved collecting various datasets relevant to air quality in the Milan metropolitan area:</p>
+										<ul>
+											<li><strong>Air Quality Monitoring Data:</strong> Historical and real-time measurements from monitoring stations across Milan, including concentrations of PM2.5, PM10, NO2, O3, and other pollutants.</li>
+											<li><strong>Meteorological Data:</strong> Weather conditions that influence air pollution dispersion, including wind speed/direction, temperature, precipitation, and atmospheric pressure.</li>
+											<li><strong>Land Use Data:</strong> Information on urban areas, industrial zones, green spaces, and transportation networks that affect pollution sources and patterns.</li>
+											<li><strong>Traffic Data:</strong> Traffic volume and flow patterns on major roads and highways, which are significant sources of air pollutants.</li>
+											<li><strong>Population Data:</strong> Demographic information to assess population exposure to air pollution and identify vulnerable groups.</li>
+										</ul>
+										
+										<header>
+											<h3>2. Data Processing and Preparation</h3>
+										</header>
+										<p>Raw data underwent several processing steps to prepare it for analysis:</p>
+										<ul>
+											<li>Cleaning and validation to identify and handle missing values, outliers, and inconsistencies</li>
+											<li>Temporal aggregation to create daily, monthly, and annual averages</li>
+											<li>Spatial interpolation to generate continuous pollution surfaces from point measurements</li>
+											<li>Coordinate system transformations and geographic data standardization</li>
+											<li>Integration of diverse datasets into a cohesive geospatial database</li>
+										</ul>
+										
+										<div class="image">
+											<img src="../images/workflow-diagram.jpg" alt="Data processing workflow diagram" />
+										</div>
+										
+										<header>
+											<h3>3. Spatial Analysis</h3>
+										</header>
+										<p>We employed various spatial analysis techniques to understand the distribution and determinants of air pollution:</p>
+										<ul>
+											<li><strong>Kriging Interpolation:</strong> Created continuous pollution surfaces from discrete monitoring points</li>
+											<li><strong>Hotspot Analysis:</strong> Identified statistically significant clusters of high pollution values</li>
+											<li><strong>Buffer Analysis:</strong> Examined pollution levels in proximity to major roads, industrial sites, and green spaces</li>
+											<li><strong>Overlay Analysis:</strong> Combined pollution data with land use and population layers to assess exposure</li>
+											<li><strong>Temporal Trend Analysis:</strong> Evaluated changes in pollution patterns over different time periods</li>
+										</ul>
+										
+										<header>
+											<h3>4. Air Quality Index Calculation</h3>
+										</header>
+										<p>We calculated the Air Quality Index (AQI) following standard methodologies:</p>
+										<ul>
+											<li>Sub-indices were computed for each pollutant (PM2.5, PM10, NO2, O3, etc.)</li>
+											<li>The overall AQI was determined by the highest sub-index value</li>
+											<li>AQI values were classified into six categories: Good, Moderate, Unhealthy for Sensitive Groups, Unhealthy, Very Unhealthy, and Hazardous</li>
+											<li>Daily AQI maps were generated and then aggregated to create seasonal and annual representations</li>
+										</ul>
+										
+										<header>
+											<h3>5. Health Risk Assessment</h3>
+										</header>
+										<p>To evaluate potential health impacts, we conducted a risk assessment that considered:</p>
+										<ul>
+											<li>Population exposure to different levels of air pollution</li>
+											<li>Identification of vulnerable demographic groups (children, elderly, those with pre-existing conditions)</li>
+											<li>Correlation of pollution levels with health data from local health authorities</li>
+											<li>Creation of a health risk index that combines pollution intensity with population vulnerability</li>
+										</ul>
+										
+										<header>
+											<h3>6. WebGIS Implementation</h3>
+										</header>
+										<p>Finally, we developed an interactive WebGIS platform to visualize and share our findings:</p>
+										<ul>
+											<li>GeoServer was used to publish spatial data as Web Map Services (WMS)</li>
+											<li>OpenLayers provided the foundation for the interactive web mapping application</li>
+											<li>Various base maps and overlay layers were configured for user exploration</li>
+											<li>Interactive features such as layer toggling, feature identification, and legends were implemented</li>
+											<li>The system was designed to be user-friendly for both technical and non-technical users</li>
+										</ul>
+										
+										<div class="row">
+											<div class="col-6">
+												<a href="../images/workflow-step1.jpg" class="image featured"><img src="../images/workflow-step1.jpg" alt="GIS Analysis" /></a>
+											</div>
+											<div class="col-6">
+												<a href="../images/workflow-step2.jpg" class="image featured"><img src="../images/workflow-step2.jpg" alt="WebGIS Development" /></a>
+											</div>
+										</div>
+									</section>
+								</div>
+
+						</section>
+
+					<!-- Two -->
+						<section class="wrapper style1 container special">
+							<div class="row">
+								<div class="col-4 col-12-narrower">
+
+									<section>
+										<header>
+											<h3>Data Management</h3>
+										</header>
+										<p>Our project utilized PostgreSQL/PostGIS for storing and managing geospatial data, enabling efficient querying and analysis of complex spatial relationships among air quality factors.</p>
+										<footer>
+											<ul class="buttons">
+												<li><a href="results.html" class="button small">Learn More</a></li>
+											</ul>
+										</footer>
+									</section>
+
+								</div>
+								<div class="col-4 col-12-narrower">
+
+									<section>
+										<header>
+											<h3>Statistical Analysis</h3>
+										</header>
+										<p>We employed various statistical methods including correlation analysis, multiple regression, and time series analysis to identify significant relationships between pollution levels and environmental factors.</p>
+										<footer>
+											<ul class="buttons">
+												<li><a href="results.html" class="button small">Learn More</a></li>
+											</ul>
+										</footer>
+									</section>
+
+								</div>
+								<div class="col-4 col-12-narrower">
+
+									<section>
+										<header>
+											<h3>Visualization Techniques</h3>
+										</header>
+										<p>Advanced cartographic methods and interactive visualization techniques were used to effectively communicate complex spatial patterns of air pollution and their relationship to urban features.</p>
+										<footer>
+											<ul class="buttons">
+												<li><a href="webgis.html" class="button small">Explore WebGIS</a></li>
+											</ul>
+										</footer>
+									</section>
+
+								</div>
+							</div>
+						</section>
+
+				</article>
+
+			<!-- Footer -->
+				<footer id="footer">
+
+					<ul class="icons">
+						<li><a href="#" class="icon brands circle fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon brands circle fa-facebook-f"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon brands circle fa-google-plus-g"><span class="label">Google+</span></a></li>
+						<li><a href="#" class="icon brands circle fa-github"><span class="label">Github</span></a></li>
+						<li><a href="#" class="icon brands circle fa-dribbble"><span class="label">Dribbble</span></a></li>
+					</ul>
+
+					<ul class="copyright">
+						<li>&copy; Milan Air Quality Project</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.dropotron.min.js"></script>
+			<script src="../assets/js/jquery.scrolly.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>
