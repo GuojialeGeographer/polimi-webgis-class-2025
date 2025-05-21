@@ -13,7 +13,7 @@
 
 			<!-- Header -->
 				<header id="header">
-					<h1 id="logo"><a href="../index.html">Milan Air Quality</a></h1>
+					<h1 id="logo"><a href="../index.html">Greece Air Quality</a></h1>
 					<nav id="nav">
 						<ul>
 							<li><a href="../index.html">HOME</a></li>
@@ -42,13 +42,15 @@
 										<header>
 											<h3>1. Data Collection</h3>
 										</header>
-										<p>The first step in our analysis involved collecting various datasets relevant to air quality in the Milan metropolitan area:</p>
+										<p>The first step in our analysis involved collecting various datasets relevant to air quality across Greece:</p>
 										<ul>
-											<li><strong>Air Quality Monitoring Data:</strong> Historical and real-time measurements from monitoring stations across Milan, including concentrations of PM2.5, PM10, NO2, O3, and other pollutants.</li>
-											<li><strong>Meteorological Data:</strong> Weather conditions that influence air pollution dispersion, including wind speed/direction, temperature, precipitation, and atmospheric pressure.</li>
-											<li><strong>Land Use Data:</strong> Information on urban areas, industrial zones, green spaces, and transportation networks that affect pollution sources and patterns.</li>
-											<li><strong>Traffic Data:</strong> Traffic volume and flow patterns on major roads and highways, which are significant sources of air pollutants.</li>
-											<li><strong>Population Data:</strong> Demographic information to assess population exposure to air pollution and identify vulnerable groups.</li>
+											<li><strong>Air Quality Monitoring Data:</strong> Historical and real-time measurements from monitoring stations across Greece, including concentrations of PM2.5, PM10, NO2, O3, and other pollutants.</li>
+											<li><strong>Meteorological Data:</strong> Weather conditions that influence air pollution dispersion, including wind speed/direction, temperature, precipitation, and atmospheric pressure from Greece's varied climate zones.</li>
+											<li><strong>Land Use Data:</strong> Information on urban areas, industrial zones, agricultural regions, islands, green spaces, and transportation networks that affect pollution sources and patterns.</li>
+											<li><strong>Traffic Data:</strong> Traffic volume and flow patterns on major roads and highways, with special attention to tourist areas during peak seasons.</li>
+											<li><strong>Population Data:</strong> Demographic information to assess population exposure to air pollution and identify vulnerable groups across different regions.</li>
+											<li><strong>Shipping Data:</strong> Maritime traffic information for major Greek ports and shipping lanes in the Aegean and Ionian seas.</li>
+											<li><strong>Wildfire Data:</strong> Historical wildfire events and their impact on seasonal air quality patterns.</li>
 										</ul>
 										
 										<header>
@@ -58,9 +60,10 @@
 										<ul>
 											<li>Cleaning and validation to identify and handle missing values, outliers, and inconsistencies</li>
 											<li>Temporal aggregation to create daily, monthly, and annual averages</li>
-											<li>Spatial interpolation to generate continuous pollution surfaces from point measurements</li>
+											<li>Spatial interpolation to generate continuous pollution surfaces from point measurements across Greece's diverse terrain</li>
 											<li>Coordinate system transformations and geographic data standardization</li>
 											<li>Integration of diverse datasets into a cohesive geospatial database</li>
+											<li>Regional stratification to account for Greece's mainland, peninsular, and island territories</li>
 										</ul>
 										
 										<div class="image">
@@ -72,11 +75,12 @@
 										</header>
 										<p>We employed various spatial analysis techniques to understand the distribution and determinants of air pollution:</p>
 										<ul>
-											<li><strong>Kriging Interpolation:</strong> Created continuous pollution surfaces from discrete monitoring points</li>
-											<li><strong>Hotspot Analysis:</strong> Identified statistically significant clusters of high pollution values</li>
-											<li><strong>Buffer Analysis:</strong> Examined pollution levels in proximity to major roads, industrial sites, and green spaces</li>
-											<li><strong>Overlay Analysis:</strong> Combined pollution data with land use and population layers to assess exposure</li>
-											<li><strong>Temporal Trend Analysis:</strong> Evaluated changes in pollution patterns over different time periods</li>
+											<li><strong>Kriging Interpolation:</strong> Created continuous pollution surfaces from discrete monitoring points, with topographic adjustments for Greece's mountainous regions</li>
+											<li><strong>Hotspot Analysis:</strong> Identified statistically significant clusters of high pollution values in urban centers, industrial zones, and seasonal tourist destinations</li>
+											<li><strong>Buffer Analysis:</strong> Examined pollution levels in proximity to major roads, ports, industrial sites, and protected natural areas</li>
+											<li><strong>Overlay Analysis:</strong> Combined pollution data with land use and population layers to assess exposure across different regions</li>
+											<li><strong>Temporal Trend Analysis:</strong> Evaluated changes in pollution patterns over different time periods, with special attention to seasonal tourist impacts</li>
+											<li><strong>Coastal-Inland Comparisons:</strong> Analyzed differences between coastal zones and inland regions</li>
 										</ul>
 										
 										<header>
@@ -87,7 +91,8 @@
 											<li>Sub-indices were computed for each pollutant (PM2.5, PM10, NO2, O3, etc.)</li>
 											<li>The overall AQI was determined by the highest sub-index value</li>
 											<li>AQI values were classified into six categories: Good, Moderate, Unhealthy for Sensitive Groups, Unhealthy, Very Unhealthy, and Hazardous</li>
-											<li>Daily AQI maps were generated and then aggregated to create seasonal and annual representations</li>
+											<li>Daily AQI maps were generated for the entire country and then aggregated to create seasonal and annual representations</li>
+											<li>Regional AQI comparisons highlighted differences between urban centers, island communities, and rural areas</li>
 										</ul>
 										
 										<header>
@@ -95,10 +100,11 @@
 										</header>
 										<p>To evaluate potential health impacts, we conducted a risk assessment that considered:</p>
 										<ul>
-											<li>Population exposure to different levels of air pollution</li>
+											<li>Population exposure to different levels of air pollution across Greece's diverse regions</li>
 											<li>Identification of vulnerable demographic groups (children, elderly, those with pre-existing conditions)</li>
-											<li>Correlation of pollution levels with health data from local health authorities</li>
+											<li>Correlation of pollution levels with health data from Greek health authorities</li>
 											<li>Creation of a health risk index that combines pollution intensity with population vulnerability</li>
+											<li>Special consideration for seasonal population changes due to tourism in coastal and island areas</li>
 										</ul>
 										
 										<header>
@@ -108,9 +114,10 @@
 										<ul>
 											<li>GeoServer was used to publish spatial data as Web Map Services (WMS)</li>
 											<li>OpenLayers provided the foundation for the interactive web mapping application</li>
-											<li>Various base maps and overlay layers were configured for user exploration</li>
+											<li>Various base maps and overlay layers were configured for exploring Greece's air quality patterns</li>
 											<li>Interactive features such as layer toggling, feature identification, and legends were implemented</li>
 											<li>The system was designed to be user-friendly for both technical and non-technical users</li>
+											<li>Special tools were developed for comparing mainland, coastal, and island air quality patterns</li>
 										</ul>
 										
 										<div class="row">
@@ -135,7 +142,7 @@
 										<header>
 											<h3>Data Management</h3>
 										</header>
-										<p>Our project utilized PostgreSQL/PostGIS for storing and managing geospatial data, enabling efficient querying and analysis of complex spatial relationships among air quality factors.</p>
+										<p>Our project utilized PostgreSQL/PostGIS for storing and managing geospatial data, enabling efficient querying and analysis of complex spatial relationships among air quality factors across Greece's diverse landscapes.</p>
 										<footer>
 											<ul class="buttons">
 												<li><a href="results.html" class="button small">Learn More</a></li>
@@ -150,7 +157,7 @@
 										<header>
 											<h3>Statistical Analysis</h3>
 										</header>
-										<p>We employed various statistical methods including correlation analysis, multiple regression, and time series analysis to identify significant relationships between pollution levels and environmental factors.</p>
+										<p>We employed various statistical methods including correlation analysis, multiple regression, and time series analysis to identify significant relationships between pollution levels and environmental factors unique to Greece's geography and climate.</p>
 										<footer>
 											<ul class="buttons">
 												<li><a href="results.html" class="button small">Learn More</a></li>
@@ -165,7 +172,7 @@
 										<header>
 											<h3>Visualization Techniques</h3>
 										</header>
-										<p>Advanced cartographic methods and interactive visualization techniques were used to effectively communicate complex spatial patterns of air pollution and their relationship to urban features.</p>
+										<p>Advanced cartographic methods and interactive visualization techniques were used to effectively communicate complex spatial patterns of air pollution across Greece's mainland, peninsular regions, and islands.</p>
 										<footer>
 											<ul class="buttons">
 												<li><a href="webgis.html" class="button small">Explore WebGIS</a></li>
@@ -191,7 +198,7 @@
 					</ul>
 
 					<ul class="copyright">
-						<li>&copy; Milan Air Quality Project</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						<li>&copy; Greece Air Quality Project</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 					</ul>
 
 				</footer>

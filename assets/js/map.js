@@ -31,7 +31,7 @@ let monitoringStations = new Image({
     title: "Monitoring Stations",
     source: new ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:air_monitoring_stations' }
+        params: { 'LAYERS': 'gisgeoserver_06:greece_air_monitoring_stations' }
     }),
     visible: true
 });
@@ -41,7 +41,7 @@ let urbanAreas = new Image({
     title: "Urban Areas",
     source: new ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:urban_areas' }
+        params: { 'LAYERS': 'gisgeoserver_06:greece_urban_areas' }
     }),
     visible: false
 });
@@ -51,7 +51,7 @@ let roadNetwork = new Image({
     title: "Road Network",
     source: new ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:road_network' }
+        params: { 'LAYERS': 'gisgeoserver_06:greece_road_network' }
     }),
     visible: false
 });
@@ -61,7 +61,7 @@ let industrialAreas = new Image({
     title: "Industrial Areas",
     source: new ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:industrial_areas' }
+        params: { 'LAYERS': 'gisgeoserver_06:greece_industrial_areas' }
     }),
     visible: false
 });
@@ -71,7 +71,7 @@ let landUse = new Image({
     title: "Land Use",
     source: new ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:land_use' }
+        params: { 'LAYERS': 'gisgeoserver_06:greece_land_use' }
     }),
     visible: false
 });
@@ -81,7 +81,27 @@ let meteoStations = new Image({
     title: "Meteorological Stations",
     source: new ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:meteo_stations' }
+        params: { 'LAYERS': 'gisgeoserver_06:greece_meteo_stations' }
+    }),
+    visible: false
+});
+
+// Port and shipping lanes layer
+let shippingLanes = new Image({
+    title: "Ports and Shipping Lanes",
+    source: new ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
+        params: { 'LAYERS': 'gisgeoserver_06:greece_shipping_lanes' }
+    }),
+    visible: false
+});
+
+// Tourist areas layer
+let touristAreas = new Image({
+    title: "Tourist Areas",
+    source: new ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
+        params: { 'LAYERS': 'gisgeoserver_06:greece_tourist_areas' }
     }),
     visible: false
 });
@@ -89,7 +109,7 @@ let meteoStations = new Image({
 // Base data layers group
 let baseDataLayers = new Group({
     title: "Base Data Layers",
-    layers: [monitoringStations, urbanAreas, roadNetwork, industrialAreas, landUse, meteoStations],
+    layers: [monitoringStations, urbanAreas, roadNetwork, industrialAreas, landUse, meteoStations, shippingLanes, touristAreas],
     fold: 'open'
 });
 
@@ -98,7 +118,7 @@ let aqiMap = new Image({
     title: "Air Quality Index Map",
     source: new ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:air_quality_index' }
+        params: { 'LAYERS': 'gisgeoserver_06:greece_air_quality_index' }
     }),
     visible: true
 });
@@ -108,7 +128,7 @@ let pm25Map = new Image({
     title: "PM2.5 Concentration",
     source: new ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:pm25_concentration' }
+        params: { 'LAYERS': 'gisgeoserver_06:greece_pm25_concentration' }
     })
 });
 
@@ -117,7 +137,7 @@ let pm10Map = new Image({
     title: "PM10 Concentration",
     source: new ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:pm10_concentration' }
+        params: { 'LAYERS': 'gisgeoserver_06:greece_pm10_concentration' }
     })
 });
 
@@ -126,7 +146,7 @@ let no2Map = new Image({
     title: "Nitrogen Dioxide (NO2) Concentration",
     source: new ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:no2_concentration' }
+        params: { 'LAYERS': 'gisgeoserver_06:greece_no2_concentration' }
     })
 });
 
@@ -135,13 +155,22 @@ let o3Map = new Image({
     title: "Ozone (O3) Concentration",
     source: new ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:o3_concentration' }
+        params: { 'LAYERS': 'gisgeoserver_06:greece_o3_concentration' }
+    })
+});
+
+let so2Map = new Image({
+    visible: false,
+    title: "Sulfur Dioxide (SO2) Concentration",
+    source: new ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
+        params: { 'LAYERS': 'gisgeoserver_06:greece_so2_concentration' }
     })
 });
 
 let airQualityLayers = new Group({
     title: "Air Quality Maps",
-    layers: [aqiMap, pm25Map, pm10Map, no2Map, o3Map],
+    layers: [aqiMap, pm25Map, pm10Map, no2Map, o3Map, so2Map],
     fold: 'open'
 });
 
@@ -151,7 +180,7 @@ let validationPoints = new Image({
     title: "Validation Points",
     source: new ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:validation_points' }
+        params: { 'LAYERS': 'gisgeoserver_06:greece_validation_points' }
     })
 });
 
@@ -160,7 +189,7 @@ let calibrationPoints = new Image({
     title: "Calibration Points",
     source: new ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:calibration_points' }
+        params: { 'LAYERS': 'gisgeoserver_06:greece_calibration_points' }
     })
 });
 
@@ -175,7 +204,7 @@ let populationDensity = new Image({
     title: "Population Density",
     source: new ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:population_density' }
+        params: { 'LAYERS': 'gisgeoserver_06:greece_population_density' }
     }),
     visible: false
 });
@@ -184,7 +213,7 @@ let vulnerablePopulation = new Image({
     title: "Vulnerable Population",
     source: new ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:vulnerable_population' }
+        params: { 'LAYERS': 'gisgeoserver_06:greece_vulnerable_population' }
     }),
     visible: false
 });
@@ -193,34 +222,43 @@ let healthRiskMap = new Image({
     title: "Health Risk Index",
     source: new ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:health_risk_index' }
+        params: { 'LAYERS': 'gisgeoserver_06:greece_health_risk_index' }
+    }),
+    visible: false
+});
+
+let seasonalTourismImpact = new Image({
+    title: "Seasonal Tourism Impact",
+    source: new ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
+        params: { 'LAYERS': 'gisgeoserver_06:greece_tourism_impact' }
     }),
     visible: false
 });
 
 let healthRiskAssessment = new Group({
     title: "Health Risk Assessment",
-    layers: [populationDensity, vulnerablePopulation, healthRiskMap],
+    layers: [populationDensity, vulnerablePopulation, healthRiskMap, seasonalTourismImpact],
     fold: 'close'
 });
 
-// Study area - Milan metropolitan area
-let milanArea = new Image({
-    title: "Milan Metropolitan Area",
+// Study area - Greece
+let greeceOutline = new Image({
+    title: "Greece Outline",
     source: new ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:milan_area' }
+        params: { 'LAYERS': 'gisgeoserver_06:greece_outline' }
     }),
     visible: true
 });
 
-// Map Initialization - Centered on Milan
+// Map Initialization - Centered on Greece
 let map = new Map({
     target: document.getElementById('map'),
-    layers: [basemapLayers, baseDataLayers, airQualityLayers, modelValidation, healthRiskAssessment, milanArea],
+    layers: [basemapLayers, baseDataLayers, airQualityLayers, modelValidation, healthRiskAssessment, greeceOutline],
     view: new View({
-        center: fromLonLat([9.1900, 45.4642]), // Milan coordinates
-        zoom: 10
+        center: fromLonLat([23.7275, 37.9838]), // Athens, Greece coordinates
+        zoom: 7 // Zoom level to show most of Greece
     }),
     controls: defaultControls().extend([
         new ScaleLine(),
