@@ -5,6 +5,8 @@ The contents of this repository are entirely for learning purposes. All contents
 
 Students are encouraged to fork and modify this template as much as they want.
 
+https://guojialegeographer.github.io/polimi-webgis-class-2025/
+
 ## Installing
 Clone the repository using the command 
 ```sh
