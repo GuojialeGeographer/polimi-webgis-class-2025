@@ -1,215 +1,149 @@
 <!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
 	<head>
 		<title>Workflow - Air Quality Analysis</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../assets/css/main.css" />
-		<link rel="stylesheet" href="../assets/css/custom-styles.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+		<style>
+			.image.main img {
+				width: 100%;
+				height: auto;
+				object-fit: cover;
+				max-height: 500px;
+			}
+		</style>
 	</head>
-	<body class="no-sidebar is-preload">
-		<div id="page-wrapper">
+	<body class="is-preload">
 
-			<!-- Header -->
-				<header id="header">
-					<h1 id="logo"><a href="../index.html">Greece Air Quality</a></h1>
-					<nav id="nav">
-						<ul>
-							<li><a href="../index.html">HOME</a></li>
-							<li class="current"><a href="workflow.html">WORKFLOW</a></li>
-							<li><a href="results.html">RESULTS</a></li>
-							<li><a href="webgis.html">WEBGIS</a></li>
-						</ul>
-					</nav>
-				</header>
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-			<!-- Main -->
-				<article id="main">
-
-					<header class="special container">
-						<span class="icon solid fa-chart-area"></span>
-						<h2>Project Workflow</h2>
-						<p>The methodology and steps followed in our air quality analysis</p>
+				<!-- Header -->
+					<header id="header">
+						<a href="../index.html" class="logo">Greece Air Quality</a>
 					</header>
 
-					<!-- One -->
-						<section class="wrapper style4 container">
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="../index.html">Home</a></li>
+							<li class="active"><a href="workflow.html">Workflow</a></li>
+							<li><a href="results.html">Results</a></li>
+							<li><a href="webgis.html">WebGIS</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://github.com/GuojialeGeographer/polimi-webgis-class-2025" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
 
-							<!-- Content -->
-								<div class="content">
-									<section>
-										<header>
-											<h3>1. Data Collection</h3>
-										</header>
-										<p>The first step in our analysis involved collecting various datasets relevant to air quality across Greece:</p>
-										<ul>
-											<li><strong>Air Quality Monitoring Data:</strong> Historical and real-time measurements from monitoring stations across Greece, including concentrations of PM2.5, PM10, NO2, O3, and other pollutants.</li>
-											<li><strong>Meteorological Data:</strong> Weather conditions that influence air pollution dispersion, including wind speed/direction, temperature, precipitation, and atmospheric pressure from Greece's varied climate zones.</li>
-											<li><strong>Land Use Data:</strong> Information on urban areas, industrial zones, agricultural regions, islands, green spaces, and transportation networks that affect pollution sources and patterns.</li>
-											<li><strong>Traffic Data:</strong> Traffic volume and flow patterns on major roads and highways, with special attention to tourist areas during peak seasons.</li>
-											<li><strong>Population Data:</strong> Demographic information to assess population exposure to air pollution and identify vulnerable groups across different regions.</li>
-											<li><strong>Shipping Data:</strong> Maritime traffic information for major Greek ports and shipping lanes in the Aegean and Ionian seas.</li>
-											<li><strong>Wildfire Data:</strong> Historical wildfire events and their impact on seasonal air quality patterns.</li>
-										</ul>
-										
-										<header>
-											<h3>2. Data Processing and Preparation</h3>
-										</header>
-										<p>Raw data underwent several processing steps to prepare it for analysis:</p>
-										<ul>
-											<li>Cleaning and validation to identify and handle missing values, outliers, and inconsistencies</li>
-											<li>Temporal aggregation to create daily, monthly, and annual averages</li>
-											<li>Spatial interpolation to generate continuous pollution surfaces from point measurements across Greece's diverse terrain</li>
-											<li>Coordinate system transformations and geographic data standardization</li>
-											<li>Integration of diverse datasets into a cohesive geospatial database</li>
-											<li>Regional stratification to account for Greece's mainland, peninsular, and island territories</li>
-										</ul>
-										
-										<div class="image">
-											<img src="../images/workflow-diagram.jpg" alt="Data processing workflow diagram" />
-										</div>
-										
-										<header>
-											<h3>3. Spatial Analysis</h3>
-										</header>
-										<p>We employed various spatial analysis techniques to understand the distribution and determinants of air pollution:</p>
-										<ul>
-											<li><strong>Kriging Interpolation:</strong> Created continuous pollution surfaces from discrete monitoring points, with topographic adjustments for Greece's mountainous regions</li>
-											<li><strong>Hotspot Analysis:</strong> Identified statistically significant clusters of high pollution values in urban centers, industrial zones, and seasonal tourist destinations</li>
-											<li><strong>Buffer Analysis:</strong> Examined pollution levels in proximity to major roads, ports, industrial sites, and protected natural areas</li>
-											<li><strong>Overlay Analysis:</strong> Combined pollution data with land use and population layers to assess exposure across different regions</li>
-											<li><strong>Temporal Trend Analysis:</strong> Evaluated changes in pollution patterns over different time periods, with special attention to seasonal tourist impacts</li>
-											<li><strong>Coastal-Inland Comparisons:</strong> Analyzed differences between coastal zones and inland regions</li>
-										</ul>
-										
-										<header>
-											<h3>4. Air Quality Index Calculation</h3>
-										</header>
-										<p>We calculated the Air Quality Index (AQI) following standard methodologies:</p>
-										<ul>
-											<li>Sub-indices were computed for each pollutant (PM2.5, PM10, NO2, O3, etc.)</li>
-											<li>The overall AQI was determined by the highest sub-index value</li>
-											<li>AQI values were classified into six categories: Good, Moderate, Unhealthy for Sensitive Groups, Unhealthy, Very Unhealthy, and Hazardous</li>
-											<li>Daily AQI maps were generated for the entire country and then aggregated to create seasonal and annual representations</li>
-											<li>Regional AQI comparisons highlighted differences between urban centers, island communities, and rural areas</li>
-										</ul>
-										
-										<header>
-											<h3>5. Health Risk Assessment</h3>
-										</header>
-										<p>To evaluate potential health impacts, we conducted a risk assessment that considered:</p>
-										<ul>
-											<li>Population exposure to different levels of air pollution across Greece's diverse regions</li>
-											<li>Identification of vulnerable demographic groups (children, elderly, those with pre-existing conditions)</li>
-											<li>Correlation of pollution levels with health data from Greek health authorities</li>
-											<li>Creation of a health risk index that combines pollution intensity with population vulnerability</li>
-											<li>Special consideration for seasonal population changes due to tourism in coastal and island areas</li>
-										</ul>
-										
-										<header>
-											<h3>6. WebGIS Implementation</h3>
-										</header>
-										<p>Finally, we developed an interactive WebGIS platform to visualize and share our findings:</p>
-										<ul>
-											<li>GeoServer was used to publish spatial data as Web Map Services (WMS)</li>
-											<li>OpenLayers provided the foundation for the interactive web mapping application</li>
-											<li>Various base maps and overlay layers were configured for exploring Greece's air quality patterns</li>
-											<li>Interactive features such as layer toggling, feature identification, and legends were implemented</li>
-											<li>The system was designed to be user-friendly for both technical and non-technical users</li>
-											<li>Special tools were developed for comparing mainland, coastal, and island air quality patterns</li>
-										</ul>
-										
-										<div class="row">
-											<div class="col-6">
-												<a href="../images/workflow-step1.jpg" class="image featured"><img src="../images/workflow-step1.jpg" alt="GIS Analysis" /></a>
-											</div>
-											<div class="col-6">
-												<a href="../images/workflow-step2.jpg" class="image featured"><img src="../images/workflow-step2.jpg" alt="WebGIS Development" /></a>
-											</div>
-										</div>
-									</section>
-								</div>
+				<!-- Main -->
+					<div id="main">
 
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>Project Workflow</h1>
+									<p>Our methodology for analyzing air quality across Greece involves several stages, from data collection to creating interactive WebGIS maps.</p>
+								</header>
+
+								<!-- Workflow Steps -->
+								<h2>1. Data Collection</h2>
+								<p>For this project, various datasets were collected to assess air quality across Greece:</p>
+								<ul>
+									<li><strong>Air Quality Monitoring Data:</strong> Measurements from monitoring stations across Greece, including urban, suburban, and rural areas, focusing on key pollutants (PM2.5, PM10, NO2, O3, SO2).</li>
+									<li><strong>Geographic Data:</strong> Administrative boundaries, road networks, industrial zones, population density, and topographic information.</li>
+									<li><strong>Meteorological Data:</strong> Wind patterns, precipitation, temperature records that influence pollution dispersion.</li>
+									<li><strong>Land Use Data:</strong> Urban areas, agricultural lands, forests, and other land use categories.</li>
+									<li><strong>Population Statistics:</strong> Demographic data, including vulnerable populations (elderly, children, those with respiratory conditions).</li>
+									<li><strong>Tourism Data:</strong> Seasonal visitor statistics to account for population fluctuations, especially in island and coastal areas.</li>
+								</ul>
+
+								<h2>2. Data Processing and Integration</h2>
+								<div class="image main"><img src="../images/DTM.jpg" alt="Data Processing Workflow" /></div>
+								<p>The collected datasets were processed and integrated to ensure compatibility and accuracy:</p>
+								<ul>
+									<li><strong>Spatial Harmonization:</strong> All data layers were projected to a common coordinate system (EGSA87/Greek Grid) for accurate spatial analysis.</li>
+									<li><strong>Temporal Alignment:</strong> Time series data were synchronized to enable consistent temporal analysis of air quality patterns.</li>
+									<li><strong>Data Cleaning:</strong> Outliers and erroneous measurements were identified and addressed using statistical methods.</li>
+									<li><strong>Gap Filling:</strong> Missing data were estimated using interpolation techniques appropriate for each data type.</li>
+									<li><strong>Integration:</strong> Multiple data sources were combined into a unified geodatabase for analysis.</li>
+								</ul>
+
+								<h2>3. Spatial Analysis and Modeling</h2>
+								<div class="image main"><img src="../images/NDVI.jpg" alt="Spatial Analysis Models" /></div>
+								<p>Several analytical approaches were employed to understand air pollution distribution:</p>
+								<ul>
+									<li><strong>Spatial Interpolation:</strong> Methods like Inverse Distance Weighting (IDW) and Kriging were used to estimate pollution levels between monitoring stations.</li>
+									<li><strong>Land Use Regression:</strong> Models relating pollutant concentrations to land use characteristics and proximity to emission sources.</li>
+									<li><strong>Dispersion Modeling:</strong> Incorporating meteorological data to simulate how pollutants disperse from their sources across Greece's diverse topography.</li>
+									<li><strong>Seasonal Variation Analysis:</strong> Examining how pollution patterns change across seasons, accounting for tourism impacts, heating practices, and wildfire events.</li>
+									<li><strong>Hotspot Identification:</strong> Statistical methods to identify areas with significantly elevated pollution levels.</li>
+								</ul>
+
+								<h2>4. Exposure and Risk Assessment</h2>
+								<div class="image main"><img src="../images/Population.jpg" alt="Population Exposure" /></div>
+								<p>Population exposure to air pollution was evaluated through:</p>
+								<ul>
+									<li><strong>Population Overlay Analysis:</strong> Combining population density data with pollutant concentration maps.</li>
+									<li><strong>Vulnerability Assessment:</strong> Identifying areas with high concentrations of sensitive populations.</li>
+									<li><strong>Health Risk Modeling:</strong> Applying established dose-response relationships to estimate potential health impacts.</li>
+									<li><strong>Seasonal Impact Assessment:</strong> Evaluating how seasonal factors (tourism influx, heating patterns) affect population exposure.</li>
+								</ul>
+
+								<h2>5. WebGIS Implementation</h2>
+								<div class="image main"><img src="../images/SusceptibilityMap.jpg" alt="WebGIS Interface" /></div>
+								<p>The analysis results were presented through an interactive WebGIS platform:</p>
+								<ul>
+									<li><strong>Server Setup:</strong> Configuring GeoServer to serve spatial data through WMS and WFS services.</li>
+									<li><strong>Layer Styling:</strong> Creating appropriate symbolization for the various pollution and risk maps.</li>
+									<li><strong>Interactive Elements:</strong> Implementing features such as layer toggling, pop-up information, and transparency controls.</li>
+									<li><strong>User Interface Design:</strong> Developing an intuitive interface accessible to both technical and non-technical users.</li>
+									<li><strong>Documentation:</strong> Creating legends, explanatory text, and methodological notes to assist users in interpreting the maps.</li>
+								</ul>
+
+								<h2>6. Validation and Quality Control</h2>
+								<div class="image main"><img src="../images/PieChart.jpg" alt="Validation Results" /></div>
+								<p>To ensure the reliability of our results:</p>
+								<ul>
+									<li><strong>Cross-Validation:</strong> Testing interpolation and model results against known measurements.</li>
+									<li><strong>Sensitivity Analysis:</strong> Evaluating how changes in input parameters affect the final results.</li>
+									<li><strong>Expert Review:</strong> Consulting with air quality specialists to assess the validity of our approach and findings.</li>
+									<li><strong>Uncertainty Mapping:</strong> Documenting areas of higher uncertainty in our pollution estimates.</li>
+								</ul>
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section class="split contact">
+							<section>
+								<h3>Project Repository</h3>
+								<ul class="icons alt">
+									<li><a href="https://github.com/GuojialeGeographer/polimi-webgis-class-2025" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
 						</section>
+					</footer>
 
-					<!-- Two -->
-						<section class="wrapper style1 container special">
-							<div class="row">
-								<div class="col-4 col-12-narrower">
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Greece Air Quality Project</li><li>polimi-webgis-class-2025</li></ul>
+					</div>
 
-									<section>
-										<header>
-											<h3>Data Management</h3>
-										</header>
-										<p>Our project utilized PostgreSQL/PostGIS for storing and managing geospatial data, enabling efficient querying and analysis of complex spatial relationships among air quality factors across Greece's diverse landscapes.</p>
-										<footer>
-											<ul class="buttons">
-												<li><a href="results.html" class="button small">Learn More</a></li>
-											</ul>
-										</footer>
-									</section>
-
-								</div>
-								<div class="col-4 col-12-narrower">
-
-									<section>
-										<header>
-											<h3>Statistical Analysis</h3>
-										</header>
-										<p>We employed various statistical methods including correlation analysis, multiple regression, and time series analysis to identify significant relationships between pollution levels and environmental factors unique to Greece's geography and climate.</p>
-										<footer>
-											<ul class="buttons">
-												<li><a href="results.html" class="button small">Learn More</a></li>
-											</ul>
-										</footer>
-									</section>
-
-								</div>
-								<div class="col-4 col-12-narrower">
-
-									<section>
-										<header>
-											<h3>Visualization Techniques</h3>
-										</header>
-										<p>Advanced cartographic methods and interactive visualization techniques were used to effectively communicate complex spatial patterns of air pollution across Greece's mainland, peninsular regions, and islands.</p>
-										<footer>
-											<ul class="buttons">
-												<li><a href="webgis.html" class="button small">Explore WebGIS</a></li>
-											</ul>
-										</footer>
-									</section>
-
-								</div>
-							</div>
-						</section>
-
-				</article>
-
-			<!-- Footer -->
-				<footer id="footer">
-
-					<ul class="icons">
-						<li><a href="#" class="icon brands circle fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon brands circle fa-facebook-f"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon brands circle fa-google-plus-g"><span class="label">Google+</span></a></li>
-						<li><a href="#" class="icon brands circle fa-github"><span class="label">Github</span></a></li>
-						<li><a href="#" class="icon brands circle fa-dribbble"><span class="label">Dribbble</span></a></li>
-					</ul>
-
-					<ul class="copyright">
-						<li>&copy; Greece Air Quality Project</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-
-				</footer>
-
-		</div>
+			</div>
 
 		<!-- Scripts -->
 			<script src="../assets/js/jquery.min.js"></script>
-			<script src="../assets/js/jquery.dropotron.min.js"></script>
-			<script src="../assets/js/jquery.scrolly.min.js"></script>
 			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/jquery.scrolly.min.js"></script>
 			<script src="../assets/js/browser.min.js"></script>
 			<script src="../assets/js/breakpoints.min.js"></script>
 			<script src="../assets/js/util.js"></script>

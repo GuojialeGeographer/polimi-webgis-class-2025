@@ -3,27 +3,215 @@
 
 <head>
     <base href="">
-    <title>Greece Air Quality - WebGIS</title>
-
-    <meta charset="utf-8">
+    <title>GREECE AIR QUALITY - WebGIS</title>
+    <meta charset="utf-8" http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
     <!--StyleSheets-->
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../node_modules/ol/ol.css">
-    <link rel="stylesheet" href="../node_modules/ol-layerswitcher/dist/ol-layerswitcher.css">
+    <link rel="stylesheet" href="../assets/libraries/ol-8.2.0/ol.css">
+    <link rel="stylesheet" href="../assets/libraries/bootstrap-5.0.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/css/main.css" />
 
-    <!-- Static files are imported from assets folder -->
+    <!-- Layer Switcher CSS -->
+    <link rel="stylesheet" href="https://rawgit.com/walkermatt/ol-layerswitcher/master/src/ol-layerswitcher.css">
+
+    <!-- Static files are imported from assets -->
     <link rel="stylesheet" href="../assets/css/custom-styles.css">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Merriweather', serif;
+            background-color: #f5f5f5;
+        }
 
-    <!-- Modules are imported normally -->
-    <script type="module" src="../assets/js/map.js"></script>
+        .header-bar {
+            background-color: #1e252d;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            height: 60px;
+        }
+
+        .header-bar .title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .header-bar .nav-links a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .header-bar .nav-links a:hover {
+            color: #9bf1ff;
+        }
+
+        .map-container {
+            height: calc(100vh - 60px);
+            width: 100%;
+            position: relative;
+        }
+
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+
+        .floating-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+        }
+
+        .floating-button .btn {
+            background-color: #1e252d;
+            border-color: #1e252d;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .floating-button .btn:hover {
+            background-color: #3b4654;
+        }
+
+        .ol-popup {
+            position: absolute;
+            background-color: white;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+            border-radius: 5px;
+            padding: 15px;
+            bottom: 12px;
+            left: -50px;
+            min-width: 280px;
+            max-width: 400px;
+            max-height: 400px;
+            overflow-y: auto;
+            border-left: 4px solid #1e252d;
+        }
+
+        .ol-popup-closer {
+            position: absolute;
+            top: 2px;
+            right: 8px;
+            font-size: 16px;
+            color: #1e252d;
+            text-decoration: none;
+        }
+
+        .legend {
+            position: absolute;
+            bottom: 30px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+            max-width: 250px;
+            max-height: 400px;
+            overflow-y: auto;
+            border-left: 4px solid #1e252d;
+        }
+
+        .legend h4 {
+            margin-top: 0;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+            color: #1e252d;
+        }
+
+        .legend-item {
+            margin-bottom: 10px;
+        }
+
+        .legend-item p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .info-panel {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+            max-width: 300px;
+            border-left: 4px solid #1e252d;
+        }
+
+        .info-panel h4 {
+            margin-top: 0;
+            color: #1e252d;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+
+        .info-panel p {
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .info-key {
+            font-weight: bold;
+            padding-right: 10px;
+        }
+
+        .feature-info {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dotted #ccc;
+        }
+
+        .feature-info:last-child {
+            border-bottom: none;
+        }
+
+        .ol-scale-line {
+            background: rgba(30, 37, 45, 0.8);
+        }
+
+        .ol-control button {
+            background-color: rgba(30, 37, 45, 0.8);
+        }
+
+        .ol-control button:hover {
+            background-color: #3b4654;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="w-100 vh-100">
-        <div class="floating-button">
-            <a href="../index.html" class="btn btn-primary">Back</a>
+    <div class="header-bar">
+        <div class="title">Greece Air Quality WebGIS</div>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="workflow.html">Workflow</a>
+            <a href="results.html">Results</a>
+            <a href="webgis.html" class="active">WebGIS</a>
+            <a href="https://github.com/GuojialeGeographer/polimi-webgis-class-2025" target="_blank">
+                <i class="fab fa-github"></i> GitHub
+            </a>
         </div>
+    </div>
+    
+    <div class="map-container">
         <div id="map"></div>
 
         <!--The structure for the popup-->
@@ -49,6 +237,19 @@
             <p>Click on the map to get detailed information for specific locations.</p>
         </div>
     </div>
+
+    <!--Scripts-->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/libraries/ol-8.2.0/ol.js"></script>
+
+    <!-- Layer Switcher JS -->
+    <script src="https://rawgit.com/walkermatt/ol-layerswitcher/master/dist/ol-layerswitcher.js"></script>
+    
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <!-- import map.js -->
+    <script src="../assets/js/map.js"></script>
 </body>
 
 </html>

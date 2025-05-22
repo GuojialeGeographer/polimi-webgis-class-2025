@@ -1,236 +1,132 @@
 <!DOCTYPE HTML>
 <!--
-	Twenty by HTML5 UP
+	Massively by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 	<head>
-		<title>Air Quality Analysis - Greece</title>
+		<title>Greece Air Quality Analysis</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-		
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="stylesheet" href="assets/css/custom-styles.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			#intro {
+				background-image: url("images/bg.jpg");
+				background-size: cover;
+				background-position: center;
+			}
+			
+			#intro:before {
+				content: '';
+				background-color: rgba(0,0,0,0.5);
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 0;
+			}
+			
+			#intro > * {
+				position: relative;
+				z-index: 1;
+			}
+			
+			.image.main img {
+				width: 100%;
+				height: auto;
+				object-fit: cover;
+			}
+		</style>
 	</head>
-	<body class="index is-preload">
-		<div id="page-wrapper">
+	<body class="is-preload">
 
-			<!-- Header -->
-				<header id="header" class="alt">
-					<h1 id="logo"><a href="index.html">Greece Air Quality</a></h1>
-					<nav id="nav"> 
-						<ul>
-							<li class="current"><a href="index.html">HOME</a></li>
-							<li class="current"><a href="pages/workflow.html">WORKFLOW</a></li>
-							<li class="current"><a href="pages/results.html">RESULTS</a></li>
-							<li class="current"><a href="pages/webgis.html">WEBGIS</a></li>
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Intro -->
+					<div id="intro">
+						<h1>Air Quality Analysis<br />
+							Greece</h1>
+						<p>NATIONWIDE AIR QUALITY MONITORING<br />GIS 2025 Project</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
 						</ul>
-					</nav>
-				</header>
-
-			<!-- Banner -->
-				<div id="banner" class="custom-banner">
-					<div class="banner-transparency"></div>
-
-					<!--
-						".inner" is set up as an inline-block so it automatically expands
-						in both directions to fit whatever's inside it. This means it won't
-						automatically wrap lines, so be sure to use line breaks where
-						appropriate (<br />).
-					-->
-					<div class="inner">
-
-						<header>
-							<h2>Greece Air Quality Monitoring</h2>
-						</header>
-						<p>Air Pollution Monitoring and Analysis
-						<br />
-						Nationwide Study, Greece
-						<br />
-						GIS 2025 Project</p>
-						<footer>
-							<ul class="buttons stacked">
-								<li><a href="#main" class="button fit scrolly">Learn More</a></li>
-							</ul>
-						</footer>
-
 					</div>
 
-				</div>
-
-			<!-- Main -->
-				<article id="main">
-
-					<header class="special container">
-						<span class="icon solid fa-chart-bar"></span>
-						<h2>About This Project</h2>
-						<br />
-						<p>The main objective of this project is to analyze air pollution across Greece, create air quality index maps, and assess population exposure to different levels of pollution.
-						The results will be presented through a website featuring WebGIS content. This goal will be achieved by leveraging air quality monitoring station data, meteorological data, traffic flow data, and geographic information on population distribution.</p>
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Greece Air Quality</a>
 					</header>
 
-					<!-- One -->
-						<div class="wrapper style2 container special-alt">
-							<div class="row gtr-50">
-								<div class="col-8 col-12-narrower">
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href="index.html">home</a></li>
+							<li><a href="pages/workflow.html">workflow</a></li>
+							<li><a href="pages/results.html">results</a></li>
+							<li><a href="pages/webgis.html">webgis</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://github.com/GuojialeGeographer/polimi-webgis-class-2025" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
 
-									<header>
-										<h2>About the Study Area</h2>
-									</header>
-									<p>Greece is located in southeastern Europe with a diverse geography comprising mountains, peninsulas, and approximately 2,000 islands. With a Mediterranean climate characterized by hot, dry summers and mild, wet winters, Greece faces unique air quality challenges. The country's topography, with numerous mountain ranges dividing the mainland, creates distinctive microclimates and pollution dispersion patterns.<br><br>Air pollution in Greece stems from multiple sources including urban traffic, shipping emissions around major ports, industrial activities, agricultural burning, and seasonal wildfires. During summer, tourist influx significantly increases in coastal areas and islands, creating temporary pollution hotspots. Winter brings additional challenges as wood burning for home heating increases particulate matter concentrations, especially in urban areas and mountain villages. The complex interactions between these factors and Greece's varied topography make air quality management a significant challenge across the nation.</p>
-									<footer>
-										<ul class="buttons">
-											<li><a href="pages/workflow.html" class="button">View Workflow</a></li>
-										</ul>
-									</footer>
+				<!-- Main -->
+					<div id="main">
 
-								</div>
-								<div class="col-4 col-12-narrower imp-narrower">
-
-									<ul class="featured-icons">
-										<li><span class="icon fa-clock"><span class="label">Feature 1</span></span></li>
-										<li><span class="icon solid fa-volume-up"><span class="label">Feature 2</span></span></li>
-										<li><span class="icon solid fa-laptop"><span class="label">Feature 3</span></span></li>
-										<li><span class="icon solid fa-inbox"><span class="label">Feature 4</span></span></li>
-										<li><span class="icon solid fa-lock"><span class="label">Feature 5</span></span></li>
-										<li><span class="icon solid fa-cog"><span class="label">Feature 6</span></span></li>
-									</ul>
-
-								</div>
-							</div>
-						</div>
-
-					<!-- Two -->
-						<div class="wrapper style1 container special">
-							<div class="row">
-								<div class="col-4 col-12-narrower">
-
-									<div>
-										<span class="icon solid featured fa-check"></span>
-										<header>
-											<h3>Air Quality Monitoring</h3>
-										</header>
-										<p>Comprehensive monitoring of air pollutants including particulate matter (PM2.5, PM10), nitrogen dioxide (NO2), ozone (O3), and other key indicators using data from monitoring stations across Greece's urban centers, industrial zones, and rural areas.</p>
-									</div>
-
-								</div>
-								<div class="col-4 col-12-narrower">
-
-									<div>
-										<span class="icon solid featured fa-check"></span>
-										<header>
-											<h3>Factor Analysis</h3>
-										</header>
-										<p>Investigation of factors influencing air quality, including regional traffic patterns, shipping emissions, seasonal tourism impacts, wildfire events, and meteorological conditions specific to Greece's diverse geographic regions.</p>
-									</div>
-
-								</div>
-								<div class="col-4 col-12-narrower">
-
-									<div>
-										<span class="icon solid featured fa-check"></span>
-										<header>
-											<h3>Health Risk Assessment</h3>
-										</header>
-										<p>Evaluation of potential health impacts on Greece's population, focusing on vulnerable groups such as children, the elderly, and those with pre-existing respiratory conditions in areas with high pollution levels including urban centers and areas affected by seasonal factors.</p>
-									</div>
-
-								</div>
-							</div>
-						</div>
-
-					<!-- Three -->
-						<div class="wrapper style3 container special">
-
-							<header class="major">
-								<h2>Project Results</h2>
-							</header>
-
-							<div class="row">
-								<div class="col-6 col-12-narrower">
-
-									<div>
-										<a href="pages/results.html" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-										<header>
-											<h3>National Pollution Mapping</h3>
-										</header>
-										<p>High-resolution maps of air pollutant concentrations across Greece, showing spatial patterns between urban and rural areas, coastal regions and inland territories, identifying pollution hotspots that require attention and intervention.</p>
-									</div>
-
-								</div>
-								<div class="col-6 col-12-narrower">
-
-									<div>
-										<a href="pages/results.html" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-										<header>
-											<h3>Regional Impact Assessment</h3>
-										</header>
-										<p>Analysis of how different geographical features and land use types across Greece's diverse regions affect air quality, providing insights into the relationship between topography, human activities, and pollution levels.</p>
-									</div>
-
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-6 col-12-narrower">
-
-									<div>
-										<a href="pages/results.html" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-										<header>
-											<h3>Seasonal Variation Analysis</h3>
-										</header>
-										<p>Examination of air quality variations throughout Greece's distinctive seasons, including the impact of summer tourism and wildfires, winter heating patterns, and how seasonal meteorological conditions affect pollution dispersion.</p>
-									</div>
-
-								</div>
-								<div class="col-6 col-12-narrower">
-
-									<div>
-										<a href="pages/webgis.html" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
-										<header>
-											<h3>Interactive WebGIS</h3>
-										</header>
-										<p>An interactive web-based geographic information system that allows users to explore air quality data across Greece, toggle between different pollutants, and view related geographic features and regional patterns throughout the country.</p>
-									</div>
-
-								</div>
-							</div>
-
-							<footer class="major">
-								<ul class="buttons">
-									<li><a href="pages/webgis.html" class="button">Explore Our WebGIS</a></li>
+						<!-- Featured Post -->
+							<article class="post featured">
+								<header class="major">
+									<span class="date">May, 2025</span>
+									<h2>About the Project</h2>
+									<p>The main objective of this project is to analyze air pollution across Greece, create air quality index maps, and assess population exposure to different levels of pollution.
+									The results are presented through this website featuring WebGIS content. This goal is achieved by leveraging air quality monitoring station data, meteorological data, traffic flow data, and geographic information on population distribution.</p>
+								</header>
+								<a class="image main"><img src="images/lombardia.jpg" alt="Greece Landscape" /></a>
+								<header class="major">
+									<h2>About the Study Area</h2>
+									<p>Greece is located in southeastern Europe with a diverse geography comprising mountains, peninsulas, and approximately 2,000 islands. With a Mediterranean climate characterized by hot, dry summers and mild, wet winters, Greece faces unique air quality challenges. The country's topography, with numerous mountain ranges dividing the mainland, creates distinctive microclimates and pollution dispersion patterns.</p>
+								</header>
+								<a class="image main"><img src="images/217.jpg" alt="Study Area" /></a>
+								<header class="major">
+									<p>Air pollution in Greece stems from multiple sources including urban traffic, shipping emissions around major ports, industrial activities, agricultural burning, and seasonal wildfires. During summer, tourist influx significantly increases in coastal areas and islands, creating temporary pollution hotspots. Winter brings additional challenges as wood burning for home heating increases particulate matter concentrations, especially in urban areas and mountain villages. The complex interactions between these factors and Greece's varied topography make air quality management a significant challenge across the nation.</p>
+								</header>
+								<a class="image main"><img src="images/218.jpg" alt="Coastal View" /></a>
+								<header>
+									<p></p>
+								</header>
+								<ul class="actions special">
+									<li><a href="pages/workflow.html" class="button large">EXPLORE THE WORKFLOW</a></li>
 								</ul>
-							</footer>
+							</article>
+					</div>
 
-						</div>
+				<!-- Footer -->
+					<footer id="footer">
+						<section class="align-center">
+							<section>
+								<h2>EXPLORE THE SOURCE CODE</h2>
+								<ul class="icons alt">
+									<li><a href="https://github.com/GuojialeGeographer/polimi-webgis-class-2025" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
 
-				</article>
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Greece Air Quality Project</li><li>polimi-webgis-class-2025</a></li></ul>
+					</div>
 
-			<!-- Footer -->
-				<footer id="footer">
-
-					<ul class="icons">
-						<li><a href="#" class="icon brands circle fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon brands circle fa-facebook-f"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon brands circle fa-google-plus-g"><span class="label">Google+</span></a></li>
-						<li><a href="#" class="icon brands circle fa-github"><span class="label">Github</span></a></li>
-						<li><a href="#" class="icon brands circle fa-dribbble"><span class="label">Dribbble</span></a></li>
-					</ul>
-
-					<ul class="copyright">
-						<li>&copy; Greece Air Quality Project</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-
-				</footer>
-
-		</div>
+			</div>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>

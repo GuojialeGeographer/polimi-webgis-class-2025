@@ -1,35 +1,24 @@
-import 'ol/ol.css';
-import 'ol-layerswitcher/dist/ol-layerswitcher.css';
-import { Map, View, Overlay } from 'ol';
-import { Tile, Image, Group, Vector } from 'ol/layer';
-import { OSM, ImageWMS, XYZ, StadiaMaps } from 'ol/source';
-import VectorSource from 'ol/source/Vector';
-import { GeoJSON } from 'ol/format';
-import { fromLonLat } from 'ol/proj';
-import { ScaleLine, FullScreen, MousePosition, defaults as defaultControls } from 'ol/control';
-import LayerSwitcher from 'ol-layerswitcher';
-import { createStringXY } from 'ol/coordinate';
-import { Style, Fill, Stroke } from 'ol/style';
-import { click } from 'ol/events/condition';
+// 使用全局对象替代ESM导入
+// 地图初始化，使用从HTML加载的OpenLayers库
 
 // OpenStreetMap base layer
-let osm = new Tile({
+let osm = new ol.layer.Tile({
     title: "OpenStreetMap",
     type: "base",
     visible: true,
-    source: new OSM()
+    source: new ol.source.OSM()
 });
 
 // Create layer group and add layers
-let basemapLayers = new Group({
+let basemapLayers = new ol.layer.Group({
     title: "Base Maps",
     layers: [osm]
 });
 
 // Air quality monitoring stations layer
-let monitoringStations = new Image({
+let monitoringStations = new ol.layer.Image({
     title: "Monitoring Stations",
-    source: new ImageWMS({
+    source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
         params: { 'LAYERS': 'gisgeoserver_06:greece_air_monitoring_stations' }
     }),
@@ -37,9 +26,9 @@ let monitoringStations = new Image({
 });
 
 // Urban areas layer
-let urbanAreas = new Image({
+let urbanAreas = new ol.layer.Image({
     title: "Urban Areas",
-    source: new ImageWMS({
+    source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
         params: { 'LAYERS': 'gisgeoserver_06:greece_urban_areas' }
     }),
@@ -47,9 +36,9 @@ let urbanAreas = new Image({
 });
 
 // Road network layer
-let roadNetwork = new Image({
+let roadNetwork = new ol.layer.Image({
     title: "Road Network",
-    source: new ImageWMS({
+    source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
         params: { 'LAYERS': 'gisgeoserver_06:greece_road_network' }
     }),
@@ -57,9 +46,9 @@ let roadNetwork = new Image({
 });
 
 // Industrial areas layer
-let industrialAreas = new Image({
+let industrialAreas = new ol.layer.Image({
     title: "Industrial Areas",
-    source: new ImageWMS({
+    source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
         params: { 'LAYERS': 'gisgeoserver_06:greece_industrial_areas' }
     }),
@@ -67,9 +56,9 @@ let industrialAreas = new Image({
 });
 
 // Land use layer
-let landUse = new Image({
+let landUse = new ol.layer.Image({
     title: "Land Use",
-    source: new ImageWMS({
+    source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
         params: { 'LAYERS': 'gisgeoserver_06:greece_land_use' }
     }),
@@ -77,9 +66,9 @@ let landUse = new Image({
 });
 
 // Meteorological stations layer
-let meteoStations = new Image({
+let meteoStations = new ol.layer.Image({
     title: "Meteorological Stations",
-    source: new ImageWMS({
+    source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
         params: { 'LAYERS': 'gisgeoserver_06:greece_meteo_stations' }
     }),
@@ -87,9 +76,9 @@ let meteoStations = new Image({
 });
 
 // Port and shipping lanes layer
-let shippingLanes = new Image({
+let shippingLanes = new ol.layer.Image({
     title: "Ports and Shipping Lanes",
-    source: new ImageWMS({
+    source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
         params: { 'LAYERS': 'gisgeoserver_06:greece_shipping_lanes' }
     }),
@@ -97,9 +86,9 @@ let shippingLanes = new Image({
 });
 
 // Tourist areas layer
-let touristAreas = new Image({
+let touristAreas = new ol.layer.Image({
     title: "Tourist Areas",
-    source: new ImageWMS({
+    source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
         params: { 'LAYERS': 'gisgeoserver_06:greece_tourist_areas' }
     }),
@@ -107,145 +96,145 @@ let touristAreas = new Image({
 });
 
 // Base data layers group
-let baseDataLayers = new Group({
+let baseDataLayers = new ol.layer.Group({
     title: "Base Data Layers",
     layers: [monitoringStations, urbanAreas, roadNetwork, industrialAreas, landUse, meteoStations, shippingLanes, touristAreas],
     fold: 'open'
 });
 
 // Air quality index map
-let aqiMap = new Image({
+let aqiMap = new ol.layer.Image({
     title: "Air Quality Index Map",
-    source: new ImageWMS({
+    source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
         params: { 'LAYERS': 'gisgeoserver_06:greece_air_quality_index' }
     }),
     visible: true
 });
 
-let pm25Map = new Image({
+let pm25Map = new ol.layer.Image({
     visible: false,
     title: "PM2.5 Concentration",
-    source: new ImageWMS({
+    source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
         params: { 'LAYERS': 'gisgeoserver_06:greece_pm25_concentration' }
     })
 });
 
-let pm10Map = new Image({
+let pm10Map = new ol.layer.Image({
     visible: false,
     title: "PM10 Concentration",
-    source: new ImageWMS({
+    source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
         params: { 'LAYERS': 'gisgeoserver_06:greece_pm10_concentration' }
     })
 });
 
-let no2Map = new Image({
+let no2Map = new ol.layer.Image({
     visible: false,
     title: "Nitrogen Dioxide (NO2) Concentration",
-    source: new ImageWMS({
+    source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
         params: { 'LAYERS': 'gisgeoserver_06:greece_no2_concentration' }
     })
 });
 
-let o3Map = new Image({
+let o3Map = new ol.layer.Image({
     visible: false,
     title: "Ozone (O3) Concentration",
-    source: new ImageWMS({
+    source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
         params: { 'LAYERS': 'gisgeoserver_06:greece_o3_concentration' }
     })
 });
 
-let so2Map = new Image({
+let so2Map = new ol.layer.Image({
     visible: false,
     title: "Sulfur Dioxide (SO2) Concentration",
-    source: new ImageWMS({
+    source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
         params: { 'LAYERS': 'gisgeoserver_06:greece_so2_concentration' }
     })
 });
 
-let airQualityLayers = new Group({
+let airQualityLayers = new ol.layer.Group({
     title: "Air Quality Maps",
     layers: [aqiMap, pm25Map, pm10Map, no2Map, o3Map, so2Map],
     fold: 'open'
 });
 
 // Validation points
-let validationPoints = new Image({
+let validationPoints = new ol.layer.Image({
     visible: false,
     title: "Validation Points",
-    source: new ImageWMS({
+    source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
         params: { 'LAYERS': 'gisgeoserver_06:greece_validation_points' }
     })
 });
 
-let calibrationPoints = new Image({
+let calibrationPoints = new ol.layer.Image({
     visible: false,
     title: "Calibration Points",
-    source: new ImageWMS({
+    source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
         params: { 'LAYERS': 'gisgeoserver_06:greece_calibration_points' }
     })
 });
 
-let modelValidation = new Group({
+let modelValidation = new ol.layer.Group({
     title: "Model Validation",
     layers: [validationPoints, calibrationPoints],
     fold: 'close'
 });
 
 // Health risk assessment
-let populationDensity = new Image({
+let populationDensity = new ol.layer.Image({
     title: "Population Density",
-    source: new ImageWMS({
+    source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
         params: { 'LAYERS': 'gisgeoserver_06:greece_population_density' }
     }),
     visible: false
 });
 
-let vulnerablePopulation = new Image({
+let vulnerablePopulation = new ol.layer.Image({
     title: "Vulnerable Population",
-    source: new ImageWMS({
+    source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
         params: { 'LAYERS': 'gisgeoserver_06:greece_vulnerable_population' }
     }),
     visible: false
 });
 
-let healthRiskMap = new Image({
+let healthRiskMap = new ol.layer.Image({
     title: "Health Risk Index",
-    source: new ImageWMS({
+    source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
         params: { 'LAYERS': 'gisgeoserver_06:greece_health_risk_index' }
     }),
     visible: false
 });
 
-let seasonalTourismImpact = new Image({
+let seasonalTourismImpact = new ol.layer.Image({
     title: "Seasonal Tourism Impact",
-    source: new ImageWMS({
+    source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
         params: { 'LAYERS': 'gisgeoserver_06:greece_tourism_impact' }
     }),
     visible: false
 });
 
-let healthRiskAssessment = new Group({
+let healthRiskAssessment = new ol.layer.Group({
     title: "Health Risk Assessment",
     layers: [populationDensity, vulnerablePopulation, healthRiskMap, seasonalTourismImpact],
     fold: 'close'
 });
 
 // Study area - Greece
-let greeceOutline = new Image({
+let greeceOutline = new ol.layer.Image({
     title: "Greece Outline",
-    source: new ImageWMS({
+    source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
         params: { 'LAYERS': 'gisgeoserver_06:greece_outline' }
     }),
@@ -253,18 +242,18 @@ let greeceOutline = new Image({
 });
 
 // Map Initialization - Centered on Greece
-let map = new Map({
+let map = new ol.Map({
     target: document.getElementById('map'),
     layers: [basemapLayers, baseDataLayers, airQualityLayers, modelValidation, healthRiskAssessment, greeceOutline],
-    view: new View({
-        center: fromLonLat([23.7275, 37.9838]), // Athens, Greece coordinates
+    view: new ol.View({
+        center: ol.proj.fromLonLat([23.7275, 37.9838]), // Athens, Greece coordinates
         zoom: 7 // Zoom level to show most of Greece
     }),
-    controls: defaultControls().extend([
-        new ScaleLine(),
-        new FullScreen(),
-        new MousePosition({
-            coordinateFormat: createStringXY(4),
+    controls: ol.control.defaults().extend([
+        new ol.control.ScaleLine(),
+        new ol.control.FullScreen(),
+        new ol.control.MousePosition({
+            coordinateFormat: ol.coordinate.createStringXY(4),
             projection: 'EPSG:4326',
             className: 'custom-control',
             placeholder: '0.0000, 0.0000'
@@ -280,32 +269,32 @@ let layerSwitcher = new LayerSwitcher({
 map.addControl(layerSwitcher);
 
 // Add Stadia Maps basemaps
-let stadiaOutdoors = new Tile({
+let stadiaOutdoors = new ol.layer.Tile({
     title: 'Stadia Outdoors',
     type: 'base',
     visible: false,
-    source: new StadiaMaps({
-        layer: 'outdoors',
-        apiKey: 'your-api-key' // Replace with your API key or use demo key for testing
+    source: new ol.source.XYZ({
+        url: 'https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}.png',
+        attributions: 'Map tiles by <a href="https://stadiamaps.com/">Stadia Maps</a>, under CC BY 3.0. Data by <a href="https://openstreetmap.org">OpenStreetMap</a>, under ODbL.'
     })
 });
 
-let stadiaAlidade = new Tile({
+let stadiaAlidade = new ol.layer.Tile({
     title: 'Stadia Alidade',
     type: 'base',
     visible: false,
-    source: new StadiaMaps({
-        layer: 'alidade_smooth',
-        apiKey: 'your-api-key' // Replace with your API key or use demo key for testing
+    source: new ol.source.XYZ({
+        url: 'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}.png',
+        attributions: 'Map tiles by <a href="https://stadiamaps.com/">Stadia Maps</a>, under CC BY 3.0. Data by <a href="https://openstreetmap.org">OpenStreetMap</a>, under ODbL.'
     })
 });
 
 // Add OpenTopoMap
-let openTopoMap = new Tile({
+let openTopoMap = new ol.layer.Tile({
     title: 'OpenTopoMap',
     type: 'base',
     visible: false,
-    source: new XYZ({
+    source: new ol.source.XYZ({
         url: 'https://{a-c}.tile.opentopomap.org/{z}/{x}/{y}.png',
         attributions: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
     })
@@ -324,9 +313,9 @@ function createLegend() {
     
     function collectVisibleLayers(layerGroup) {
         layerGroup.getLayers().forEach(layer => {
-            if (layer instanceof Group) {
+            if (layer instanceof ol.layer.Group) {
                 collectVisibleLayers(layer);
-            } else if (layer.getVisible() && layer.getSource() instanceof ImageWMS) {
+            } else if (layer.getVisible() && layer.getSource() instanceof ol.source.ImageWMS) {
                 visibleLayers.push(layer);
             }
         });
@@ -334,9 +323,9 @@ function createLegend() {
     
     // Start with the top-level layers
     map.getLayers().forEach(layer => {
-        if (layer instanceof Group) {
+        if (layer instanceof ol.layer.Group) {
             collectVisibleLayers(layer);
-        } else if (layer.getVisible() && layer.getSource() instanceof ImageWMS) {
+        } else if (layer.getVisible() && layer.getSource() instanceof ol.source.ImageWMS) {
             visibleLayers.push(layer);
         }
     });
@@ -384,7 +373,7 @@ createLegend();
 
 // Update legend when layer visibility changes
 map.getLayers().forEach(layer => {
-    if (layer instanceof Group) {
+    if (layer instanceof ol.layer.Group) {
         layer.getLayers().forEach(subLayer => {
             subLayer.on('change:visible', createLegend);
         });
@@ -394,7 +383,7 @@ map.getLayers().forEach(layer => {
 });
 
 // Create popup overlay
-const popup = new Overlay({
+const popup = new ol.Overlay({
     element: document.getElementById('popup'),
     autoPan: true,
     autoPanAnimation: {
@@ -426,7 +415,7 @@ map.on('singleclick', function(evt) {
     let hasFeatureInfo = false;
     
     map.forEachLayerAtPixel(pixel, function(layer) {
-        if (layer instanceof Image && layer.getVisible() && layer.getSource() instanceof ImageWMS) {
+        if (layer instanceof ol.layer.Image && layer.getVisible() && layer.getSource() instanceof ol.source.ImageWMS) {
             hasFeatureInfo = true;
             const source = layer.getSource();
             const url = source.getFeatureInfoUrl(

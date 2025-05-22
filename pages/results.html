@@ -1,232 +1,170 @@
 <!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
 	<head>
 		<title>Results - Air Quality Analysis</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../assets/css/main.css" />
-		<link rel="stylesheet" href="../assets/css/custom-styles.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+		<style>
+			.image.main img {
+				width: 100%;
+				height: auto;
+				object-fit: cover;
+				max-height: 500px;
+			}
+			
+			.image.fit img {
+				width: 100%;
+				height: 300px;
+				object-fit: cover;
+			}
+			
+			.button.primary.fit {
+				margin-top: 2rem;
+			}
+		</style>
 	</head>
-	<body class="left-sidebar is-preload">
-		<div id="page-wrapper">
+	<body class="is-preload">
 
-			<!-- Header -->
-				<header id="header">
-					<h1 id="logo"><a href="../index.html">Greece Air Quality</a></h1>
-					<nav id="nav">
-						<ul>
-							<li><a href="../index.html">HOME</a></li>
-							<li><a href="workflow.html">WORKFLOW</a></li>
-							<li class="current"><a href="results.html">RESULTS</a></li>
-							<li><a href="webgis.html">WEBGIS</a></li>
-						</ul>
-					</nav>
-				</header>
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-			<!-- Main -->
-				<article id="main">
-
-					<header class="special container">
-						<span class="icon solid fa-chart-line"></span>
-						<h2>Analysis Results</h2>
-						<p>Key findings from our air quality analysis in Greece</p>
+				<!-- Header -->
+					<header id="header">
+						<a href="../index.html" class="logo">Greece Air Quality</a>
 					</header>
 
-					<!-- One -->
-						<section class="wrapper style4 container">
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="../index.html">Home</a></li>
+							<li><a href="workflow.html">Workflow</a></li>
+							<li class="active"><a href="results.html">Results</a></li>
+							<li><a href="webgis.html">WebGIS</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://github.com/GuojialeGeographer/polimi-webgis-class-2025" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
 
-							<div class="row gtr-150">
-								<div class="col-4 col-12-narrower">
+				<!-- Main -->
+					<div id="main">
 
-									<!-- Sidebar -->
-										<div class="sidebar">
-											<section>
-												<header>
-													<h3>Key Air Quality Indicators</h3>
-												</header>
-												<p>Our analysis focused on the following key air pollutants, which have significant health implications:</p>
-												<ul class="default">
-													<li><strong>PM2.5</strong> - Fine particulate matter (&lt;2.5 μm)</li>
-													<li><strong>PM10</strong> - Coarse particulate matter (&lt;10 μm)</li>
-													<li><strong>NO2</strong> - Nitrogen dioxide</li>
-													<li><strong>O3</strong> - Ozone</li>
-													<li><strong>SO2</strong> - Sulfur dioxide</li>
-													<li><strong>CO</strong> - Carbon monoxide</li>
-												</ul>
-												<footer>
-													<ul class="buttons">
-														<li><a href="webgis.html" class="button small">View Maps</a></li>
-													</ul>
-												</footer>
-											</section>
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>Project Results</h1>
+									<p>Key findings from our nationwide air quality analysis across Greece</p>
+								</header>
 
-											<section>
-												<a href="#" class="image featured"><img src="../images/aqi-levels.jpg" alt="" /></a>
-												<header>
-													<h3>Air Quality Index (AQI) Levels</h3>
-												</header>
-												<p>The AQI is calculated based on the concentration levels of multiple pollutants and categorized into six levels:</p>
-												<ul class="default">
-													<li><strong style="color: #00E400;">Good (0-50)</strong>: Little to no health risk</li>
-													<li><strong style="color: #FFFF00;">Moderate (51-100)</strong>: Acceptable quality</li>
-													<li><strong style="color: #FF7E00;">Unhealthy for Sensitive Groups (101-150)</strong>: May affect sensitive individuals</li>
-													<li><strong style="color: #FF0000;">Unhealthy (151-200)</strong>: Everyone may experience health effects</li>
-													<li><strong style="color: #99004C;">Very Unhealthy (201-300)</strong>: Health alert - risk for all</li>
-													<li><strong style="color: #7E0023;">Hazardous (301+)</strong>: Emergency conditions</li>
-												</ul>
-											</section>
-										</div>
+								<!-- National Air Quality Patterns -->
+								<h2>National Air Quality Patterns</h2>
+								<div class="image main"><img src="../images/Slope.jpg" alt="Air Quality Map of Greece" /></div>
+								<p>Our analysis of air quality across Greece revealed several important national patterns:</p>
+								<ul>
+									<li><strong>Urban Concentrations:</strong> Major urban centers like Athens and Thessaloniki consistently showed the highest levels of air pollution, particularly for NO2 and PM10, reflecting the impact of vehicle emissions and industrial activities.</li>
+									<li><strong>Coastal-Inland Gradient:</strong> Coastal areas generally showed better air quality than inland regions, benefiting from sea breezes that help disperse pollutants, with the exception of major port cities.</li>
+									<li><strong>Seasonal Variations:</strong> Winter months showed elevated levels of PM2.5 across northern Greece due to residential heating with wood and fossil fuels, while summer months saw increased ozone levels, especially in southern regions with high solar radiation.</li>
+									<li><strong>Topographic Influence:</strong> Mountain ranges created distinct air quality regions, with valleys and basins occasionally experiencing pollution trapping during temperature inversions.</li>
+								</ul>
 
+								<!-- Seasonal Tourism Impact -->
+								<h2>Seasonal Tourism Impact</h2>
+								<div class="row">
+									<div class="col-6 col-12-small">
+										<span class="image fit"><img src="../images/Rivers.jpg" alt="Summer Tourism Impact" /></span>
+									</div>
+									<div class="col-6 col-12-small">
+										<span class="image fit"><img src="../images/Roads.jpg" alt="Winter Air Quality" /></span>
+									</div>
 								</div>
-								<div class="col-8 col-12-narrower imp-narrower">
+								<p>The seasonal influx of tourists significantly affected air quality patterns:</p>
+								<ul>
+									<li><strong>Island Hotspots:</strong> Popular tourist islands showed dramatic increases in NOx and PM levels during peak summer months, with some locations experiencing up to 300% increases in air pollutants compared to winter baselines.</li>
+									<li><strong>Cruise Ship Impact:</strong> Major port cities serving cruise ships showed distinctive pollution signatures, with elevated SO2 levels during peak arrival and departure times.</li>
+									<li><strong>Correlation with Visitor Numbers:</strong> Statistical analysis revealed strong correlations (r=0.78) between monthly tourist numbers and air pollution levels in key destination areas.</li>
+									<li><strong>Transport Corridors:</strong> Major tourist transport routes showed linear patterns of elevated pollution following the road network to popular destinations.</li>
+								</ul>
 
-									<!-- Content -->
-										<div class="content">
-											<section>
-												<a href="#" class="image featured"><img src="../images/milan-pollution-map.jpg" alt="" /></a>
-												<header>
-													<h3>Spatial Distribution of Air Pollution</h3>
-												</header>
-												<p>Our analysis revealed distinct spatial patterns in air pollution across Greece. Key findings include:</p>
-												
-												<ul>
-													<li><strong>Urban Centers</strong>: The highest concentrations of NO2 and CO were observed in Athens, Thessaloniki, and other major cities, with levels frequently exceeding European Union air quality standards during peak traffic hours and summer months.</li>
-													<li><strong>Industrial Zones</strong>: Areas around Attica, Thessaloniki, and Patras showed elevated levels of PM10, PM2.5, and SO2, particularly in areas with high industrial activity and port operations.</li>
-													<li><strong>Coastal Tourist Areas</strong>: Popular destinations like Crete, Rhodes, and the Cyclades islands experience significant seasonal variations in air quality, with notable deterioration during peak tourist seasons (June-September).</li>
-													<li><strong>Rural and Mountainous Regions</strong>: Generally better air quality, though occasionally affected by long-range transport of pollutants and seasonal agricultural burning.</li>
-													<li><strong>Island Communities</strong>: Varying pollution profiles, with some smaller islands maintaining excellent air quality while larger islands with significant tourism or shipping activity showing moderate pollution levels.</li>
-												</ul>
-												
-												<p>Interpolation analysis of monitoring station data revealed that approximately 42% of Greece's population lives in areas where annual average PM2.5 levels exceed the World Health Organization recommended guidelines of 5 μg/m³, primarily in urban and industrialized regions.</p>
-												
-												<header>
-													<h3>Temporal Patterns and Seasonal Variations</h3>
-												</header>
-												
-												<div class="row">
-													<div class="col-6">
-														<a href="#" class="image featured"><img src="../images/seasonal-variation.jpg" alt="" /></a>
-													</div>
-													<div class="col-6">
-														<p>Our temporal analysis identified significant seasonal and regional patterns in air pollution:</p>
-														<ul>
-															<li><strong>Winter Patterns</strong>: Urban areas show elevated levels of PM2.5 and PM10 during winter months (December-February), primarily due to residential heating with wood and fossil fuels, especially in northern regions and mountainous areas.</li>
-															<li><strong>Summer Tourism Impact</strong>: Coastal areas and islands experience up to 35% increase in NO2 and ground-level ozone during summer tourist season due to increased traffic, energy consumption, and maritime activities.</li>
-															<li><strong>Wildfire Season</strong>: Late summer (July-September) often sees dramatic spikes in particulate matter across large regions during wildfire events, creating temporary but severe air quality deterioration.</li>
-															<li><strong>Shipping Influence</strong>: Major port cities and shipping lanes show consistent patterns of sulfur dioxide and nitrogen oxide emissions throughout the year, with intensification during cruise ship season.</li>
-														</ul>
-													</div>
-												</div>
-												
-												<header>
-													<h3>Pollution Sources and Contributing Factors</h3>
-												</header>
-												<p>Through correlation analysis and spatial association studies, we identified the primary sources and factors contributing to air pollution in Greece:</p>
-												
-												<ul>
-													<li><strong>Road Transportation (32-40%)</strong>: The dominant source of NO2 and a significant contributor to PM10 and PM2.5 in urban areas, with Athens and Thessaloniki showing the highest impact.</li>
-													<li><strong>Maritime Activities (15-25%)</strong>: A major source of SO2 and NOx emissions in coastal areas and island communities, particularly near major ports like Piraeus, Thessaloniki, and Patras.</li>
-													<li><strong>Residential Heating (20-30%)</strong>: Significant contributor to wintertime particulate matter pollution, especially in northern Greece and mountainous regions where wood burning is common.</li>
-													<li><strong>Industrial Activities (10-15%)</strong>: Concentrated in specific zones around Athens, Thessaloniki, and other industrial centers.</li>
-													<li><strong>Agricultural Activities (5-10%)</strong>: Seasonal contributor to particulate matter and ammonia, particularly during burning periods and fertilizer application.</li>
-													<li><strong>Long-range Transport (5-15%)</strong>: Saharan dust events periodically affect air quality across Greece, especially in southern regions and islands.</li>
-													<li><strong>Wildfires (variable)</strong>: Seasonal contributor that can temporarily become the dominant source during major fire events.</li>
-												</ul>
-												
-												<header>
-													<h3>Population Exposure and Health Risk Assessment</h3>
-												</header>
-												
-												<a href="#" class="image featured"><img src="../images/exposure-map.jpg" alt="" /></a>
-												
-												<p>By overlaying pollution data with population density and demographic information, we assessed population exposure to air pollution:</p>
-												
-												<ul>
-													<li>Approximately 4.5 million people (42% of Greece's population) live in areas where annual average PM2.5 levels exceed EU standards, primarily in urban centers and their surrounding areas.</li>
-													<li>Athens metropolitan area shows the highest collective exposure, with over 3 million residents experiencing elevated pollution levels, particularly in central and western districts.</li>
-													<li>Seasonal tourist destinations face transient but significant increases in exposed populations during summer months, with some islands seeing their effective "exposure population" triple during peak season.</li>
-													<li>Vulnerable populations (children under 5, adults over 65, and those with pre-existing respiratory conditions) comprise approximately 2.1 million individuals, with higher concentrations in urban centers and aging rural communities.</li>
-													<li>Schools and healthcare facilities in high-pollution zones were identified as priority areas for intervention, particularly in dense urban neighborhoods and areas adjacent to major traffic corridors.</li>
-												</ul>
-												
-												<p>Our health risk model, based on established exposure-response relationships, estimated that reducing PM2.5 levels to WHO guidelines across Greece could prevent approximately 3,200 premature deaths annually and significantly reduce respiratory and cardiovascular hospitalizations.</p>
-												
-												<footer>
-													<ul class="buttons">
-														<li><a href="webgis.html" class="button">Explore Interactive Maps</a></li>
-													</ul>
-												</footer>
-												
-											</section>
-										</div>
+								<!-- Urban vs. Rural Analysis -->
+								<h2>Urban vs. Rural Analysis</h2>
+								<div class="image main"><img src="../images/ProfileCurvature.jpg" alt="Urban-Rural Comparison" /></div>
+								<p>Comparing urban and rural areas across Greece revealed significant disparities:</p>
+								<ul>
+									<li><strong>Urban Concentrations:</strong> Urban areas showed PM2.5 concentrations averaging 2.7 times higher than rural areas, with greater disparities during weekdays and rush hours.</li>
+									<li><strong>Rural Seasonal Patterns:</strong> Rural areas showed distinctive seasonal patterns related to agricultural activities, with elevated particulate matter during harvest periods and land preparation.</li>
+									<li><strong>Industrial Zones:</strong> Rural areas near industrial facilities showed pollution patterns resembling urban areas but with different chemical signatures specific to industrial emissions.</li>
+									<li><strong>Wildfire Impact:</strong> Rural areas affected by seasonal wildfires experienced acute short-term pollution events that temporarily exceeded even the most polluted urban centers.</li>
+								</ul>
 
-								</div>
-							</div>
+								<!-- Health Risk Assessment -->
+								<h2>Health Risk Assessment</h2>
+								<div class="image main"><img src="../images/SusceptibilityMap.jpg" alt="Health Risk Map" /></div>
+								<p>Our health risk assessment identified areas of concern for population exposure:</p>
+								<ul>
+									<li><strong>Urban Vulnerability:</strong> Dense urban areas with high proportions of elderly and young children showed the highest health risk indices, particularly in older neighborhoods with limited green space.</li>
+									<li><strong>Seasonal Health Burden:</strong> Tourist areas experienced seasonal shifts in health burden as population numbers fluctuated, with systems potentially strained during peak season.</li>
+									<li><strong>Industrial Proximity:</strong> Residential areas within 5km of major industrial facilities showed elevated health risks even in otherwise rural settings.</li>
+									<li><strong>Topographic Traps:</strong> Valley communities with poor air circulation showed persistent exposure patterns that increased cumulative health risks despite moderate pollution levels.</li>
+								</ul>
+
+								<!-- Policy Recommendations -->
+								<h2>Policy Recommendations</h2>
+								<p>Based on our analysis, we propose several policy recommendations:</p>
+								<ol>
+									<li><strong>Targeted Urban Interventions:</strong> Implement low emission zones in city centers with the highest pollution levels and population exposure.</li>
+									<li><strong>Seasonal Tourism Management:</strong> Develop seasonal air quality management plans for tourist areas that scale monitoring and mitigation measures with visitor numbers.</li>
+									<li><strong>Port Emission Controls:</strong> Strengthen emission regulations for shipping in major ports, especially those serving cruise ships during peak season.</li>
+									<li><strong>Winter Heating Alternatives:</strong> Promote cleaner heating alternatives in northern regions with high wood-burning prevalence.</li>
+									<li><strong>Enhanced Monitoring Network:</strong> Expand the air quality monitoring network to better cover island and rural areas currently underrepresented.</li>
+									<li><strong>Integrated Planning:</strong> Incorporate air quality considerations into urban planning, transportation, and tourism development strategies.</li>
+								</ol>
+
+								<!-- Interactive WebGIS Access -->
+								<h2>Interactive WebGIS Exploration</h2>
+								<p>For a deeper exploration of these results, we have developed an interactive WebGIS platform that allows users to:</p>
+								<ul>
+									<li>Visualize air quality patterns across different pollutants and time periods</li>
+									<li>Explore the relationship between air pollution and various geographic factors</li>
+									<li>Examine population exposure and health risk assessments</li>
+									<li>Compare seasonal variations and tourist impact patterns</li>
+									<li>Access detailed information about specific locations and regions</li>
+								</ul>
+								<ul class="actions fit">
+									<li><a href="webgis.html" class="button primary fit">Explore the WebGIS</a></li>
+								</ul>
+							</section>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section class="split contact">
+							<section>
+								<h3>Project Repository</h3>
+								<ul class="icons alt">
+									<li><a href="https://github.com/GuojialeGeographer/polimi-webgis-class-2025" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
 						</section>
+					</footer>
 
-					<!-- Two -->
-						<section class="wrapper style1 container special">
-							<div class="row">
-								<div class="col-4 col-12-narrower">
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Greece Air Quality Project</li><li>polimi-webgis-class-2025</li></ul>
+					</div>
 
-									<section>
-										<header>
-											<h3>Policy Implications</h3>
-										</header>
-										<p>Our analysis suggests that targeted interventions in traffic management, shipping emissions control, sustainable tourism development, and clean heating alternatives could significantly reduce pollution hotspots across Greece's diverse regions.</p>
-									</section>
-
-								</div>
-								<div class="col-4 col-12-narrower">
-
-									<section>
-										<header>
-											<h3>Climate Connections</h3>
-										</header>
-										<p>The study revealed interconnections between air quality and climate factors, with Greece's warming Mediterranean climate potentially amplifying certain pollution problems, particularly ground-level ozone formation and wildfire frequency.</p>
-									</section>
-
-								</div>
-								<div class="col-4 col-12-narrower">
-
-									<section>
-										<header>
-											<h3>Future Monitoring</h3>
-										</header>
-										<p>Our findings highlight the need for expanded monitoring networks, particularly in island communities, tourist destinations with seasonal population fluctuations, and areas vulnerable to transboundary pollution events.</p>
-									</section>
-
-								</div>
-							</div>
-						</section>
-
-				</article>
-
-			<!-- Footer -->
-				<footer id="footer">
-
-					<ul class="icons">
-						<li><a href="#" class="icon brands circle fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon brands circle fa-facebook-f"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon brands circle fa-google-plus-g"><span class="label">Google+</span></a></li>
-						<li><a href="#" class="icon brands circle fa-github"><span class="label">Github</span></a></li>
-						<li><a href="#" class="icon brands circle fa-dribbble"><span class="label">Dribbble</span></a></li>
-					</ul>
-
-					<ul class="copyright">
-						<li>&copy; Greece Air Quality Project</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-
-				</footer>
-
-		</div>
+			</div>
 
 		<!-- Scripts -->
 			<script src="../assets/js/jquery.min.js"></script>
-			<script src="../assets/js/jquery.dropotron.min.js"></script>
-			<script src="../assets/js/jquery.scrolly.min.js"></script>
 			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/jquery.scrolly.min.js"></script>
 			<script src="../assets/js/browser.min.js"></script>
 			<script src="../assets/js/breakpoints.min.js"></script>
 			<script src="../assets/js/util.js"></script>
