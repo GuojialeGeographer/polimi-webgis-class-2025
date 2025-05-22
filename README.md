@@ -4,7 +4,7 @@
 
 ## 访问网站
 
-网站访问地址：[https://guojialgeographer.github.io/polimi-webgis-class-2025/](https://guojialgeographer.github.io/polimi-webgis-class-2025/)
+网站访问地址：[[https://guojialgeographer.github.io/polimi-webgis-class-2025/](https://guojialgeographer.github.io/polimi-webgis-class-2025/)](https://guojialegeographer.github.io/polimi-webgis-class-2025/index.html)
 
 ## 项目描述
 
