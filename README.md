@@ -1,5 +1,42 @@
-# GIS 2025 - Politecnico di Milano
-Repository for the Web Development part of the GIS lessons 2025.
+# 希腊全国空气质量分析 WebGIS 项目
+
+这是米兰理工大学"网络地理信息系统"课程的项目网站，专注于希腊全国空气质量分析。
+
+## 访问网站
+
+网站访问地址：[https://guojialgeographer.github.io/polimi-webgis-class-2025/](https://guojialgeographer.github.io/polimi-webgis-class-2025/)
+
+## 项目描述
+
+本项目利用网络地理信息系统技术，对希腊全国的空气质量数据进行采集、分析和可视化展示。通过交互式地图和图表，用户可以了解希腊不同地区的空气质量状况、污染物浓度分布以及时间变化趋势。
+
+## 技术栈
+
+- HTML5, CSS3, JavaScript
+- Bootstrap 5 框架
+- OpenLayers 地图库
+- Chart.js 图表库
+
+## 网站结构
+
+- **首页**: 介绍项目背景和主要研究内容
+- **工作流程**: 展示数据获取和处理方法
+- **结果**: 展示空气质量分析结果和研究发现
+- **WebGIS**: 交互式地图和空间数据可视化
+
+## 项目维护
+
+- 如遇到网站404错误，请检查是否使用正确的URL地址
+- 图片资源来自[polimi-webgis-class-2024](https://github.com/pzaspel/polimi-webgis-class-2024)项目，未来将替换为希腊相关图片
+- 定期更新数据和分析结果
+
+## 联系方式
+
+如有问题或建议，请联系项目负责人。
+
+---
+
+© 2025 米兰理工大学 网络地理信息系统课程
 
 The contents of this repository are entirely for learning purposes. All contents and code is completely open and available and based on open-source software.
 
