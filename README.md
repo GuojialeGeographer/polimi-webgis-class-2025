@@ -4,7 +4,13 @@
 
 ## 项目概述
 
-这是一个基于OpenLayers的WebGIS应用，包含多页面展示和交互式地图功能。 [1](#0-0) 项目采用HTML5 UP的Massively模板构建，展示了完整的地理信息系统工作流程。
+网站访问地址：[https://guojialegeographer.github.io/polimi-webgis-class-2025/index.html](https://guojialegeographer.github.io/polimi-webgis-class-2025/index.html)
+
+## 项目描述
+
+本项目利用网络地理信息系统技术，对希腊全国的空气质量数据进行采集、分析和可视化展示。通过交互式地图和图表，用户可以了解希腊不同地区的空气质量状况、污染物浓度分布以及时间变化趋势。
+
+这是一个基于OpenLayers的WebGIS应用，包含多页面展示和交互式地图功能。项目采用HTML5 UP的Massively模板构建，展示了完整的地理信息系统工作流程。
 
 ## 技术栈
 
