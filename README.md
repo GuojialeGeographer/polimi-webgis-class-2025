@@ -1,119 +1,158 @@
-# 希腊全国空气质量分析 WebGIS 项目
+# WebGIS开发文档
 
-这是米兰理工大学"网络地理信息系统"课程的项目网站，专注于希腊全国空气质量分析。
+基于此项目分析，这是一个完整的WebGIS应用，用于展示滑坡敏感性分析结果。以下是详细的开发文档，您可以使用此文档在Cursor中开发相同架构但不同主题的WebGIS应用。
 
-## 访问网站
+## 项目概述
 
-网站访问地址：[https://guojialgeographer.github.io/polimi-webgis-class-2025/](https://guojialgeographer.github.io/polimi-webgis-class-2025/)
-
-## 项目描述
-
-本项目利用网络地理信息系统技术，对希腊全国的空气质量数据进行采集、分析和可视化展示。通过交互式地图和图表，用户可以了解希腊不同地区的空气质量状况、污染物浓度分布以及时间变化趋势。
+这是一个基于OpenLayers的WebGIS应用，包含多页面展示和交互式地图功能。 [1](#0-0) 项目采用HTML5 UP的Massively模板构建，展示了完整的地理信息系统工作流程。
 
 ## 技术栈
 
-- HTML5, CSS3, JavaScript
-- Bootstrap 5 框架
-- OpenLayers 地图库
-- Chart.js 图表库
+### 前端框架
 
-## 网站结构
+- **HTML5/CSS3/JavaScript**: 基础前端技术
+- **HTML5 UP Massively模板**: [2](#0-1) 响应式网站模板
+- **Bootstrap 5.0.2**: [3](#0-2) UI组件库
+- **jQuery**: [4](#0-3) JavaScript库
 
-- **首页**: 介绍项目背景和主要研究内容
-- **工作流程**: 展示数据获取和处理方法
-- **结果**: 展示空气质量分析结果和研究发现
-- **WebGIS**: 交互式地图和空间数据可视化
+### 地图技术
 
-## 项目维护
+- **OpenLayers 8.2.0**: [5](#0-4) 主要地图库
+- **Layer Switcher**: [6](#0-5) 图层切换控件
+- **GeoServer**: [7](#0-6) 地图服务器(WMS服务)
+- **Bing Maps**: [8](#0-7) 第三方底图服务
 
-- 如遇到网站404错误，请检查是否使用正确的URL地址
-- 图片资源来自[polimi-webgis-class-2024](https://github.com/pzaspel/polimi-webgis-class-2024)项目，未来将替换为希腊相关图片
-- 定期更新数据和分析结果
+## 项目结构
 
-## 联系方式
-
-如有问题或建议，请联系项目负责人。
-
----
-
-© 2025 米兰理工大学 网络地理信息系统课程
-
-The contents of this repository are entirely for learning purposes. All contents and code is completely open and available and based on open-source software.
-
-Students are encouraged to fork and modify this template as much as they want.
-
-https://guojialegeographer.github.io/polimi-webgis-class-2025/
-
-## Installing
-Clone the repository using the command 
-```sh
-git clone https://github.com/Diuke/polimi-webgis-class-2025 
+```
+project/
+├── index.html              # 主页
+├── workflow.html           # 工作流程页面  
+├── results.html            # 结果展示页面
+├── webgis.html            # WebGIS地图页面
+├── assets/
+│   ├── css/
+│   │   ├── main.css       # 主样式文件
+│   │   ├── noscript.css   # 无JS样式
+│   │   └── custom-styles.css  # 自定义样式
+│   ├── js/
+│   │   ├── map.js         # 地图配置文件
+│   │   └── [其他JS文件]
+│   └── libraries/
+│       ├── ol-8.2.0/      # OpenLayers库
+│       └── bootstrap-5.0.2-dist/
+├── images/                # 图片资源
+└── GeoServer Layers and Styles/  # GeoServer配置
 ```
 
-Or fork the repository for having your own copy.
+## 核心功能模块
 
-This application uses npm as the package manager and Vite as the web server.
-It uses Node version 16 or higher.
+### 1. 导航系统
 
-First, install the dependencies using the command:
-```sh
-npm install
-```
+网站包含四个主要页面的导航结构： [9](#0-8)
 
-Run the project using the command.
-```sh
-npm run start
-```
+- Home: 项目介绍和研究区域概述
+- Workflow: 数据处理和分析流程
+- Results: 分析结果和验证
+- WebGIS: 交互式地图应用
 
-This will start a Vite server. Open the application in http://localhost:5173/
+### 2. WebGIS地图功能
 
-Using Vite it is possible to follow the examples of OpenLayers, as well as use more advanced TypeScript and Visual Studio Code capabilities, such 
-as intellisense, fast reload, documentation, and code completion.
+#### 底图图层
 
-## Building
-For testing, it is recomended to first try a local build with the command:
-```sh
-npm run build-local
-```
+- OpenStreetMap: [10](#0-9) 默认底图
+- Bing Maps道路图和卫星图: [11](#0-10) 备选底图
 
-Then, for testing the local build, run the preview command:
-```sh
-npm run preview
-```
+#### 数据图层组织
 
-If everything is correct, generate the production build by running the production build command:
-```sh
-npm run build-production
-```
+地图图层按功能分组： [12](#0-11)
 
-This will create the folder /docs (or overwrite it, if it is already created) with all the necessary files for hosting the website in GitHub Pages.
+- 环境因子图层 (DTM, NDVI, 坡度, 坡向等)
+- 滑坡敏感性图层
+- 训练和测试点图层
+- 暴露度评估图层
 
-In case the name of the repository is changed during fork, modify the configuration file (vite.config.js), and the package.json file accordingly for different build configurations and folder structures.
+#### 地图控件
 
-## Credits
-This project is entirely academic and non-profit.
+- 比例尺: [13](#0-12)
+- 全屏控制: [14](#0-13)
+- 鼠标位置显示: [15](#0-14)
+- 图层切换器: [16](#0-15)
 
-The website is based on the template:
+### 3. 地图初始化配置
 
-Twenty by HTML5 UP
-html5up.net | @ajlkn
-Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+地图视图设置： [17](#0-16)
 
-Adaptation to Vite and OpenLayers by Diuke
-https://github.com/Diuke
+- 中心点坐标和缩放级别
+- 图层加载顺序
+- 投影坐标系统
 
-Attributions for basemaps:
+## 开发指南
 
-© Stadia Maps - https://stadiamaps.com/
+### 1. 环境准备
 
-© OpenMapTiles - https://openmaptiles.org/
+1. 准备静态Web服务器 (Apache/Nginx/或开发服务器)
+2. 配置GeoServer实例用于WMS服务
+3. 准备项目所需的地理数据
 
-© OpenStreetMap - https://www.openstreetmap.org/copyright
+### 2. 项目设置步骤
 
-© Stamen Design - https://stamen.com/
+#### 第一步：基础结构搭建
 
-© ArcGIS World Topo Map Tiles - https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer
+1. 下载HTML5 UP Massively模板
+2. 创建四个主要HTML页面
+3. 设置导航菜单结构
 
-© ArcGIS World Imagery Tiles - https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer
+#### 第二步：样式定制
 
+修改主题样式： [18](#0-17)
 
+- 替换背景图片
+- 调整颜色主题
+- 自定义组件样式
+
+#### 第三步：WebGIS实现
+
+1. 集成OpenLayers库： [19](#0-18)
+2. 配置地图实例和视图
+3. 添加WMS图层服务
+4. 实现图层管理功能
+
+#### 第四步：数据集成
+
+1. 准备GeoServer服务
+2. 发布WMS图层： [20](#0-19) 配置图层参数
+3. 配置图层组织结构
+
+### 3. 关键配置文件
+
+#### map.js核心配置
+
+- 底图图层定义
+- WMS服务地址配置
+- 图层分组管理
+- 地图控件添加
+- 视图参数设置
+
+#### custom-styles.css样式配置
+
+- 地图容器样式： [21](#0-20)
+- 浮动按钮样式： [22](#0-21)
+- 弹窗样式： [23](#0-22)
+
+### 4. 内容替换指南
+
+要创建不同主题的WebGIS，需要替换：
+
+1. **文本内容**: 项目标题、描述、工作流程说明
+2. **图片资源**: 研究区域图片、流程图、结果图表
+3. **地图数据**: GeoServer中的图层数据
+4. **样式主题**: 配色方案和背景图片
+5. **地图中心**: [24](#0-23) 坐标和缩放级别
+
+### 5. 部署建议
+
+1. **静态文件部署**: 可直接部署到静态Web服务器
+2. **GeoServer配置**: 需要单独的GeoServer实例
+3. **跨域处理**: 确保GeoServer允许跨域访问
+4. **HTTPS配置**: 生产环境建议使用HTTPS

@@ -1,494 +1,238 @@
-// 使用全局对象替代ESM导入
-// 地图初始化，使用从HTML加载的OpenLayers库
-
-// OpenStreetMap base layer
+//OpenStreetMap
 let osm = new ol.layer.Tile({
     title: "OpenStreetMap",
-    type: "base",
+    type: 'base',
     visible: true,
     source: new ol.source.OSM()
 });
 
-// Create layer group and add layers
+//Create the layer groups and add the layers to them
 let basemapLayers = new ol.layer.Group({
     title: "Base Maps",
     layers: [osm]
 });
 
-// Air quality monitoring stations layer
-let monitoringStations = new ol.layer.Image({
-    title: "Monitoring Stations",
+//Environmental Factors Layers group
+let dtm = new ol.layer.Image({
+    title: "DTM",
     source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:greece_air_monitoring_stations' }
-    }),
-    visible: true
-});
-
-// Urban areas layer
-let urbanAreas = new ol.layer.Image({
-    title: "Urban Areas",
-    source: new ol.source.ImageWMS({
-        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:greece_urban_areas' }
-    }),
-    visible: false
-});
-
-// Road network layer
-let roadNetwork = new ol.layer.Image({
-    title: "Road Network",
-    source: new ol.source.ImageWMS({
-        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:greece_road_network' }
-    }),
-    visible: false
-});
-
-// Industrial areas layer
-let industrialAreas = new ol.layer.Image({
-    title: "Industrial Areas",
-    source: new ol.source.ImageWMS({
-        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:greece_industrial_areas' }
-    }),
-    visible: false
-});
-
-// Land use layer
-let landUse = new ol.layer.Image({
-    title: "Land Use",
-    source: new ol.source.ImageWMS({
-        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:greece_land_use' }
-    }),
-    visible: false
-});
-
-// Meteorological stations layer
-let meteoStations = new ol.layer.Image({
-    title: "Meteorological Stations",
-    source: new ol.source.ImageWMS({
-        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:greece_meteo_stations' }
-    }),
-    visible: false
-});
-
-// Port and shipping lanes layer
-let shippingLanes = new ol.layer.Image({
-    title: "Ports and Shipping Lanes",
-    source: new ol.source.ImageWMS({
-        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:greece_shipping_lanes' }
-    }),
-    visible: false
-});
-
-// Tourist areas layer
-let touristAreas = new ol.layer.Image({
-    title: "Tourist Areas",
-    source: new ol.source.ImageWMS({
-        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:greece_tourist_areas' }
-    }),
-    visible: false
-});
-
-// Base data layers group
-let baseDataLayers = new ol.layer.Group({
-    title: "Base Data Layers",
-    layers: [monitoringStations, urbanAreas, roadNetwork, industrialAreas, landUse, meteoStations, shippingLanes, touristAreas],
-    fold: 'open'
-});
-
-// Air quality index map
-let aqiMap = new ol.layer.Image({
-    title: "Air Quality Index Map",
-    source: new ol.source.ImageWMS({
-        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:greece_air_quality_index' }
-    }),
-    visible: true
-});
-
-let pm25Map = new ol.layer.Image({
-    visible: false,
-    title: "PM2.5 Concentration",
-    source: new ol.source.ImageWMS({
-        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:greece_pm25_concentration' }
+        params: { 'LAYERS': 'gisgeoserver_06:dtm' }
     })
 });
 
-let pm10Map = new ol.layer.Image({
-    visible: false,
-    title: "PM10 Concentration",
+let ndvi = new ol.layer.Image({
+    title: "NDVI",
     source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:greece_pm10_concentration' }
+        params: { 'LAYERS': 'gisgeoserver_06:ndvi' }
     })
 });
 
-let no2Map = new ol.layer.Image({
-    visible: false,
-    title: "Nitrogen Dioxide (NO2) Concentration",
+let aspect = new ol.layer.Image({
+    title: "Aspect",
     source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:greece_no2_concentration' }
+        params: { 'LAYERS': 'gisgeoserver_06:aspect' }
     })
 });
 
-let o3Map = new ol.layer.Image({
-    visible: false,
-    title: "Ozone (O3) Concentration",
+let dusaf = new ol.layer.Image({
+    title: "DUSAF",
     source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:greece_o3_concentration' }
+        params: { 'LAYERS': 'gisgeoserver_06:dusaf' }
     })
 });
 
-let so2Map = new ol.layer.Image({
-    visible: false,
-    title: "Sulfur Dioxide (SO2) Concentration",
+let faults = new ol.layer.Image({
+    title: "Faults",
     source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:greece_so2_concentration' }
+        params: { 'LAYERS': 'gisgeoserver_06:faults' }
     })
 });
 
-let airQualityLayers = new ol.layer.Group({
-    title: "Air Quality Maps",
-    layers: [aqiMap, pm25Map, pm10Map, no2Map, o3Map, so2Map],
-    fold: 'open'
-});
-
-// Validation points
-let validationPoints = new ol.layer.Image({
-    visible: false,
-    title: "Validation Points",
+let plan = new ol.layer.Image({
+    title: "Plan Curvature",
     source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:greece_validation_points' }
+        params: { 'LAYERS': 'gisgeoserver_06:plan' }
     })
 });
 
-let calibrationPoints = new ol.layer.Image({
-    visible: false,
-    title: "Calibration Points",
+let profile = new ol.layer.Image({
+    title: "Profile Curvature",
     source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:greece_calibration_points' }
+        params: { 'LAYERS': 'gisgeoserver_06:profile' }
     })
 });
 
-let modelValidation = new ol.layer.Group({
-    title: "Model Validation",
-    layers: [validationPoints, calibrationPoints],
-    fold: 'close'
-});
-
-// Health risk assessment
-let populationDensity = new ol.layer.Image({
-    title: "Population Density",
+let rivers = new ol.layer.Image({
+    title: "Rivers",
     source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:greece_population_density' }
-    }),
-    visible: false
+        params: { 'LAYERS': 'gisgeoserver_06:rivers' }
+    })
 });
 
-let vulnerablePopulation = new ol.layer.Image({
-    title: "Vulnerable Population",
+let roads = new ol.layer.Image({
+    title: "Roads",
     source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:greece_vulnerable_population' }
-    }),
-    visible: false
+        params: { 'LAYERS': 'gisgeoserver_06:roads' }
+    })
 });
 
-let healthRiskMap = new ol.layer.Image({
-    title: "Health Risk Index",
+let slope = new ol.layer.Image({
+    title: "Slope",
     source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:greece_health_risk_index' }
-    }),
-    visible: false
+        params: { 'LAYERS': 'gisgeoserver_06:slope' }
+    })
 });
 
-let seasonalTourismImpact = new ol.layer.Image({
-    title: "Seasonal Tourism Impact",
+let envFactorsLayers = new ol.layer.Group({
+    title: "Environmental Factors",
+    layers: [dtm, ndvi, aspect, dusaf, faults, plan, profile, rivers, roads, slope]
+});
+
+//landslideSusceptibilityMap
+let landslideSusceptibilityMap = new ol.layer.Image({
+    title: "Landslide Susceptibility Map",
     source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:greece_tourism_impact' }
-    }),
-    visible: false
+        params: { 'LAYERS': 'gisgeoserver_06:LandslideSusceptibilityMap' }
+    })
 });
 
-let healthRiskAssessment = new ol.layer.Group({
-    title: "Health Risk Assessment",
-    layers: [populationDensity, vulnerablePopulation, healthRiskMap, seasonalTourismImpact],
-    fold: 'close'
-});
-
-// Study area - Greece
-let greeceOutline = new ol.layer.Image({
-    title: "Greece Outline",
+let NLZ = new ol.layer.Image({
+    visible: false,
+    title: "No Landslide Zones",
     source: new ol.source.ImageWMS({
         url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
-        params: { 'LAYERS': 'gisgeoserver_06:greece_outline' }
-    }),
-    visible: true
+        params: { 'LAYERS': 'gisgeoserver_06:NLZ' }
+    })
 });
 
-// Map Initialization - Centered on Greece
+let LS = new ol.layer.Image({
+    visible: false,
+    title: "Landslide Inventory",
+    source: new ol.source.ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
+        params: { 'LAYERS': 'gisgeoserver_06:LS' }
+    })
+});
+
+let landslideMap = new ol.layer.Group({
+    title: "Landslide Susceptibility Map",
+    layers: [landslideSusceptibilityMap, NLZ, LS]
+});
+
+
+//Training and testing points
+let trainingPoints = new ol.layer.Image({
+    visible: false,
+    title: "Training points",
+    source: new ol.source.ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
+        params: { 'LAYERS': 'gisgeoserver_06:trainPoints' }
+    })
+});
+
+let testingPoints = new ol.layer.Image({
+    visible: false,
+    title: "Testing points",
+    source: new ol.source.ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
+        params: { 'LAYERS': 'gisgeoserver_06:testPoints' }
+    })
+});
+
+let trainTestPoints = new ol.layer.Group({
+    title: "Training and testing points",
+    layers: [trainingPoints, testingPoints]
+});
+
+//Exposure assessment
+let reclass = new ol.layer.Image({
+    title: "Landslide Susceptibility Map_Reclass",
+    source: new ol.source.ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
+        params: { 'LAYERS': 'gisgeoserver_06:LandslideSusceptibilityMap_reclass' }
+    })
+});
+
+let pop = new ol.layer.Image({
+    title: "Population Map",
+    source: new ol.source.ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
+        params: { 'LAYERS': 'gisgeoserver_06:population' }
+    })
+});
+
+let exposureAssess = new ol.layer.Group({
+    title: "Exposure assessment",
+    layers: [reclass, pop]
+});
+
+//Study area
+let area = new ol.layer.Image({
+    title: "Study area",
+    source: new ol.source.ImageWMS({
+        url: 'https://www.gis-geoserver.polimi.it/geoserver/gisgeoserver_06/wms',
+        params: { 'LAYERS': 'gisgeoserver_06:g6_area' }
+    })
+});
+
+// Map Initialization
 let map = new ol.Map({
     target: document.getElementById('map'),
-    layers: [basemapLayers, baseDataLayers, airQualityLayers, modelValidation, healthRiskAssessment, greeceOutline],
+    layers: [basemapLayers, exposureAssess, landslideMap, trainTestPoints, envFactorsLayers, area],
     view: new ol.View({
-        center: ol.proj.fromLonLat([23.7275, 37.9838]), // Athens, Greece coordinates
-        zoom: 7 // Zoom level to show most of Greece
-    }),
-    controls: ol.control.defaults().extend([
-        new ol.control.ScaleLine(),
-        new ol.control.FullScreen(),
-        new ol.control.MousePosition({
-            coordinateFormat: ol.coordinate.createStringXY(4),
-            projection: 'EPSG:4326',
-            className: 'custom-control',
-            placeholder: '0.0000, 0.0000'
-        })
-    ])
+        center: ol.proj.fromLonLat([9.3770, 46.0010]),
+        zoom: 12
+    })
 });
 
-// Add the layer switcher
-let layerSwitcher = new LayerSwitcher({
-    tipLabel: 'Legend', // Optional label for button
-    groupSelectStyle: 'children' // Can be 'children' [default], 'group' or 'none'
-});
+// Add the map controls:
+map.addControl(new ol.control.ScaleLine()); //Controls can be added using the addControl() map function
+map.addControl(new ol.control.FullScreen());
+map.addControl(
+    new ol.control.MousePosition({
+        coordinateFormat: ol.coordinate.createStringXY(4),
+        projection: 'EPSG:4326',
+        className: 'custom-control',
+        placeholder: '0.0000, 0.0000'
+    })
+);
+
+// Add the layer switch
+var layerSwitcher = new ol.control.LayerSwitcher({});
 map.addControl(layerSwitcher);
 
-// Add Stadia Maps basemaps
-let stadiaOutdoors = new ol.layer.Tile({
-    title: 'Stadia Outdoors',
+//Add the Bing Maps layers
+var BING_MAPS_KEY = "Ajrza5Uk8_QGVZMe5ReBVmyutydBHz1WSIr-2DeCoOYPaAkr1Y8HdB9DXUSfyNpe";
+var bingRoads = new ol.layer.Tile({
+    title: 'Bing Maps—Roads',
     type: 'base',
     visible: false,
-    source: new ol.source.XYZ({
-        url: 'https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}.png',
-        attributions: 'Map tiles by <a href="https://stadiamaps.com/">Stadia Maps</a>, under CC BY 3.0. Data by <a href="https://openstreetmap.org">OpenStreetMap</a>, under ODbL.'
+    source: new ol.source.BingMaps({
+        key: BING_MAPS_KEY,
+        imagerySet: 'Road'
     })
 });
-
-let stadiaAlidade = new ol.layer.Tile({
-    title: 'Stadia Alidade',
+var bingAerial = new ol.layer.Tile({
+    title: 'Bing Maps—Aerial',
     type: 'base',
     visible: false,
-    source: new ol.source.XYZ({
-        url: 'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}.png',
-        attributions: 'Map tiles by <a href="https://stadiamaps.com/">Stadia Maps</a>, under CC BY 3.0. Data by <a href="https://openstreetmap.org">OpenStreetMap</a>, under ODbL.'
+    source: new ol.source.BingMaps({
+        key: BING_MAPS_KEY,
+        imagerySet: 'Aerial'
     })
 });
+ basemapLayers.getLayers().extend([bingRoads, bingAerial]);
 
-// Add OpenTopoMap
-let openTopoMap = new ol.layer.Tile({
-    title: 'OpenTopoMap',
-    type: 'base',
-    visible: false,
-    source: new ol.source.XYZ({
-        url: 'https://{a-c}.tile.opentopomap.org/{z}/{x}/{y}.png',
-        attributions: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
-    })
-});
 
-// Add these basemaps to the basemap layer group
-basemapLayers.getLayers().extend([stadiaOutdoors, stadiaAlidade, openTopoMap]);
 
-// Function to create the legend for the active layers
-function createLegend() {
-    const legendElement = document.getElementById('legend-content');
-    legendElement.innerHTML = ''; // Clear existing legend content
-    
-    // Get all visible layers that have WMS sources
-    const visibleLayers = [];
-    
-    function collectVisibleLayers(layerGroup) {
-        layerGroup.getLayers().forEach(layer => {
-            if (layer instanceof ol.layer.Group) {
-                collectVisibleLayers(layer);
-            } else if (layer.getVisible() && layer.getSource() instanceof ol.source.ImageWMS) {
-                visibleLayers.push(layer);
-            }
-        });
-    }
-    
-    // Start with the top-level layers
-    map.getLayers().forEach(layer => {
-        if (layer instanceof ol.layer.Group) {
-            collectVisibleLayers(layer);
-        } else if (layer.getVisible() && layer.getSource() instanceof ol.source.ImageWMS) {
-            visibleLayers.push(layer);
-        }
-    });
-    
-    // Create legend items for each visible WMS layer
-    visibleLayers.forEach(layer => {
-        const title = layer.get('title');
-        const source = layer.getSource();
-        const url = source.getUrl();
-        const params = source.getParams();
-        const legendUrl = `${url}?SERVICE=WMS&REQUEST=GetLegendGraphic&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=${params.LAYERS}`;
-        
-        const legendItem = document.createElement('div');
-        legendItem.className = 'legend-item';
-        
-        const legendTitle = document.createElement('p');
-        legendTitle.innerText = title;
-        legendItem.appendChild(legendTitle);
-        
-        const legendImage = document.createElement('img');
-        legendImage.src = legendUrl;
-        legendImage.alt = `Legend for ${title}`;
-        legendImage.onerror = function() {
-            this.style.display = 'none';
-            const errorText = document.createElement('p');
-            errorText.innerText = 'Legend not available';
-            errorText.className = 'legend-error';
-            legendItem.appendChild(errorText);
-        };
-        legendItem.appendChild(legendImage);
-        
-        legendElement.appendChild(legendItem);
-    });
-    
-    // Show message if no layers are visible
-    if (visibleLayers.length === 0) {
-        const noLayersMsg = document.createElement('p');
-        noLayersMsg.innerText = 'No layers visible. Use the layer switcher to display layers.';
-        legendElement.appendChild(noLayersMsg);
-    }
-}
-
-// Create initial legend
-createLegend();
-
-// Update legend when layer visibility changes
-map.getLayers().forEach(layer => {
-    if (layer instanceof ol.layer.Group) {
-        layer.getLayers().forEach(subLayer => {
-            subLayer.on('change:visible', createLegend);
-        });
-    } else {
-        layer.on('change:visible', createLegend);
-    }
-});
-
-// Create popup overlay
-const popup = new ol.Overlay({
-    element: document.getElementById('popup'),
-    autoPan: true,
-    autoPanAnimation: {
-        duration: 250
-    }
-});
-map.addOverlay(popup);
-
-// Popup closer element
-const closer = document.getElementById('popup-closer');
-if (closer) {
-    closer.onclick = function() {
-        popup.setPosition(undefined);
-        closer.blur();
-        return false;
-    };
-}
-
-// Handle map clicks - show feature info
-map.on('singleclick', function(evt) {
-    const coordinate = evt.coordinate;
-    const pixel = map.getEventPixel(evt.originalEvent);
-    const popupContent = document.getElementById('popup-content');
-    
-    // Clear previous content
-    popupContent.innerHTML = '';
-    
-    // Check visible WMS layers for feature info
-    let hasFeatureInfo = false;
-    
-    map.forEachLayerAtPixel(pixel, function(layer) {
-        if (layer instanceof ol.layer.Image && layer.getVisible() && layer.getSource() instanceof ol.source.ImageWMS) {
-            hasFeatureInfo = true;
-            const source = layer.getSource();
-            const url = source.getFeatureInfoUrl(
-                coordinate,
-                map.getView().getResolution(),
-                map.getView().getProjection().getCode(),
-                {'INFO_FORMAT': 'application/json', 'FEATURE_COUNT': 10}
-            );
-            
-            if (url) {
-                fetch(url).then(response => {
-                    return response.json();
-                }).then(data => {
-                    if (data.features && data.features.length > 0) {
-                        // Create header for the layer
-                        const layerTitle = document.createElement('h5');
-                        layerTitle.innerText = layer.get('title');
-                        popupContent.appendChild(layerTitle);
-                        
-                        // Process each feature
-                        data.features.forEach(feature => {
-                            const properties = feature.properties;
-                            const featureInfo = document.createElement('div');
-                            featureInfo.className = 'feature-info';
-                            
-                            // Create a table for the properties
-                            const table = document.createElement('table');
-                            table.className = 'info-table';
-                            
-                            Object.entries(properties).forEach(([key, value]) => {
-                                if (key !== 'bbox' && value !== null) {
-                                    const row = document.createElement('tr');
-                                    
-                                    const keyCell = document.createElement('td');
-                                    keyCell.className = 'info-key';
-                                    keyCell.innerText = key;
-                                    row.appendChild(keyCell);
-                                    
-                                    const valueCell = document.createElement('td');
-                                    valueCell.className = 'info-value';
-                                    valueCell.innerText = value;
-                                    row.appendChild(valueCell);
-                                    
-                                    table.appendChild(row);
-                                }
-                            });
-                            
-                            featureInfo.appendChild(table);
-                            popupContent.appendChild(featureInfo);
-                        });
-                        
-                        // Show the popup
-                        popup.setPosition(coordinate);
-                    }
-                }).catch(error => {
-                    console.error('Error fetching feature info:', error);
-                });
-            }
-        }
-    });
-    
-    // If no visible WMS layers at click point, hide popup
-    if (!hasFeatureInfo) {
-        popup.setPosition(undefined);
-    }
-});
-
-// Add hover effect for interactive layers
-map.on('pointermove', function(evt) {
-    if (evt.dragging) return;
-    
-    const pixel = map.getEventPixel(evt.originalEvent);
-    const hasFeature = map.hasFeatureAtPixel(pixel);
-    
-    map.getTargetElement().style.cursor = hasFeature ? 'pointer' : '';
-});

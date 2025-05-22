@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../assets/libraries/ol-8.2.0/ol.css">
     <link rel="stylesheet" href="../assets/libraries/bootstrap-5.0.2-dist/css/bootstrap.css">
     <link rel="stylesheet" href="../assets/css/main.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
 
     <!-- Layer Switcher CSS -->
     <link rel="stylesheet" href="https://rawgit.com/walkermatt/ol-layerswitcher/master/src/ol-layerswitcher.css">
@@ -27,20 +28,23 @@
         }
 
         .header-bar {
-            background-color: #1e252d;
+            background-color: #2e3842;
             color: white;
             padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
             height: 60px;
+            z-index: 1000;
+            position: relative;
         }
 
         .header-bar .title {
             font-size: 1.5rem;
             font-weight: bold;
             margin: 0;
+            color: #9bf1ff;
         }
 
         .header-bar .nav-links a {
@@ -49,10 +53,16 @@
             text-decoration: none;
             font-size: 1rem;
             transition: color 0.3s ease;
+            font-weight: 600;
         }
 
         .header-bar .nav-links a:hover {
             color: #9bf1ff;
+        }
+
+        .header-bar .nav-links a.active {
+            color: #9bf1ff;
+            border-bottom: 2px solid #9bf1ff;
         }
 
         .map-container {
@@ -68,131 +78,193 @@
 
         .floating-button {
             position: absolute;
-            top: 10px;
-            left: 10px;
+            top: 20px;
+            left: 20px;
             z-index: 1000;
         }
 
         .floating-button .btn {
-            background-color: #1e252d;
-            border-color: #1e252d;
+            background-color: #2e3842;
+            border-color: #2e3842;
             font-weight: bold;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            color: #9bf1ff;
+            padding: 10px 20px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
         }
 
         .floating-button .btn:hover {
             background-color: #3b4654;
+            transform: translateY(-2px);
         }
 
         .ol-popup {
             position: absolute;
             background-color: white;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.3);
-            border-radius: 5px;
-            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+            border-radius: 8px;
+            padding: 20px;
             bottom: 12px;
             left: -50px;
-            min-width: 280px;
-            max-width: 400px;
-            max-height: 400px;
+            min-width: 300px;
+            max-width: 450px;
+            max-height: 450px;
             overflow-y: auto;
-            border-left: 4px solid #1e252d;
+            border-left: 5px solid #2e3842;
+            font-family: 'Merriweather', serif;
         }
 
         .ol-popup-closer {
             position: absolute;
-            top: 2px;
-            right: 8px;
-            font-size: 16px;
-            color: #1e252d;
+            top: 8px;
+            right: 12px;
+            font-size: 18px;
+            color: #2e3842;
             text-decoration: none;
+            font-weight: bold;
         }
 
         .legend {
             position: absolute;
-            bottom: 30px;
-            right: 10px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.3);
-            max-width: 250px;
-            max-height: 400px;
+            bottom: 40px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+            max-width: 280px;
+            max-height: 500px;
             overflow-y: auto;
-            border-left: 4px solid #1e252d;
+            border-left: 5px solid #2e3842;
+            font-family: 'Merriweather', serif;
         }
 
         .legend h4 {
             margin-top: 0;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 5px;
-            color: #1e252d;
+            border-bottom: 2px solid #2e3842;
+            padding-bottom: 8px;
+            color: #2e3842;
+            font-weight: 700;
+            font-size: 1.1rem;
         }
 
         .legend-item {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .legend-item p {
             margin: 5px 0;
             font-size: 0.9rem;
             font-weight: bold;
+            color: #2e3842;
         }
 
         .info-panel {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.3);
-            max-width: 300px;
-            border-left: 4px solid #1e252d;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+            max-width: 320px;
+            border-left: 5px solid #2e3842;
+            font-family: 'Merriweather', serif;
         }
 
         .info-panel h4 {
             margin-top: 0;
-            color: #1e252d;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 5px;
+            color: #2e3842;
+            border-bottom: 2px solid #2e3842;
+            padding-bottom: 8px;
+            font-weight: 700;
+            font-size: 1.1rem;
         }
 
         .info-panel p {
-            font-size: 0.9rem;
-            margin-bottom: 8px;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            line-height: 1.5;
+            color: #333;
         }
 
         .info-table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 10px;
         }
 
         .info-key {
             font-weight: bold;
-            padding-right: 10px;
+            padding-right: 15px;
+            color: #2e3842;
+            font-size: 0.9rem;
+            vertical-align: top;
+        }
+
+        .info-value {
+            font-size: 0.9rem;
+            color: #333;
         }
 
         .feature-info {
-            margin-bottom: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px dotted #ccc;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ccc;
         }
 
         .feature-info:last-child {
             border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
 
         .ol-scale-line {
-            background: rgba(30, 37, 45, 0.8);
+            background: rgba(46, 56, 66, 0.8);
+            padding: 5px 10px;
+            border-radius: 4px;
+            bottom: 10px;
+            left: 10px;
         }
 
         .ol-control button {
-            background-color: rgba(30, 37, 45, 0.8);
+            background-color: rgba(46, 56, 66, 0.8);
+            color: white;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
         }
 
         .ol-control button:hover {
             background-color: #3b4654;
+        }
+        
+        .ol-control.ol-zoom {
+            top: 20px;
+            left: auto;
+            right: 20px;
+        }
+        
+        .ol-layerswitcher {
+            top: 80px;
+            right: 20px;
+        }
+        
+        .ol-layerswitcher > button {
+            background-color: rgba(46, 56, 66, 0.8) !important;
+            color: white;
+            width: 40px;
+            height: 40px;
+        }
+        
+        .ol-layerswitcher > button:hover {
+            background-color: #3b4654 !important;
+        }
+        
+        .ol-layerswitcher .panel {
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.4);
         }
     </style>
 </head>
@@ -212,6 +284,10 @@
     </div>
     
     <div class="map-container">
+        <div class="floating-button">
+            <a href="../index.html" class="btn btn-primary">BACK TO HOME</a>
+        </div>
+        
         <div id="map"></div>
 
         <!--The structure for the popup-->
@@ -232,8 +308,8 @@
         <!-- Information panel -->
         <div id="info-panel" class="info-panel">
             <h4>Greece Air Quality WebGIS</h4>
-            <p>This interactive map displays air quality data for Greece.</p>
-            <p>Use the layer switcher to view different air quality parameters and related data.</p>
+            <p>This interactive map displays air quality data for Greece, including monitoring stations, pollution concentrations, and health risk assessments.</p>
+            <p>Use the layer switcher <i class="fas fa-layers"></i> to view different air quality parameters and related data.</p>
             <p>Click on the map to get detailed information for specific locations.</p>
         </div>
     </div>
