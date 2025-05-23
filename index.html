@@ -31,11 +31,33 @@
 			}
 			#nav {
 				background-color: rgba(255, 255, 255, 0.9);
-				border-radius: 0.5em;
+				border-radius: 0;
+				padding: 0;
+				margin-top: 2em;
+				box-shadow: none;
+			}
+			#nav ul.links {
+				display: flex;
+				justify-content: flex-start;
+				padding-left: 2em;
+			}
+			#nav ul.links li {
+				margin: 0;
+				padding: 0;
 			}
 			#nav ul.links li a {
 				text-transform: uppercase;
 				font-weight: bold;
+				padding: 1em 2em;
+				color: #333;
+				background-color: #fff;
+				border: none;
+				font-size: 0.9em;
+				letter-spacing: 0.1em;
+			}
+			#nav ul.links li.active a {
+				background-color: #f5f5f5;
+				color: #000;
 			}
 			.image.main img {
 				max-height: 500px;
@@ -68,10 +90,10 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li class="active"><a href="index.html">首页</a></li>
-							<li><a href="pages/workflow.html">工作流程</a></li>
-							<li><a href="pages/results.html">分析结果</a></li>
-							<li><a href="pages/webgis.html">webgis</a></li>
+							<li class="active"><a href="index.html">HOME</a></li>
+							<li><a href="pages/workflow.html">WORKFLOW</a></li>
+							<li><a href="pages/results.html">RESULTS</a></li>
+							<li><a href="pages/webgis.html">WEBGIS</a></li>
 						</ul>
 						<ul class="icons">
 							<li><a href="https://github.com/GuojialeGeographer/polimi-webgis-class-2025" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
