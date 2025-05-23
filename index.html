@@ -59,6 +59,38 @@
 				background-color: #f5f5f5;
 				color: #000;
 			}
+			.secondary-nav {
+				background-color: white;
+				padding: 0;
+				margin: 0 0 2em 0;
+				border-bottom: 1px solid #eee;
+			}
+			.secondary-nav ul {
+				display: flex;
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				background-color: white;
+			}
+			.secondary-nav ul li {
+				margin: 0;
+				padding: 0;
+			}
+			.secondary-nav ul li a {
+				display: block;
+				padding: 1em 2em;
+				color: #333;
+				text-decoration: none;
+				font-weight: bold;
+				letter-spacing: 0.1em;
+				border-bottom: 3px solid transparent;
+			}
+			.secondary-nav ul li.active a {
+				border-bottom: 3px solid #333;
+			}
+			.secondary-nav ul li a:hover {
+				background-color: #f9f9f9;
+			}
 			.image.main img {
 				max-height: 500px;
 				object-fit: cover;
@@ -102,6 +134,15 @@
 
 				<!-- Main -->
 					<div id="main">
+						<!-- Secondary Navigation -->
+						<div class="secondary-nav">
+							<ul>
+								<li class="active"><a href="index.html">HOME</a></li>
+								<li><a href="pages/workflow.html">WORKFLOW</a></li>
+								<li><a href="pages/results.html">RESULTS</a></li>
+								<li><a href="pages/webgis.html">WEBGIS</a></li>
+							</ul>
+						</div>
 
 						<!-- Featured Post -->
 							<article class="post featured">
