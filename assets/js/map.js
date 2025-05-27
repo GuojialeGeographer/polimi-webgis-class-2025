@@ -211,14 +211,14 @@ const createHaloStyle = (color, size = 8) => {
     });
 };
 
-// Define pollution level styles with colors
+// Define pollution level styles with colors - using blue color scheme
 const pollutionStyles = {
-    'very_low': [createHaloStyle('rgb(0, 228, 0)'), createPointStyle('rgb(0, 228, 0)')],
-    'low': [createHaloStyle('rgb(146, 208, 80)'), createPointStyle('rgb(146, 208, 80)')],
-    'moderate': [createHaloStyle('rgb(255, 255, 0)'), createPointStyle('rgb(255, 255, 0)')],
-    'high': [createHaloStyle('rgb(255, 126, 0)'), createPointStyle('rgb(255, 126, 0)')],
-    'very_high': [createHaloStyle('rgb(255, 0, 0)'), createPointStyle('rgb(255, 0, 0)')],
-    'hazardous': [createHaloStyle('rgb(153, 0, 76)'), createPointStyle('rgb(153, 0, 76)')]
+    'very_low': [createHaloStyle('rgb(198, 233, 255)'), createPointStyle('rgb(198, 233, 255)')],
+    'low': [createHaloStyle('rgb(142, 202, 240)'), createPointStyle('rgb(142, 202, 240)')],
+    'moderate': [createHaloStyle('rgb(74, 141, 183)'), createPointStyle('rgb(74, 141, 183)')],
+    'high': [createHaloStyle('rgb(42, 111, 151)'), createPointStyle('rgb(42, 111, 151)')],
+    'very_high': [createHaloStyle('rgb(22, 65, 114)'), createPointStyle('rgb(22, 65, 114)')],
+    'hazardous': [createHaloStyle('rgb(8, 37, 103)'), createPointStyle('rgb(8, 37, 103)')]
 };
 
 // Sample monitoring station data
@@ -408,27 +408,27 @@ map.on('click', function(evt) {
 const legendContent = document.getElementById('legend-content');
 legendContent.innerHTML = `
     <div class="legend-item">
-        <div class="legend-color" style="background-color: rgb(0, 228, 0);"></div>
+        <div class="legend-color" style="background-color: rgb(198, 233, 255);"></div>
         <div class="legend-text">非常低</div>
     </div>
     <div class="legend-item">
-        <div class="legend-color" style="background-color: rgb(146, 208, 80);"></div>
+        <div class="legend-color" style="background-color: rgb(142, 202, 240);"></div>
         <div class="legend-text">低</div>
     </div>
     <div class="legend-item">
-        <div class="legend-color" style="background-color: rgb(255, 255, 0);"></div>
+        <div class="legend-color" style="background-color: rgb(74, 141, 183);"></div>
         <div class="legend-text">中等</div>
     </div>
     <div class="legend-item">
-        <div class="legend-color" style="background-color: rgb(255, 126, 0);"></div>
+        <div class="legend-color" style="background-color: rgb(42, 111, 151);"></div>
         <div class="legend-text">高</div>
     </div>
     <div class="legend-item">
-        <div class="legend-color" style="background-color: rgb(255, 0, 0);"></div>
+        <div class="legend-color" style="background-color: rgb(22, 65, 114);"></div>
         <div class="legend-text">非常高</div>
     </div>
     <div class="legend-item">
-        <div class="legend-color" style="background-color: rgb(153, 0, 76);"></div>
+        <div class="legend-color" style="background-color: rgb(8, 37, 103);"></div>
         <div class="legend-text">危险</div>
     </div>
 `;
