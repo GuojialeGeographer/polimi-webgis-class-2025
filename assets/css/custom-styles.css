@@ -162,7 +162,7 @@
     height: 100%;
     background-color: transparent; /* 移除暗色背景色 */
     background-image: url('../images/02.jpg'); /* 使用图片作为背景 */
-    background-size: 100% 100%; /* 确保图片完全覆盖整个区域，不会被裁剪或拉伸 */
+    background-size: cover; /* 保持图片原始比例，覆盖整个区域，可能会被裁剪但不会变形 */
     background-position: center center; /* 居中显示图片 */
     background-repeat: no-repeat; /* 不重复图片 */
     z-index: -1; /* 确保背景在内容后面 */

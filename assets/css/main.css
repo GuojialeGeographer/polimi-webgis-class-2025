@@ -3237,7 +3237,7 @@ input, select, textarea {
 			height: 100%;
 			background-color: transparent;
 			background-image: url("../../images/02.jpg");
-			background-size: 100% 100%; /* 确保图片完全覆盖整个区域，不会被裁剪或拉伸 */
+			background-size: cover; /* 保持图片原始比例，覆盖整个区域，可能会被裁剪但不会变形 */
 			background-position: center center;
 			background-repeat: no-repeat;
 			background-attachment: fixed;

@@ -279,7 +279,7 @@ let airQualityLayers = new ol.layer.Group({
 // Map Initialization
 let map = new ol.Map({
     target: document.getElementById('map'),
-    layers: [basemapLayers, airQualityLayers, exposureAssess, landslideMap, trainTestPoints, envFactorsLayers, area],
+    layers: [basemapLayers, airQualityLayers], // 只保留基础地图和空气质量数据图层
     view: new ol.View({
         center: ol.proj.fromLonLat([23.7275, 37.9838]), // Center on Athens
         zoom: 7
