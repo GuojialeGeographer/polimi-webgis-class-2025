@@ -3,7 +3,7 @@
 
 <head>
     <base href="">
-    <title>GREECE AIR QUALITY - WebGIS</title>
+    <title>希腊空气污染分析 - WebGIS</title>
     <meta charset="utf-8" http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
     <!--StyleSheets-->
@@ -35,25 +35,27 @@
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-            height: 60px;
+            height: 70px;
             z-index: 1000;
             position: relative;
         }
 
         .header-bar .title {
-            font-size: 1.5rem;
+            font-size: 2.2rem;
             font-weight: bold;
             margin: 0;
             color: #9bf1ff;
+            letter-spacing: 0.1em;
         }
 
         .header-bar .nav-links a {
             color: white;
             margin-left: 20px;
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 1.2rem;
             transition: color 0.3s ease;
             font-weight: 600;
+            letter-spacing: 0.05em;
         }
 
         .header-bar .nav-links a:hover {
@@ -66,7 +68,7 @@
         }
 
         .map-container {
-            height: calc(100vh - 60px);
+            height: calc(100vh - 70px);
             width: 100%;
             position: relative;
         }
@@ -89,9 +91,10 @@
             font-weight: bold;
             box-shadow: 0 2px 8px rgba(0,0,0,0.5);
             color: #9bf1ff;
-            padding: 10px 20px;
-            font-size: 1rem;
+            padding: 12px 24px;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
+            letter-spacing: 0.1em;
         }
 
         .floating-button .btn:hover {
@@ -130,10 +133,10 @@
             bottom: 40px;
             right: 20px;
             background: rgba(255, 255, 255, 0.95);
-            padding: 15px;
+            padding: 18px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.4);
-            max-width: 280px;
+            max-width: 300px;
             max-height: 500px;
             overflow-y: auto;
             border-left: 5px solid #2e3842;
@@ -143,32 +146,44 @@
         .legend h4 {
             margin-top: 0;
             border-bottom: 2px solid #2e3842;
-            padding-bottom: 8px;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
             color: #2e3842;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
+            letter-spacing: 0.05em;
         }
 
         .legend-item {
-            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
         }
 
-        .legend-item p {
-            margin: 5px 0;
-            font-size: 0.9rem;
-            font-weight: bold;
-            color: #2e3842;
+        .legend-color {
+            width: 24px;
+            height: 24px;
+            margin-right: 12px;
+            border-radius: 4px;
+            border: 1px solid #999;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .legend-text {
+            font-size: 1rem;
+            color: #333;
+            font-weight: 500;
         }
 
         .info-panel {
             position: absolute;
             top: 20px;
-            right: 20px;
+            left: 140px;
             background: rgba(255, 255, 255, 0.95);
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.4);
-            max-width: 320px;
+            max-width: 350px;
             border-left: 5px solid #2e3842;
             font-family: 'Merriweather', serif;
         }
@@ -177,22 +192,18 @@
             margin-top: 0;
             color: #2e3842;
             border-bottom: 2px solid #2e3842;
-            padding-bottom: 8px;
+            padding-bottom: 10px;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 10px;
         }
 
         .info-panel p {
-            font-size: 0.95rem;
-            margin-bottom: 10px;
-            line-height: 1.5;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            line-height: 1.6;
             color: #333;
-        }
-
-        .info-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
         }
 
         .info-key {
@@ -229,10 +240,13 @@
         }
 
         .ol-control button {
-            background-color: rgba(46, 56, 66, 0.8);
+            background-color: rgba(46, 56, 66, 0.85);
             color: white;
             border-radius: 4px;
             transition: background-color 0.3s ease;
+            font-size: 1.2rem;
+            width: 36px;
+            height: 36px;
         }
 
         .ol-control button:hover {
@@ -251,10 +265,10 @@
         }
         
         .ol-layerswitcher > button {
-            background-color: rgba(46, 56, 66, 0.8) !important;
+            background-color: rgba(46, 56, 66, 0.85) !important;
             color: white;
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
         }
         
         .ol-layerswitcher > button:hover {
@@ -271,12 +285,12 @@
 
 <body>
     <div class="header-bar">
-        <div class="title">Greece Air Quality WebGIS</div>
+        <div class="title">希腊空气质量 WebGIS</div>
         <div class="nav-links">
-            <a href="../index.html">Home</a>
-            <a href="workflow.html">Workflow</a>
-            <a href="results.html">Results</a>
-            <a href="webgis.html" class="active">WebGIS</a>
+            <a href="../index.html">HOME</a>
+            <a href="workflow.html">WORKFLOW</a>
+            <a href="results.html">RESULTS</a>
+            <a href="webgis.html" class="active">WEBGIS</a>
             <a href="https://github.com/GuojialeGeographer/polimi-webgis-class-2025" target="_blank">
                 <i class="fab fa-github"></i> GitHub
             </a>
@@ -285,7 +299,7 @@
     
     <div class="map-container">
         <div class="floating-button">
-            <a href="../index.html" class="btn btn-primary">BACK TO HOME</a>
+            <a href="../index.html" class="btn btn-primary">返回主页</a>
         </div>
         
         <div id="map"></div>
@@ -307,10 +321,10 @@
         
         <!-- Information panel -->
         <div id="info-panel" class="info-panel">
-            <h4>Greece Air Quality WebGIS</h4>
-            <p>This interactive map displays air quality data for Greece, including monitoring stations, pollution concentrations, and health risk assessments.</p>
-            <p>Use the layer switcher <i class="fas fa-layers"></i> to view different air quality parameters and related data.</p>
-            <p>Click on the map to get detailed information for specific locations.</p>
+            <h4>希腊空气质量 WebGIS</h4>
+            <p>这个交互式地图展示了希腊的空气质量数据，包括监测站、污染物浓度和健康风险评估。</p>
+            <p>使用图层切换器 <i class="fas fa-layers"></i> 查看不同的空气质量参数和相关数据。</p>
+            <p>点击地图获取特定位置的详细信息。</p>
         </div>
     </div>
 
