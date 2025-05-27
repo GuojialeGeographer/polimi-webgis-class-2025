@@ -1,307 +1,25 @@
 <!doctype html>
 <html lang="en">
-
 <head>
     <base href="">
-    <title>希腊空气污染分析 - WebGIS</title>
+    <title>Air Quality WebGIS - Greece</title>
     <meta charset="utf-8" http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
     <!--StyleSheets-->
     <link rel="stylesheet" href="../assets/libraries/ol-8.2.0/ol.css">
     <link rel="stylesheet" href="../assets/libraries/bootstrap-5.0.2-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="../assets/css/main.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
 
     <!-- Layer Switcher CSS -->
     <link rel="stylesheet" href="https://rawgit.com/walkermatt/ol-layerswitcher/master/src/ol-layerswitcher.css">
 
     <!-- Static files are imported from assets -->
     <link rel="stylesheet" href="../assets/css/custom-styles.css">
-    
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            font-family: 'Merriweather', serif;
-            background-color: #ffffff;
-        }
-
-        .header-bar {
-            background-color: #0362a7;
-            color: white;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-            height: 70px;
-            z-index: 1000;
-            position: relative;
-        }
-
-        .header-bar .title {
-            font-size: 2.2rem;
-            font-weight: bold;
-            margin: 0;
-            color: white;
-            letter-spacing: 0.1em;
-        }
-
-        .header-bar .nav-links a {
-            color: white;
-            margin-left: 20px;
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: color 0.3s ease;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-        }
-
-        .header-bar .nav-links a:hover {
-            color: #e0f4ff;
-        }
-
-        .header-bar .nav-links a.active {
-            color: #e0f4ff;
-            border-bottom: 2px solid #e0f4ff;
-        }
-
-        .map-container {
-            height: calc(100vh - 70px);
-            width: 100%;
-            position: relative;
-        }
-
-        #map {
-            height: 100%;
-            width: 100%;
-        }
-
-        .floating-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 1000;
-        }
-
-        .floating-button .btn {
-            background-color: #0362a7;
-            border-color: #0362a7;
-            font-weight: bold;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-            color: white;
-            padding: 12px 24px;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            letter-spacing: 0.1em;
-        }
-
-        .floating-button .btn:hover {
-            background-color: #0478c9;
-            transform: translateY(-2px);
-        }
-
-        .ol-popup {
-            position: absolute;
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            border-radius: 8px;
-            padding: 20px;
-            bottom: 12px;
-            left: -50px;
-            min-width: 300px;
-            max-width: 450px;
-            max-height: 450px;
-            overflow-y: auto;
-            border-left: 5px solid #0362a7;
-            font-family: 'Merriweather', serif;
-        }
-
-        .ol-popup-closer {
-            position: absolute;
-            top: 8px;
-            right: 12px;
-            font-size: 18px;
-            color: #0362a7;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .legend {
-            position: absolute;
-            bottom: 40px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 18px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            max-width: 300px;
-            max-height: 500px;
-            overflow-y: auto;
-            border-left: 5px solid #0362a7;
-            font-family: 'Merriweather', serif;
-        }
-
-        .legend h4 {
-            margin-top: 0;
-            border-bottom: 2px solid #0362a7;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-            color: #0362a7;
-            font-weight: 700;
-            font-size: 1.3rem;
-            letter-spacing: 0.05em;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-
-        .legend-color {
-            width: 24px;
-            height: 24px;
-            margin-right: 12px;
-            border-radius: 4px;
-            border: 1px solid #999;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-        }
-
-        .legend-text {
-            font-size: 1rem;
-            color: #333;
-            font-weight: 500;
-        }
-
-        .info-panel {
-            position: absolute;
-            top: 20px;
-            left: 140px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            max-width: 350px;
-            border-left: 5px solid #0362a7;
-            font-family: 'Merriweather', serif;
-        }
-
-        .info-panel h4 {
-            margin-top: 0;
-            color: #0362a7;
-            border-bottom: 2px solid #0362a7;
-            padding-bottom: 10px;
-            font-weight: 700;
-            font-size: 1.3rem;
-            letter-spacing: 0.05em;
-            margin-bottom: 10px;
-        }
-
-        .info-panel p {
-            margin-bottom: 12px;
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        .info-key {
-            font-weight: bold;
-            padding-right: 15px;
-            color: #0362a7;
-            font-size: 0.9rem;
-            vertical-align: top;
-        }
-
-        .info-value {
-            font-size: 0.9rem;
-            color: #333;
-        }
-
-        .feature-info {
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #ccc;
-        }
-
-        .feature-info:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .ol-scale-line {
-            background: rgba(3, 98, 167, 0.8);
-            padding: 5px 10px;
-            border-radius: 4px;
-            bottom: 10px;
-            left: 10px;
-        }
-
-        .ol-control button {
-            background-color: rgba(3, 98, 167, 0.85);
-            color: white;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-            font-size: 1.2rem;
-            width: 36px;
-            height: 36px;
-        }
-
-        .ol-control button:hover {
-            background-color: #0478c9;
-        }
-        
-        .ol-control.ol-zoom {
-            top: 20px;
-            left: auto;
-            right: 20px;
-        }
-        
-        .ol-layerswitcher {
-            top: 80px;
-            right: 20px;
-        }
-        
-        .ol-layerswitcher > button {
-            background-color: rgba(3, 98, 167, 0.85) !important;
-            color: white;
-            width: 44px;
-            height: 44px;
-        }
-        
-        .ol-layerswitcher > button:hover {
-            background-color: #0478c9 !important;
-        }
-        
-        .ol-layerswitcher .panel {
-            border: none;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.4);
-        }
-    </style>
 </head>
-
 <body>
-    <div class="header-bar">
-        <div class="title">希腊空气质量 WebGIS</div>
-        <div class="nav-links">
-            <a href="../index.html">HOME</a>
-            <a href="workflow.html">WORKFLOW</a>
-            <a href="results.html">RESULTS</a>
-            <a href="webgis.html" class="active">WEBGIS</a>
-            <a href="https://github.com/GuojialeGeographer/polimi-webgis-class-2025" target="_blank">
-                <i class="fab fa-github"></i> GitHub
-            </a>
-        </div>
-    </div>
-    
-    <div class="map-container">
+    <div class="w-100 vh-100">
         <div class="floating-button">
-            <a href="../index.html" class="btn btn-primary">返回主页</a>
+            <a href="../index.html" class="btn btn-primary">BACK TO SITE</a>
         </div>
-        
         <div id="map"></div>
 
         <!--The structure for the popup-->
@@ -310,36 +28,16 @@
             <div id="popup-content">
             </div>
         </div>
-
-        <!--The legend-->
-        <div id="legend" class="legend">
-            <h4>Legend</h4>
-            <div id="legend-content">
-                <!-- Legend content will be added dynamically -->
-            </div>
-        </div>
-        
-        <!-- Information panel -->
-        <div id="info-panel" class="info-panel">
-            <h4>希腊空气质量 WebGIS</h4>
-            <p>这个交互式地图展示了希腊的空气质量数据，包括监测站、污染物浓度和健康风险评估。</p>
-            <p>使用图层切换器 <i class="fas fa-layers"></i> 查看不同的空气质量参数和相关数据。</p>
-            <p>点击地图获取特定位置的详细信息。</p>
-        </div>
     </div>
 
     <!--Scripts-->
-    <script src="../assets/js/jquery.min.js" type="module"></script>
-    <script src="../assets/libraries/ol-8.2.0/ol.js" type="module"></script>
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/libraries/ol-8.2.0/dist/ol.js"></script>
 
     <!-- Layer Switcher JS -->
-    <script src="https://rawgit.com/walkermatt/ol-layerswitcher/master/dist/ol-layerswitcher.js" type="module"></script>
-    
-    <!-- Font Awesome for icons -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous" type="module"></script>
+    <script src="https://rawgit.com/walkermatt/ol-layerswitcher/master/dist/ol-layerswitcher.js"></script>
 
     <!-- import map.js -->
-    <script src="../assets/js/map.js" type="module"></script>
+    <script src="../assets/js/map.js"></script>
 </body>
-
 </html>

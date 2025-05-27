@@ -6,8 +6,8 @@
 .floating-button {
     position: absolute;
     z-index: 999;
-    left: 50px;
-    top: 10px;
+    left: 20px;
+    top: 20px;
 }
 
 .wrapper.style2 {
@@ -44,17 +44,22 @@
     height: 100%;
 }
 
-/*Popup Styles*/
+/*Popup Styles - Themed for Air Quality Project */
 .ol-popup {
     position: absolute;
     background-color: white;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-    padding: 15px;
-    border-radius: 10px;
-    border: 1px solid #cccccc;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    border-radius: 8px;
+    padding: 20px;
     bottom: 12px;
-    left: -50px;
-    min-width: 280px;
+    left: -50px; /* Adjust as needed if it appears off-center from the feature */
+    min-width: 300px;
+    max-width: 450px;
+    max-height: 450px; /* Allow scroll for more content */
+    overflow-y: auto;
+    border: 1px solid #cccccc; /* Keep a border, or remove if blue left border is enough */
+    border-left: 5px solid #0362a7 !important; /* Theme color accent, !important to override generic border */
+    font-family: 'Merriweather', serif; /* Consistent font with the site */
 }
 
 .ol-popup:after,
@@ -68,28 +73,99 @@
     pointer-events: none;
 }
 
-.ol-popup:after {
-    border-top-color: white;
+.ol-popup:after { /* Inner part of arrow */
+    border-top-color: white; /* Match popup background */
     border-width: 10px;
-    left: 48px;
+    left: 48px; /* Adjust to position arrow under the point */
     margin-left: -10px;
 }
 
-.ol-popup:before {
-    border-top-color: #cccccc;
+.ol-popup:before { /* Border of arrow */
+    border-top-color: #cccccc; /* Match popup border */
     border-width: 11px;
-    left: 48px;
+    left: 48px; /* Adjust to position arrow under the point */
     margin-left: -11px;
 }
 
 .ol-popup-closer {
     text-decoration: none;
     position: absolute;
-    top: 2px;
-    right: 8px;
+    top: 8px; /* Themed position */
+    right: 12px; /* Themed position */
+    font-size: 18px; /* Themed size */
+    color: #0362a7; /* Theme color */
+    font-weight: bold; /* Themed */
 }
 
-.ol-popup-closer:after {
+.ol-popup-closer:hover {
+    color: #0478c9; /* Darker on hover */
+}
+
+/* Styles for content within the popup */
+#popup-content h4 {
+    margin-top: 0;
+    color: #0362a7;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    font-family: 'Merriweather', serif;
+}
+
+#popup-content p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    font-family: 'Merriweather', serif;
+}
+
+#popup-content table {
+    width: 100%;
+    font-size: 0.9rem;
+    font-family: 'Merriweather', serif;
+}
+
+#popup-content th {
+    font-weight: bold;
+    color: #0362a7;
+    text-align: left;
+    padding-right: 10px;
+    vertical-align: top;
+}
+
+#popup-content td {
+    vertical-align: top;
+}
+
+/* Full page background style inspired by reference */
+#wrapper {
+    position: relative; /* Needed for absolute positioning of .bg */
+    /* Ensure wrapper still allows content to be on top of .bg if it's not already set */
+    /* z-index might be needed if other elements interfere, but usually not for the wrapper itself */
+}
+
+#wrapper > .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent; /* 移除暗色背景色 */
+    background-image: url('../images/02.jpg'); /* 仅使用您的图片作为背景 */
+    background-size: cover; /* 确保图片覆盖整个区域 */
+    background-position: center center; /* 居中显示图片 */
+    background-repeat: no-repeat; /* 不重复图片 */
+    z-index: -1; /* 确保背景在内容后面 */
+    opacity: 1; /* 完全不透明 */
+}
+
+/* Special sizing for portrait orientation from reference */
+@media screen and (orientation: portrait) {
+    #wrapper > .bg {
+        /* Adjust background-size for the main image in portrait */
+        /* The reference used 'auto 175%' for its third image (the main one) */
+        /* Since we only have two layers (gradient, image), we target the second one */
+        background-size: auto, /* for linear-gradient */
+                         auto 175%; /* for your image */
+    }
 }
 
 /*Add your new styles after this line*/
@@ -100,4 +176,110 @@
     background: white;
     border: 2px solid cadetblue;
     padding: 10px;
+}
+
+/* OpenLayers Control Styling - Themed for Air Quality Project */
+.ol-scale-line {
+    background: rgba(3, 98, 167, 0.8);
+    padding: 5px 10px;
+    border-radius: 4px;
+    bottom: 10px; /* Default is bottom left */
+    left: 10px;
+}
+.ol-scale-line-inner { /* Ensure text inside scale line is visible */
+    color: white;
+    border-color: white;
+    font-family: 'Merriweather', serif;
+}
+
+.ol-control button { /* General OL control buttons, e.g., zoom, rotate */
+    background-color: rgba(3, 98, 167, 0.85) !important; /* Use !important to override OL defaults if necessary */
+    color: white !important;
+    border-radius: 4px !important;
+    transition: background-color 0.3s ease;
+    font-size: 1.2rem !important; /* Adjust if too large/small */
+    width: 36px !important; /* OL default is often smaller */
+    height: 36px !important;
+    border: none !important; /* Remove default OL borders if any */
+    font-family: 'Merriweather', serif;
+}
+
+.ol-control button:hover {
+    background-color: #0478c9 !important; /* Darker blue on hover */
+}
+
+.ol-zoom { /* Positioning for zoom controls */
+    top: 20px !important; /* OL default is top-left */
+    left: auto !important;
+    right: 20px !important;
+}
+.ol-zoom .ol-zoom-in,
+.ol-zoom .ol-zoom-out { /* Ensure individual zoom buttons pick up style */
+    background-color: rgba(3, 98, 167, 0.85) !important;
+    color: white !important;
+    border-radius: 4px !important;
+}
+.ol-zoom .ol-zoom-in:hover,
+.ol-zoom .ol-zoom-out:hover {
+    background-color: #0478c9 !important;
+}
+
+
+/* Layer Switcher Theming */
+.ol-layerswitcher {
+    top: 80px !important; /* Position below zoom controls (36px height + 8px margin approx) */
+    right: 20px !important;
+    left: auto !important;
+    background-color: transparent !important; /* Main button container should be transparent */
+}
+
+.ol-layerswitcher button { /* The main button to open/close layer switcher panel */
+    background-color: rgba(3, 98, 167, 0.85) !important;
+    color: white !important;
+    width: 44px !important; /* Slightly larger than zoom */
+    height: 44px !important;
+    border-radius: 4px !important;
+    float: right; /* Align button correctly if panel opens leftwards */
+    font-family: 'Merriweather', serif;
+}
+
+.ol-layerswitcher button:hover {
+    background-color: #0478c9 !important;
+}
+
+.ol-layerswitcher.ol-expanded .panel { /* Style panel only when expanded */
+    display: block;
+}
+
+.ol-layerswitcher .panel {
+    /* display: none; Remove this if ol-expanded handles visibility */
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    margin-top: 5px; /* Space between button and panel */
+    padding: 10px;
+    font-family: 'Merriweather', serif;
+    right: 0; /* Align panel to the right edge of the container */
+    min-width: 200px; /* Ensure panel has some width */
+}
+
+.ol-layerswitcher ul {
+    padding-left: 0;
+    list-style: none;
+    margin-bottom: 0;
+}
+
+.ol-layerswitcher li {
+    margin-bottom: 5px;
+}
+
+.ol-layerswitcher label {
+    color: #333;
+    font-size: 0.9rem;
+    font-family: 'Merriweather', serif;
+}
+
+.layer-name {
+    padding-left: 5px; /* Space between checkbox and label text */
 }

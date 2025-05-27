@@ -6,41 +6,11 @@
 -->
 <html>
 	<head>
-		<title>Workflow - Air Quality Analysis</title>
+		<title>Workflow - Air Quality Analysis in Greece</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
-		<style>
-			.image.main img {
-				width: 100%;
-				height: auto;
-				object-fit: cover;
-				max-height: 500px;
-			}
-			#header .logo {
-				color: #0362a7;
-			}
-			.major h1, .major h2 {
-				color: #0362a7;
-			}
-			.button.primary {
-				background-color: #0362a7 !important;
-				box-shadow: none !important;
-			}
-			.button.primary:hover {
-				background-color: #0478c9 !important;
-			}
-			strong {
-				color: #0362a7;
-			}
-			a {
-				color: #0362a7;
-			}
-			a:hover {
-				color: #0478c9;
-			}
-		</style>
 	</head>
 	<body class="is-preload">
 
@@ -49,16 +19,16 @@
 
 				<!-- Header -->
 					<header id="header">
-						<a href="../index.html" class="logo">希腊空气质量</a>
+						<a href="../index.html" class="logo">Air Quality Analysis in Greece</a>
 					</header>
 
 				<!-- Nav -->
-					<nav id="nav" style="background-color: #0362a7; box-shadow: 0 2px 8px rgba(0,0,0,0.5);">
+					<nav id="nav">
 						<ul class="links">
-							<li><a href="../index.html" style="background-color: #0362a7; color: white; font-size: 1.2rem; letter-spacing: 0.1em;">HOME</a></li>
-							<li class="active"><a href="workflow.html" style="background-color: white; color: #0362a7; font-size: 1.2rem; letter-spacing: 0.1em;">WORKFLOW</a></li>
-							<li><a href="results.html" style="background-color: #0362a7; color: white; font-size: 1.2rem; letter-spacing: 0.1em;">RESULTS</a></li>
-							<li><a href="webgis.html" style="background-color: #0362a7; color: white; font-size: 1.2rem; letter-spacing: 0.1em;">WEBGIS</a></li>
+							<li><a href="../index.html">home</a></li>
+							<li class="active"><a href="workflow.html">workflow</a></li>
+							<li><a href="results.html">results</a></li>
+							<li><a href="webgis.html">webgis</a></li>
 						</ul>
 						<ul class="icons">
 							<li><a href="https://github.com/GuojialeGeographer/polimi-webgis-class-2025" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
@@ -88,7 +58,7 @@
 								</ul>
 
 								<h2>2. Data Processing and Integration</h2>
-								<div class="image main"><img src="../images/DTM.jpg" alt="Data Processing Workflow" /></div>
+								<div class="image main"><img src="../images/DTM.jpg" alt="Data Processing Workflow for Air Quality Analysis in Greece" /></div>
 								<p>The collected datasets were processed and integrated to ensure compatibility and accuracy:</p>
 								<ul>
 									<li><strong>Spatial Harmonization:</strong> All data layers were projected to a common coordinate system (EGSA87/Greek Grid) for accurate spatial analysis.</li>
@@ -99,7 +69,7 @@
 								</ul>
 
 								<h2>3. Spatial Analysis and Modeling</h2>
-								<div class="image main"><img src="../images/NDVI.jpg" alt="Spatial Analysis Models" /></div>
+								<div class="image main"><img src="../images/DTM.jpg" alt="Data Processing Workflow for Air Quality Analysis in Greece" /></div>
 								<p>Several analytical approaches were employed to understand air pollution distribution:</p>
 								<ul>
 									<li><strong>Spatial Interpolation:</strong> Methods like Inverse Distance Weighting (IDW) and Kriging were used to estimate pollution levels between monitoring stations.</li>
@@ -110,7 +80,7 @@
 								</ul>
 
 								<h2>4. Exposure and Risk Assessment</h2>
-								<div class="image main"><img src="../images/Population.jpg" alt="Population Exposure" /></div>
+								<div class="image main"><img src="../images/DTM.jpg" alt="Data Processing Workflow for Air Quality Analysis in Greece" /></div>
 								<p>Population exposure to air pollution was evaluated through:</p>
 								<ul>
 									<li><strong>Population Overlay Analysis:</strong> Combining population density data with pollutant concentration maps.</li>
@@ -120,7 +90,7 @@
 								</ul>
 
 								<h2>5. WebGIS Implementation</h2>
-								<div class="image main"><img src="../images/SusceptibilityMap.jpg" alt="WebGIS Interface" /></div>
+								<div class="image main"><img src="../images/DTM.jpg" alt="Data Processing Workflow for Air Quality Analysis in Greece" /></div>
 								<p>The analysis results were presented through an interactive WebGIS platform:</p>
 								<ul>
 									<li><strong>Server Setup:</strong> Configuring GeoServer to serve spatial data through WMS and WFS services.</li>
@@ -131,7 +101,7 @@
 								</ul>
 
 								<h2>6. Validation and Quality Control</h2>
-								<div class="image main"><img src="../images/PieChart.jpg" alt="Validation Results" /></div>
+								<div class="image main"><img src="../images/DTM.jpg" alt="Data Processing Workflow for Air Quality Analysis in Greece" /></div>
 								<p>To ensure the reliability of our results:</p>
 								<ul>
 									<li><strong>Cross-Validation:</strong> Testing interpolation and model results against known measurements.</li>
@@ -163,13 +133,13 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="../assets/js/jquery.min.js" type="module"></script>
-			<script src="../assets/js/jquery.scrollex.min.js" type="module"></script>
-			<script src="../assets/js/jquery.scrolly.min.js" type="module"></script>
-			<script src="../assets/js/browser.min.js" type="module"></script>
-			<script src="../assets/js/breakpoints.min.js" type="module"></script>
-			<script src="../assets/js/util.js" type="module"></script>
-			<script src="../assets/js/main.js" type="module"></script>
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/jquery.scrolly.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
 
 	</body>
 </html>
