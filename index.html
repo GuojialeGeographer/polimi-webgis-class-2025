@@ -13,21 +13,46 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<style>
 			#intro {
-				background-image: url('images/mountain-background.jpg');
+				background-image: url('images/00Study Area.jpg');
 				background-size: cover;
 				background-position: center;
 				color: white;
 				text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+				position: relative;
+				padding: 12rem 0;
+				overflow: hidden;
+			}
+			
+			#intro::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(3, 98, 167, 0.3);
+				z-index: 1;
+			}
+			
+			#intro > * {
+				position: relative;
+				z-index: 2;
 			}
 			#intro h1 {
-				font-size: 3.5em;
-				font-weight: bold;
+				font-size: 5em;
+				font-weight: 800;
 				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				margin-bottom: 0.5em;
+				animation: fadeInDown 1.5s ease-out;
 			}
 			#intro p {
-				font-size: 1.2em;
+				font-size: 1.5em;
 				letter-spacing: 0.05em;
 				margin-top: 1em;
+				font-style: italic;
+				animation: fadeInUp 1.5s ease-out 0.5s;
+				animation-fill-mode: both;
 			}
 			body {
 				background-color: #ffffff;
@@ -99,9 +124,55 @@
 				background-color: #0478c9;
 			}
 			.image.main img {
-				max-height: 500px;
-				object-fit: cover;
+				max-height: none;
+				object-fit: contain;
 				width: 100%;
+				transition: transform 0.5s ease;
+			}
+			
+			.image.main:hover img {
+				transform: scale(1.02);
+			}
+					@keyframes fadeInDown {
+				from {
+					opacity: 0;
+					transform: translateY(-30px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+			
+			@keyframes fadeInUp {
+				from {
+					opacity: 0;
+					transform: translateY(30px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+			
+			.actions .button {
+				animation: pulse 2s infinite;
+				animation-delay: 1.5s;
+			}
+			
+			@keyframes pulse {
+				0% {
+					transform: scale(1);
+					opacity: 1;
+				}
+				50% {
+					transform: scale(1.1);
+					opacity: 0.8;
+				}
+				100% {
+					transform: scale(1);
+					opacity: 1;
+				}
 			}
 		</style>
 	</head>
@@ -113,11 +184,11 @@
 				<!-- Intro -->
 					<div id="intro">
 						<h1>HERE WE ARE<br />
-							GREECE AIR QUALITY</h1>
-						<p>AIR POLLUTION ANALYSIS AND MONITORING<br />
+							GREECE</h1>
+						<p>AIR QUALITY ANALYSIS AND MONITORING<br />
 						   By Group 6</p>
 						<ul class="actions">
-							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">CONTINUE</a></li>
+							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly"><span class="label">Continue</span></a></li>
 						</ul>
 					</div>
 
