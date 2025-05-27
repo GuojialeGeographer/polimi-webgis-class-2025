@@ -213,12 +213,12 @@ const createHaloStyle = (color, size = 8) => {
 
 // Define pollution level styles with colors - using blue color scheme
 const pollutionStyles = {
-    'very_low': [createHaloStyle('rgb(158, 193, 225)'), createPointStyle('rgb(158, 193, 225)')],
-    'low': [createHaloStyle('rgb(112, 162, 205)'), createPointStyle('rgb(112, 162, 205)')],
-    'moderate': [createHaloStyle('rgb(74, 121, 175)'), createPointStyle('rgb(74, 121, 175)')],
-    'high': [createHaloStyle('rgb(42, 91, 145)'), createPointStyle('rgb(42, 91, 145)')],
-    'very_high': [createHaloStyle('rgb(22, 58, 114)'), createPointStyle('rgb(22, 58, 114)')],
-    'hazardous': [createHaloStyle('rgb(8, 30, 80)'), createPointStyle('rgb(8, 30, 80)')]
+    'very_low': [createHaloStyle('rgb(179, 195, 237)'), createPointStyle('rgb(179, 195, 237)')],
+    'low': [createHaloStyle('rgb(128, 155, 227)'), createPointStyle('rgb(128, 155, 227)')],
+    'moderate': [createHaloStyle('rgb(77, 115, 217)'), createPointStyle('rgb(77, 115, 217)')],
+    'high': [createHaloStyle('rgb(26, 75, 207)'), createPointStyle('rgb(26, 75, 207)')],
+    'very_high': [createHaloStyle('rgb(0, 47, 167)'), createPointStyle('rgb(0, 47, 167)')],
+    'hazardous': [createHaloStyle('rgb(0, 28, 107)'), createPointStyle('rgb(0, 28, 107)')]
 };
 
 // Sample monitoring station data
