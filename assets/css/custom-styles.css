@@ -149,7 +149,7 @@
     width: 100%;
     height: 100%;
     background-color: transparent; /* 移除暗色背景色 */
-    background-image: url('../images/02.jpg'); /* 仅使用您的图片作为背景 */
+    background-image: url('../images/01.jpg'); /* 使用图片作为背景 */
     background-size: cover; /* 确保图片覆盖整个区域 */
     background-position: center center; /* 居中显示图片 */
     background-repeat: no-repeat; /* 不重复图片 */
@@ -190,6 +190,13 @@
     color: white;
     border-color: white;
     font-family: 'Merriweather', serif;
+}
+
+/* 缩放控件位置调整 - 完全改变定位方式 */
+.ol-zoom {
+    right: auto !important; /* 取消右侧定位 */
+    left: 20px !important; /* 改为左侧定位 */
+    top: 60px !important; /* 向下移动一点，避开左上角的“BACK TO SITE”按钮 */
 }
 
 .ol-control button { /* General OL control buttons, e.g., zoom, rotate */
