@@ -10,6 +10,18 @@
     top: 20px;
 }
 
+/* 与比例尺相同的蓝色样式的BACK TO SITE按钮 */
+.floating-button .btn-primary {
+    background-color: #2070B8 !important; /* 与比例尺相同的蓝色 */
+    border-color: #2070B8 !important;
+    color: white !important;
+}
+
+.floating-button .btn-primary:hover {
+    background-color: #1860A0 !important; /* 悬停时的深一点的蓝色 */
+    border-color: #1860A0 !important;
+}
+
 .wrapper.style2 {
     /* This is an example of how to change colors in the template */
     background-color: #2e7947;
@@ -192,11 +204,9 @@
     font-family: 'Merriweather', serif;
 }
 
-/* 缩放控件位置调整 - 完全改变定位方式 */
+/* 隐藏缩放控件（+/-按钮） */
 .ol-zoom {
-    right: auto !important; /* 取消右侧定位 */
-    left: 20px !important; /* 改为左侧定位 */
-    top: 60px !important; /* 向下移动一点，避开左上角的“BACK TO SITE”按钮 */
+    display: none !important; /* 完全隐藏缩放控件 */
 }
 
 .ol-control button { /* General OL control buttons, e.g., zoom, rotate */
