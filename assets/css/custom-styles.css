@@ -160,10 +160,10 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: transparent; /* 移除暗色背景色 */
+    background-color: #a3d5f0; /* 添加一个浅蓝色背景色，与图片的天空颜色相协调 */
     background-image: url('../images/02.jpg'); /* 使用图片作为背景 */
-    background-size: cover; /* 保持图片原始比例，覆盖整个区域，可能会被裁剪但不会变形 */
-    background-position: center center; /* 居中显示图片 */
+    background-size: contain; /* 确保整个图片都能显示，不会被裁剪 */
+    background-position: center bottom; /* 将图片定位在底部，这样可以显示更多的图片内容 */
     background-repeat: no-repeat; /* 不重复图片 */
     z-index: -1; /* 确保背景在内容后面 */
     opacity: 1; /* 完全不透明 */
