@@ -6,6 +6,31 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+		<style>
+			.image-gallery img {
+				max-width: 32%; /* Adjust as needed for spacing */
+				display: inline-block;
+				margin-right: 1%;
+			}
+			.image-gallery img:last-child {
+				margin-right: 0;
+			}
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				margin-bottom: 1em;
+			}
+			table, th, td {
+				border: 1px solid #ccc;
+			}
+			th, td {
+				padding: 0.5em;
+				text-align: left;
+			}
+			th {
+				background-color: #f0f0f0;
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -36,83 +61,133 @@
 						<!-- Post -->
 							<section class="post">
 								<header class="major">
-									<h1>Project Results</h1>
-									<p>Key findings from our nationwide air quality analysis across Greece</p>
+									<h1>Results</h1>
+									<p>This section presents the key findings of the lab project, particularly focusing on air pollution patterns, land cover distribution, and population exposure across Greece.</p>
 								</header>
 
-								<!-- National Air Quality Patterns -->
-								<h2>National Air Quality Patterns</h2>
-								<div class="image main"><img src="../images/Slope.jpg" alt="Air Quality Patterns Map of Greece" /></div>
-								<p>Our analysis of air quality across Greece revealed several important national patterns:</p>
-								<ul>
-									<li><strong>Urban Concentrations:</strong> Major urban centers like Athens and Thessaloniki consistently showed the highest levels of air pollution, particularly for NO2 and PM10, reflecting the impact of vehicle emissions and industrial activities.</li>
-									<li><strong>Coastal-Inland Gradient:</strong> Coastal areas generally showed better air quality than inland regions, benefiting from sea breezes that help disperse pollutants, with the exception of major port cities.</li>
-									<li><strong>Seasonal Variations:</strong> Winter months showed elevated levels of PM2.5 across northern Greece due to residential heating with wood and fossil fuels, while summer months saw increased ozone levels, especially in southern regions with high solar radiation.</li>
-									<li><strong>Topographic Influence:</strong> Mountain ranges created distinct air quality regions, with valleys and basins occasionally experiencing pollution trapping during temperature inversions.</li>
-								</ul>
-
-								<!-- Seasonal Tourism Impact -->
-								<h2>Seasonal Tourism Impact</h2>
-								<div class="row">
-									<div class="col-6 col-12-small">
-										<span class="image fit"><img src="../images/Rivers.jpg" alt="Summer Tourism Impact on Air Quality in Greece" /></span>
-									</div>
-									<div class="col-6 col-12-small">
-										<span class="image fit"><img src="../images/Rivers.jpg" alt="Summer Tourism Impact on Air Quality in Greece" /></span>
-									</div>
+								<h2>Pollutant Concentration Maps (2020)</h2>
+								<p>EU is reporting their annual according concentration maps according to:</p>
+								<div class="image main"><img src="../media/image1.png" alt="表格 AI 生成的内容可能不正确。" /></div>
+								<p>We classified the annual concentrations of NO₂, PM2.5, and PM10 into five levels based on EU Air Quality Guidelines. The classification allows for easy identification of areas with elevated pollution levels.</p>
+								<div class="image-gallery">
+									<img src="../media/image2.png" alt="NO2 Concentration Map 2020" />
+									<img src="../media/image3.png" alt="PM2.5 Concentration Map 2020" />
+									<img src="../media/image4.png" alt="PM10 Concentration Map 2020" />
 								</div>
-								<p>The seasonal influx of tourists significantly affected air quality patterns:</p>
+								<p><strong>NO₂ PM2.5 PM10</strong></p>
+								<p>The pollutant concentration maps for the year 2020 reveal distinct spatial patterns for NO₂, PM2.5, and PM10 across the study area. The majority of NO₂ concentrations fall within the second classification level, indicating moderate pollution levels typically ranging between 10 and 25 µg/m³. PM2.5 values are more varied, with areas falling into both the second and third levels, suggesting localized pollution hotspots. In contrast, PM10 concentrations predominantly belong to the third level, indicating relatively higher presence of coarse particulate matter. Notably, none of the three pollutants exceeded the current EU annual limit values (NO₂: 40 µg/m³; PM2.5: 25 µg/m³; PM10: 40 µg/m³), suggesting that, from a regulatory perspective, the air quality across the region was generally within acceptable standards in 2020. However, the spatial variability still highlights areas of concern where targeted mitigation strategies could be considered.</p>
+								<hr />
+
+								<h2>Annual Trend Variation (2022 vs 2017–2021)</h2>
+								<p>To highlight short-term anomalies, we calculated the annual average difference for 2022 compared to the mean of the previous five years. Positive values suggest pollution deterioration, possibly due to traffic or meteorological factors; negative values reflect improvements likely caused by post-pandemic reductions or regional policies.</p>
+								<div class="image-gallery">
+									<img src="../media/image5.png" alt="NO2 Annual Trend Variation" />
+									<img src="../media/image6.png" alt="PM2.5 Annual Trend Variation" />
+									<img src="../media/image7.png" alt="PM10 Annual Trend Variation" />
+								</div>
+								<p>The annual NO₂ difference map shows that most regions fall within the 0 to 2 µg/m³ range, indicating a slight increase in 2022 compared to the 2017–2021 average, suggesting mild air quality deterioration. Significant increases appear in northern Greece, parts of the Peloponnese, and the Athens metropolitan area, where values exceed 2 µg/m³, with some grid cells even above 5 µg/m³, likely due to intensified traffic or unfavorable meteorological conditions. Conversely, central mountainous regions and southern islands show moderate decreases (–2 to –5 µg/m³), possibly benefiting from reduced emissions or improved pollutant dispersion. While overall differences are not extreme, the upward trends near Athens and Thessaloniki highlight the need for strengthened emission control and urban air quality monitoring.</p>
+								<p><strong>PM2.5:</strong></p>
+								<p>From the annual mean difference map of PM10, most regions show values concentrated in the positive range of 0 to 10 µg/m³, indicating that PM10 concentrations in 2022 were generally higher than the average levels from the previous five years (2017–2021). This discrepancy may reflect certain environmental or anthropogenic factors in 2022 that contributed to increased particulate matter, such as the resumption of traffic activity, a rise in industrial emissions, or unfavorable meteorological conditions (e.g., low wind speeds or temperature inversions) that caused pollutant accumulation. Although these positive differences do not significantly exceed health limits, they signal a short-term deterioration in local air quality, which warrants attention and continued monitoring. <em>(Note: The fime.md content for PM2.5 trend variation appears to describe PM10. The text above reflects the fime.md content.)</em></p>
+								<hr />
+
+								<h2>Land Cover Simplification and Urban Area Identification</h2>
+								<div class="image main"><img src="../media/image8.png" alt="Simplified Land Cover Classification Map" /></div>
+								<p>In the simplified land cover classification map, the original ESA CCI dataset was reclassified into IPCC general categories. The results show that red areas represent agriculture (class 1), orange areas indicate forest (class 2), and blue areas correspond to other land types (class 6)—these three dominate the landscape of Greece.</p>
+								<p>The urban areas, shown in cyan, occupy only a small portion of the national territory. This spatial pattern highlights the limited extent of built-up zones in Greece, which, however, are often where pollution and population exposure are most critical. Therefore, the subsequent analyses will focus on the urban areas to investigate pollutant exposure and temporal trends in more detail.</p>
+								<hr />
+
+								<h2>Pollution Statistics Over Urban Areas (2013–2022)</h2>
+								<p>Based on the statistical charts of NO₂, PM2.5, and PM10 over urban areas in Greece from 2013 to 2022, several key trends can be observed:</p>
+								<div class="image main"><img src="../media/image9.png" alt="NO2 Statistics Over Urban Areas 2013-2022" /></div>
+								<p>NO₂ average values peaked between 2014 and 2016 (reaching around 10.8 µg/m³), then slightly declined, with a mild rebound in 2021. The maximum values remained relatively stable, mostly between 25–30 µg/m³, suggesting that NO₂ pollution in urban areas has stayed within a moderate and relatively controlled range, despite some fluctuations.</p>
+								<div class="image main"><img src="../media/image10.png" alt="PM2.5 Statistics Over Urban Areas 2013-2022 - 图表 AI 生成的内容可能不正确。" /></div>
+								<p>PM2.5 levels show moderate variation in average concentrations, fluctuating between 11 and 14 µg/m³. A significant spike in the maximum value occurred in 2020, exceeding 30 µg/m³, likely due to exceptional meteorological or anthropogenic factors during that year. In other years, maximum values remained around 15–20 µg/m³.</p>
+								<div class="image main"><img src="../media/image11.png" alt="PM10 Statistics Over Urban Areas 2013-2022 - 图表 AI 生成的内容可能不正确。" /></div>
+								<p>PM10 shows a more evident increasing trend in both mean and maximum values. The average reached a peak of 22.95 µg/m³ in 2021, following a minimum in 2019. The maximum values rose steadily over time, approaching 35 µg/m³ in 2021, indicating a gradual accumulation of coarse particulate matter, which requires closer monitoring and emission control.</p>
+								<p>In summary, none of the annual averages exceeded the EU limit values, but the maximum values of PM2.5 and PM10 highlight the possibility of short-term pollution peaks in urban areas, pointing to the importance of real-time monitoring and targeted interventions during high-risk episodes.</p>
+								<hr />
+
+								<h2>Population Exposure Assessment (2020)</h2>
+								<div class="image main"><img src="../media/image12.png" alt="Population Exposure Assessment Legend" /></div>
+								<p>In the 2020 Population Exposure Assessment, we generated bivariate maps that combine air pollutant concentrations (PM2.5 and PM10) with population density. Each region is colored based on a 5×5 classification matrix (see legend), where the vertical axis represents increasing pollutant levels and the horizontal axis represents increasing population counts.</p>
+								<div class="image main"><img src="../media/image13.png" alt="NO2 Population Exposure Map 2020" /></div>
+								<p>The NO₂ exposure map indicates a highly localized distribution pattern. Most regions across Greece fall into low pollution categories with low to moderate population density. However, a distinct hotspot is visible in the Athens region corresponding to areas of both high NO₂ concentration and high population count.</p>
+								<div class="image main"><img src="../media/image14.png" alt="Population Exposure Map Detail" /></div>
+								<div class="image main"><img src="../media/image15.png" alt="PM2.5 Population Exposure Map 2020" /></div>
+								<p>The PM2.5 exposure map shows that most areas fall into mid-level pollution combined with low to moderate population density, with only a few zones (notably in the Athens and Heraklion metropolitan area) displaying higher exposure due to the convergence of dense population and elevated PM2.5 concentrations.</p>
+								<p>The PM10 map reveals a more pronounced exposure pattern, where urban regions such as Athens and Heraklion metropolitan area, indicating high pollutant levels coupled with high population counts. In contrast, northern and western regions remain lightly colored, suggesting low-risk zones.</p>
+								<p>Although most regions in Greece remain within the acceptable air quality thresholds defined by EU standards, areas with high pollutant concentrations and dense population overlap are mainly concentrated in urban centers, particularly in Athens (Attica region) and Heraklion (Crete). In the bivariate exposure maps for NO₂, PM2.5, and PM10, these cities consistently appear as dark-colored cells, indicating the highest exposure risk.</p>
+								<hr />
+
+								<h2>Population Exposure Pie Charts</h2>
+								<p>To better quantify the actual impact of pollution on the population, we generated pie charts based on the bivariate map classifications, showing the percentage of the population under each pollution level:</p>
+								<div class="image main"><img src="../media/image16.png" alt="NO2 Population Exposure Pie Chart" /></div>
+								<p>NO₂: Around 80.2% of the population is exposed to the lowest pollution level (Level 1), with 16% at Level 2 and only 3.8% at Level 3. This indicates relatively low NO₂ exposure for the majority of the population, with high concentrations restricted to limited areas.</p>
+								<div class="image main"><img src="../media/image17.png" alt="PM2.5 Population Exposure Pie Chart" /></div>
+								<p>PM2.5: 100% of the population is exposed to the highest level (Level 5), indicating that PM2.5 pollution is widespread and overlaps almost entirely with populated zones.</p>
+								<div class="image main"><img src="../media/image18.png" alt="PM10 Population Exposure Pie Chart" /></div>
+								<p>PM10: The entire population falls within pollution Level 2, suggesting moderate but widespread exposure in populated areas, especially urban centers.</p>
+								<p>These results reinforce the earlier spatial analysis: urban centers are the hotspots for pollution exposure, and PM2.5 poses the most widespread risk to public health, warranting the highest attention in air quality interventions.</p>
+								<hr />
+
+								<h2>Conclusion and Advise</h2>
+								<p>This lab project focused on Greece, leveraging multi-source remote sensing data and QGIS to analyze the spatial distribution, population exposure, land cover relations, and annual trends of three key air pollutants: NO₂, PM2.5, and PM10.</p>
+								<p>From 2013 to 2022, pollution levels have steadily increased.</p>
+								<p>Pollution concentration maps revealed that NO2, PM2.5 and PM10 are mainly concentrated in urban areas, particularly in city cores such as Athens.</p>
+								<p>Bivariate exposure maps and pie charts showed that PM2.5 poses the highest exposure risk, with 100% of the population classified under the most polluted level. While NO2 and PM10 exposure are moderate.</p>
+								<p>Land cover analysis highlighted that urban areas occupy a minimal share of national territory, yet bear the majority of pollution burden and population density, underscoring the need for targeted urban environmental management.</p>
+								<p>We have made the following table based on the pollutants and their main sources.</p>
+								<table>
+									<thead>
+										<tr>
+											<th>Pollutant</th>
+											<th>Main Sources</th>
+											<th>Typical Spatial Pattern</th>
+											<th>Relationship to Population Distribution</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td><strong>NO₂</strong></td>
+											<td>Vehicle exhaust, natural gas combustion, heating systems</td>
+											<td>Locally concentrated along roads and urban cores</td>
+											<td>Strongly localized; only a small portion of the population is exposed to high levels</td>
+										</tr>
+										<tr>
+											<td><strong>PM2.5</strong></td>
+											<td>Traffic emissions, residential burning (wood, coal), industrial emissions, secondary aerosols</td>
+											<td>Widely distributed in cities and industrial areas</td>
+											<td>Nearly the entire population is exposed to high concentrations, especially in urban zones</td>
+										</tr>
+										<tr>
+											<td><strong>PM10</strong></td>
+											<td>Construction sites, road dust, wind-blown dust, agricultural activities</td>
+											<td>More spatially spread, especially in suburban or open areas</td>
+											<td>Low overlap with densely populated areas; most people exposed to low-to-moderate levels</td>
+										</tr>
+									</tbody>
+								</table>
+								<p>Several factors contribute to this pattern:</p>
 								<ul>
-									<li><strong>Island Hotspots:</strong> Popular tourist islands showed dramatic increases in NOx and PM levels during peak summer months, with some locations experiencing up to 300% increases in air pollutants compared to winter baselines.</li>
-									<li><strong>Cruise Ship Impact:</strong> Major port cities serving cruise ships showed distinctive pollution signatures, with elevated SO2 levels during peak arrival and departure times.</li>
-									<li><strong>Correlation with Visitor Numbers:</strong> Statistical analysis revealed strong correlations (r=0.78) between monthly tourist numbers and air pollution levels in key destination areas.</li>
-									<li><strong>Transport Corridors:</strong> Major tourist transport routes showed linear patterns of elevated pollution following the road network to popular destinations.</li>
+									<li><strong>High traffic density</strong>: Urban areas have a large number of vehicles and frequent congestion, making traffic a primary source of NO₂ and PM10 emissions.</li>
+									<li><strong>Concentrated human activity</strong>: The mix of residential, commercial, and industrial areas leads to dense energy use and emissions.</li>
+									<li><strong>Poor atmospheric dispersion</strong>: Especially in Athens, the surrounding mountains make temperature inversions more frequent, limiting pollutant dispersion.</li>
+									<li><strong>Urban heat island and dry climate</strong>: These conditions prolong the suspension of particulate matter, especially PM2.5.</li>
 								</ul>
-
-								<!-- Urban vs. Rural Analysis -->
-								<h2>Urban vs. Rural Analysis</h2>
-								<div class="image main"><img src="../images/Slope.jpg" alt="Air Quality Patterns Map of Greece" /></div>
-								<p>Comparing urban and rural areas across Greece revealed significant disparities:</p>
+								<p>To address rising pollution and safeguard public health in cities, the following actions are recommended:</p>
 								<ul>
-									<li><strong>Urban Concentrations:</strong> Urban areas showed PM2.5 concentrations averaging 2.7 times higher than rural areas, with greater disparities during weekdays and rush hours.</li>
-									<li><strong>Rural Seasonal Patterns:</strong> Rural areas showed distinctive seasonal patterns related to agricultural activities, with elevated particulate matter during harvest periods and land preparation.</li>
-									<li><strong>Industrial Zones:</strong> Rural areas near industrial facilities showed pollution patterns resembling urban areas but with different chemical signatures specific to industrial emissions.</li>
-									<li><strong>Wildfire Impact:</strong> Rural areas affected by seasonal wildfires experienced acute short-term pollution events that temporarily exceeded even the most polluted urban centers.</li>
+									<li><strong>Optimize urban transportation:</strong> Promote electric vehicles and public transport, while restricting high-emission vehicles in city centers.</li>
+									<li><strong>Tighten industrial emission controls:</strong> Enforce time-based production limits and real-time monitoring for factories near urban zones.</li>
+									<li><strong>Increase green cover:</strong> Develop urban forests and green belts to trap pollutants and improve dispersion.</li>
+									<li><strong>Deploy high-resolution monitoring networks:</strong> Install sensors in high-risk zones for real-time tracking and alerts.</li>
+									<li><strong>Enhance public health protection:</strong> Provide timely pollution warnings and encourage reduced outdoor activity during peak pollution periods.</li>
 								</ul>
+								<p>By accurately identifying high-exposure zones and understanding their underlying causes, future air quality management in Greece should focus on urban cores, adopting a human-environment-pollution integrated approach to improve long-term environmental health.</p>
+								<hr />
 
-								<!-- Health Risk Assessment -->
-								<h2>Health Risk Assessment</h2>
-								<div class="image main"><img src="../images/Slope.jpg" alt="Air Quality Patterns Map of Greece" /></div>
-								<p>Our health risk assessment identified areas of concern for population exposure:</p>
-								<ul>
-									<li><strong>Urban Vulnerability:</strong> Dense urban areas with high proportions of elderly and young children showed the highest health risk indices, particularly in older neighborhoods with limited green space.</li>
-									<li><strong>Seasonal Health Burden:</strong> Tourist areas experienced seasonal shifts in health burden as population numbers fluctuated, with systems potentially strained during peak season.</li>
-									<li><strong>Industrial Proximity:</strong> Residential areas within 5km of major industrial facilities showed elevated health risks even in otherwise rural settings.</li>
-									<li><strong>Topographic Traps:</strong> Valley communities with poor air circulation showed persistent exposure patterns that increased cumulative health risks despite moderate pollution levels.</li>
-								</ul>
-
-								<!-- Policy Recommendations -->
-								<h2>Policy Recommendations</h2>
-								<p>Based on our analysis, we propose several policy recommendations:</p>
-								<ol>
-									<li><strong>Targeted Urban Interventions:</strong> Implement low emission zones in city centers with the highest pollution levels and population exposure.</li>
-									<li><strong>Seasonal Tourism Management:</strong> Develop seasonal air quality management plans for tourist areas that scale monitoring and mitigation measures with visitor numbers.</li>
-									<li><strong>Port Emission Controls:</strong> Strengthen emission regulations for shipping in major ports, especially those serving cruise ships during peak season.</li>
-									<li><strong>Winter Heating Alternatives:</strong> Promote cleaner heating alternatives in northern regions with high wood-burning prevalence.</li>
-									<li><strong>Enhanced Monitoring Network:</strong> Expand the air quality monitoring network to better cover island and rural areas currently underrepresented.</li>
-									<li><strong>Integrated Planning:</strong> Incorporate air quality considerations into urban planning, transportation, and tourism development strategies.</li>
-								</ol>
-
-								<!-- Interactive WebGIS Access -->
+								<!-- Interactive WebGIS Access (Retained from original) -->
 								<h2>Interactive WebGIS Exploration</h2>
-								<p>For a deeper exploration of these results, we have developed an interactive WebGIS platform that allows users to:</p>
-								<ul>
-									<li>Visualize air quality patterns across different pollutants and time periods</li>
-									<li>Explore the relationship between air pollution and various geographic factors</li>
-									<li>Examine population exposure and health risk assessments</li>
-									<li>Compare seasonal variations and tourist impact patterns</li>
-									<li>Access detailed information about specific locations and regions</li>
-								</ul>
+								<p>For a deeper exploration of these results, we have developed an interactive WebGIS platform that allows users to visualize air quality patterns, explore data, and assess risks.</p>
 								<ul class="actions fit">
 									<li><a href="webgis.html" class="button primary fit">Explore the WebGIS</a></li>
 								</ul>

@@ -41,73 +41,68 @@
 						<!-- Post -->
 							<section class="post">
 								<header class="major">
-									<h1>Project Workflow</h1>
-									<p>Our methodology for analyzing air quality across Greece involves several stages, from data collection to creating interactive WebGIS maps.</p>
+									<h1>PROJECT WORKFLOW</h1>
+									<p>Our methodology for analyzing air quality across Greece follows a structured pipeline from multi-source data acquisition to WebGIS-based visualization and interpretation.</p>
 								</header>
 
 								<!-- Workflow Steps -->
-								<h2>1. Data Collection</h2>
-								<p>For this project, various datasets were collected to assess air quality across Greece:</p>
+								<h2>1. DATA COLLECTION</h2>
+								<p>Multiple datasets were collected to support a comprehensive analysis:</p>
 								<ul>
-									<li><strong>Air Quality Monitoring Data:</strong> Measurements from monitoring stations across Greece, including urban, suburban, and rural areas, focusing on key pollutants (PM2.5, PM10, NO2).</li>
-									<li><strong>Geographic Data:</strong> Administrative boundaries, road networks, industrial zones, population density, and topographic information.</li>
-									<li><strong>Meteorological Data:</strong> Wind patterns, precipitation, temperature records that influence pollution dispersion.</li>
-									<li><strong>Land Use Data:</strong> Urban areas, agricultural lands, forests, and other land use categories.</li>
-									<li><strong>Population Statistics:</strong> Demographic data, including vulnerable populations (elderly, children, those with respiratory conditions).</li>
-									<li><strong>Tourism Data:</strong> Seasonal visitor statistics to account for population fluctuations, especially in island and coastal areas.</li>
+									<li><strong>Air Quality Monitoring Data:</strong> Monthly reanalysis data (2013–2022) for NO₂, PM₂.5, PM₁₀ from the CAMS European Air Quality Reanalysis dataset.</li>
+									<li><strong>Land Cover Data:</strong> ESA CCI Land Cover dataset (2022), classified and later reclassified to IPCC classes.</li>
+									<li><strong>Population Data:</strong> 2020 population counts from WorldPop, used to assess exposure.</li>
+									<li><strong>Administrative Boundaries:</strong> GAUL Level 2 (e.g., provinces) shapefile to support zonal and bivariate statistics.</li>
+									<li><strong>Optional Sources:</strong> Meteorological or tourism datasets were considered but not prioritized due to scope.</li>
 								</ul>
 
-								<h2>2. Data Processing and Integration</h2>
-								<div class="image main"><img src="../images/DTM.jpg" alt="Data Processing Workflow for Air Quality Analysis in Greece" /></div>
-								<p>The collected datasets were processed and integrated to ensure compatibility and accuracy:</p>
+								<h2>2. DATA PROCESSING AND INTEGRATION</h2>
+								<p>Preprocessing steps:</p>
 								<ul>
-									<li><strong>Spatial Harmonization:</strong> All data layers were projected to a common coordinate system (EGSA87/Greek Grid) for accurate spatial analysis.</li>
-									<li><strong>Temporal Alignment:</strong> Time series data were synchronized to enable consistent temporal analysis of air quality patterns.</li>
-									<li><strong>Data Cleaning:</strong> Outliers and erroneous measurements were identified and addressed using statistical methods.</li>
-									<li><strong>Gap Filling:</strong> Missing data were estimated using interpolation techniques appropriate for each data type.</li>
-									<li><strong>Integration:</strong> Multiple data sources were combined into a unified geodatabase for analysis.</li>
+									<li><strong>Clipping:</strong> All raster and vector datasets were clipped to Greece's boundary to optimize processing.</li>
+									<li><strong>Projection:</strong> Unified CRS (WGS84 EPSG:4326) was applied to all datasets.</li>
+									<li><strong>NetCDF Handling:</strong> December 2022 data was downloaded and processed manually from raw CAMS NetCDF files, then aggregated into monthly means using QGIS mesh tools.</li>
+									<li><strong>Raster Aggregation:</strong>
+										<ul>
+											<li>Monthly to yearly average pollutant maps (2013–2022).</li>
+											<li>Reclassification of 2020 maps based on EU pollutant thresholds.</li>
+											<li>Computation of 2022 deviations from the 2017–2021 mean using Raster Calculator.</li>
+										</ul>
+									</li>
 								</ul>
 
-								<h2>3. Spatial Analysis and Modeling</h2>
-								<div class="image main"><img src="../images/DTM.jpg" alt="Data Processing Workflow for Air Quality Analysis in Greece" /></div>
-								<p>Several analytical approaches were employed to understand air pollution distribution:</p>
+								<h2>3. SPATIAL ANALYSIS AND MODELING</h2>
+								<p>Key analysis steps:</p>
 								<ul>
-									<li><strong>Spatial Interpolation:</strong> Methods like Inverse Distance Weighting (IDW) and Kriging were used to estimate pollution levels between monitoring stations.</li>
-									<li><strong>Land Use Regression:</strong> Models relating pollutant concentrations to land use characteristics and proximity to emission sources.</li>
-									<li><strong>Dispersion Modeling:</strong> Incorporating meteorological data to simulate how pollutants disperse from their sources across Greece's diverse topography.</li>
-									<li><strong>Seasonal Variation Analysis:</strong> Examining how pollution patterns change across seasons, accounting for tourism impacts, heating practices, and wildfire events.</li>
-									<li><strong>Hotspot Identification:</strong> Statistical methods to identify areas with significantly elevated pollution levels.</li>
+									<li><strong>Land Cover Reclassification:</strong> ESA CCI LC 2022 was reclassified to 11 IPCC classes using a reclassification table.</li>
+									<li><strong>Zonal Statistics (Built-Up Areas):</strong> Extracted and dissolved urban zones for focused pollutant time-series stats (2013–2022).</li>
+									<li><strong>Pollution Trend Analysis:</strong> Plotted NO₂/PM₂.5/PM₁₀ annual trends and extremes across land cover classes using joined zonal data.</li>
+									<li><strong>Population Exposure Classes:</strong> WorldPop raster was reclassified into 5 quantile-based population classes via r.quantiles and Reclassify by table.</li>
 								</ul>
 
-								<h2>4. Exposure and Risk Assessment</h2>
-								<div class="image main"><img src="../images/DTM.jpg" alt="Data Processing Workflow for Air Quality Analysis in Greece" /></div>
-								<p>Population exposure to air pollution was evaluated through:</p>
+								<h2>4. EXPOSURE AND RISK ASSESSMENT</h2>
+								<p>We evaluated exposure through:</p>
 								<ul>
-									<li><strong>Population Overlay Analysis:</strong> Combining population density data with pollutant concentration maps.</li>
-									<li><strong>Vulnerability Assessment:</strong> Identifying areas with high concentrations of sensitive populations.</li>
-									<li><strong>Health Risk Modeling:</strong> Applying established dose-response relationships to estimate potential health impacts.</li>
-									<li><strong>Seasonal Impact Assessment:</strong> Evaluating how seasonal factors (tourism influx, heating patterns) affect population exposure.</li>
+									<li><strong>Pollution Class Maps:</strong> Classified 2020 pollution maps using EU thresholds.</li>
+									<li><strong>Bivariate Mapping:</strong> Combined 5 pollution levels × 5 population classes into a 25-class bivariate attribute, rendered with pre-defined QML style.</li>
+									<li><strong>Pie Chart Representation:</strong> Dissolved bivariate zones by pollution class, computed population sums, and visualized exposure via pie charts using DataPlotly.</li>
 								</ul>
 
-								<h2>5. WebGIS Implementation</h2>
-								<div class="image main"><img src="../images/DTM.jpg" alt="Data Processing Workflow for Air Quality Analysis in Greece" /></div>
-								<p>The analysis results were presented through an interactive WebGIS platform:</p>
+								<h2>5. WEBGIS IMPLEMENTATION</h2>
+								<p>Interactive visualization was implemented through:</p>
 								<ul>
-									<li><strong>Server Setup:</strong> Configuring GeoServer to serve spatial data through WMS and WFS services.</li>
-									<li><strong>Layer Styling:</strong> Creating appropriate symbolization for the various pollution and risk maps.</li>
-									<li><strong>Interactive Elements:</strong> Implementing features such as layer toggling, pop-up information, and transparency controls.</li>
-									<li><strong>User Interface Design:</strong> Developing an intuitive interface accessible to both technical and non-technical users.</li>
-									<li><strong>Documentation:</strong> Creating legends, explanatory text, and methodological notes to assist users in interpreting the maps.</li>
+									<li><strong>GeoServer Configuration:</strong> All raster and vector outputs published via WMS/WFS.</li>
+									<li><strong>Layer Styling:</strong> Styled maps using .sld files including bivariate and classification symbology.</li>
+									<li><strong>WebGIS & Website:</strong> Integrated using OpenLayers + HTML/CSS/JS; bivariate legends and pie charts embedded to support user interpretation.</li>
 								</ul>
 
-								<h2>6. Validation and Quality Control</h2>
-								<div class="image main"><img src="../images/DTM.jpg" alt="Data Processing Workflow for Air Quality Analysis in Greece" /></div>
-								<p>To ensure the reliability of our results:</p>
+								<h2>6. VALIDATION AND QUALITY CONTROL</h2>
+								<p>Quality assurance measures included:</p>
 								<ul>
-									<li><strong>Cross-Validation:</strong> Testing interpolation and model results against known measurements.</li>
-									<li><strong>Sensitivity Analysis:</strong> Evaluating how changes in input parameters affect the final results.</li>
-									<li><strong>Expert Review:</strong> Consulting with air quality specialists to assess the validity of our approach and findings.</li>
-									<li><strong>Uncertainty Mapping:</strong> Documenting areas of higher uncertainty in our pollution estimates.</li>
+									<li><strong>Interpolation Validation:</strong> Cross-checks between annual averages and known seasonal peaks.</li>
+									<li><strong>Comparative Benchmarking:</strong> Used both EU and WHO threshold schemes for classification robustness.</li>
+									<li><strong>Expert Review:</strong> Methodology aligned with lab guidance and project goals.</li>
+									<li><strong>Uncertainty Consideration:</strong> Year-on-year deviation maps supported anomaly detection.</li>
 								</ul>
 							</section>
 
