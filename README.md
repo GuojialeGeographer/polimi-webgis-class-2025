@@ -1,164 +1,327 @@
-# WebGIS开发文档
+# 希腊空气质量分析 - WebGIS项目 | Air Quality Analysis in Greece - WebGIS Project
 
-基于此项目分析，这是一个完整的WebGIS应用，用于展示希腊空气污染分析结果。以下是详细的开发文档，您可以使用此文档在Cursor中开发相同架构但不同主题的WebGIS应用。
+[中文版](#chinese) | [English Version](#english)
 
-## 项目概述
+<a id="chinese"></a>
+## 中文版
 
-网站访问地址：[https://guojialegeographer.github.io/polimi-webgis-class-2025/index.html](https://guojialegeographer.github.io/polimi-webgis-class-2025/index.html)
+### 项目概述
 
-## 项目描述
+这是一个基于WebGIS的希腊空气质量分析与监测项目。通过整合多源遥感数据和地理信息系统技术，本项目提供了希腊全境空气污染的综合分析与可视化。
 
-本项目利用网络地理信息系统技术，对希腊全国的空气质量数据进行采集、分析和可视化展示。通过交互式地图和图表，用户可以了解希腊不同地区的空气质量状况、污染物浓度分布以及时间变化趋势。
+**网站访问地址**：[https://guojialegeographer.github.io/polimi-webgis-class-2025/index.html](https://guojialegeographer.github.io/polimi-webgis-class-2025/index.html)
 
-这是一个基于OpenLayers的WebGIS应用，包含多页面展示和交互式地图功能。项目采用HTML5 UP的Massively模板构建，展示了完整的地理信息系统工作流程。
+### 项目特点
 
-## 技术栈
+- 基于OpenLayers 8.2.0构建的交互式WebGIS地图
+- 包含主页、工作流程、分析结果和交互式地图的多页面展示
+- 响应式设计，兼容各种设备屏幕
+- 集成多种底图和专题图层
+- 详细的空气污染数据分析与可视化
 
-### 前端框架
+### 研究内容
 
-- **HTML5/CSS3/JavaScript**: 基础前端技术
-- **HTML5 UP Massively模板**: [2](#0-1) 响应式网站模板
-- **Bootstrap 5.0.2**: [3](#0-2) UI组件库
-- **jQuery**: [4](#0-3) JavaScript库
+本项目重点分析希腊的三种主要空气污染物：
+- **NO₂**（二氧化氮）
+- **PM2.5**（细颗粒物）
+- **PM10**（可吸入颗粒物）
 
-### 地图技术
+研究内容包括：
+1. 2013-2022年污染物浓度的时间序列分析
+2. 2020年污染物的空间分布与分级
+3. 2022年与2017-2021年平均值的对比分析
+4. 土地覆盖与污染物之间的关系研究
+5. 人口暴露风险评估
 
-- **OpenLayers 8.2.0**: [5](#0-4) 主要地图库
-- **Layer Switcher**: [6](#0-5) 图层切换控件
-- **GeoServer**: [7](#0-6) 地图服务器(WMS服务)
-- **Bing Maps**: [8](#0-7) 第三方底图服务
+### 技术架构
 
-## 项目结构
+#### 前端技术
+
+- **HTML5/CSS3/JavaScript**：基础前端技术
+- **HTML5 UP Massively 模板**：响应式网站框架
+- **Bootstrap 5.3.3**：UI组件库
+- **jQuery**：JavaScript功能库
+- **Vite 6.3.4**：前端构建工具
+
+#### 地图技术
+
+- **OpenLayers 8.2.0**：主要地图渲染库
+- **ol-layerswitcher 4.1.1**：图层切换控件
+- **GeoServer**：地图服务器（WMS服务）
+- **Bing Maps**：第三方底图服务
+
+### 项目结构
 
 ```
-project/
+polimi-webgis-class-2025/
 ├── index.html              # 主页
-├── workflow.html           # 工作流程页面  
-├── results.html            # 结果展示页面
-├── webgis.html            # WebGIS地图页面
-├── assets/
+├── pages/                  # 页面目录
+│   ├── workflow.html       # 工作流程页面
+│   ├── results.html        # 结果展示页面
+│   └── webgis.html         # WebGIS地图页面
+├── assets/                 # 资源文件
 │   ├── css/
-│   │   ├── main.css       # 主样式文件
-│   │   ├── noscript.css   # 无JS样式
+│   │   ├── main.css        # 主样式表
+│   │   ├── noscript.css    # 无JS样式表
 │   │   └── custom-styles.css  # 自定义样式
 │   ├── js/
-│   │   ├── map.js         # 地图配置文件
+│   │   ├── map.js          # 地图配置文件
 │   │   └── [其他JS文件]
 │   └── libraries/
-│       ├── ol-8.2.0/      # OpenLayers库
-│       └── bootstrap-5.0.2-dist/
-├── images/                # 图片资源
-└── GeoServer Layers and Styles/  # GeoServer配置
+│       ├── ol-8.2.0/       # OpenLayers库
+│       └── bootstrap-5.0.2-dist/  # Bootstrap库
+├── images/                 # 网站图片资源
+├── pictures/               # 分析结果图片
+└── symbology/              # 符号样式文件
 ```
 
-## 核心功能模块
+### 主要功能
 
-### 1. 导航系统
+#### 1. 网站导航系统
 
-网站包含四个主要页面的导航结构： [9](#0-8)
+网站包含四个主要页面：
+- **Home**：项目介绍与研究区概况
+- **Workflow**：数据处理与分析工作流程
+- **Results**：分析结果与验证
+- **WebGIS**：交互式地图应用
 
-- Home: 项目介绍和研究区域概述
-- Workflow: 数据处理和分析流程
-- Results: 分析结果和验证
-- WebGIS: 交互式地图应用
+#### 2. WebGIS地图功能
 
-### 2. WebGIS地图功能
+##### 底图图层
+- OpenStreetMap（默认底图）
+- Bing Maps道路图与卫星影像（备选底图）
 
-#### 底图图层
+##### 专题图层
+- 空气污染物浓度分布图层（NO₂、PM2.5、PM10）
+- 人口密度分布图层
+- 土地覆盖分类图层
+- 污染物与人口双变量分析图层
 
-- OpenStreetMap: [10](#0-9) 默认底图
-- Bing Maps道路图和卫星图: [11](#0-10) 备选底图
+##### 地图控件
+- 比例尺
+- 全屏控件
+- 鼠标位置显示
+- 图层切换器
 
-#### 数据图层组织
+#### 3. 数据分析与可视化
 
-地图图层按功能分组： [12](#0-11)
+- 污染物时间序列趋势图表
+- 污染物空间分布热力图
+- 人口暴露风险评估饼图
+- 土地覆盖与污染关系分析图表
 
-- 环境因子图层 (地形、气象条件、人口密度等)
-- 空气污染指数图层
-- 监测站点图层
-- 污染物扩散模型图层
+### 研究方法
 
-#### 地图控件
+#### 1. 数据收集
 
-- 比例尺: [13](#0-12)
-- 全屏控制: [14](#0-13)
-- 鼠标位置显示: [15](#0-14)
-- 图层切换器: [16](#0-15)
+- **空气质量监测数据**：CAMS欧洲空气质量再分析数据集（2013-2022）
+- **土地覆盖数据**：ESA CCI土地覆盖数据集（2022）
+- **人口数据**：WorldPop 2020年人口统计
+- **行政边界数据**：GAUL Level 2行政区划数据
 
-### 3. 地图初始化配置
+#### 2. 数据处理与整合
 
-地图视图设置： [17](#0-16)
+- 数据裁剪至希腊国界范围
+- 统一坐标系（WGS84 EPSG:4326）
+- NetCDF数据处理与月度聚合
+- 栅格数据年均值计算与分级
 
-- 中心点坐标和缩放级别
-- 图层加载顺序
-- 投影坐标系统
+#### 3. 空间分析与建模
 
-## 开发指南
+- 土地覆盖重分类（IPCC分类系统）
+- 分区统计（城市建成区）
+- 污染物趋势分析（2013-2022）
+- 人口暴露等级划分（五分位法）
 
-### 1. 环境准备
+#### 4. 暴露与风险评估
 
-1. 准备静态Web服务器 (Apache/Nginx/或开发服务器)
-2. 配置GeoServer实例用于WMS服务
-3. 准备项目所需的地理数据
+- 基于欧盟标准的污染物分级
+- 双变量制图（污染水平×人口密度）
+- 人口暴露比例计算与饼图可视化
 
-### 2. 项目设置步骤
+### 主要发现
 
-#### 第一步：基础结构搭建
+1. 2013-2022年间，希腊空气污染水平总体呈上升趋势
+2. 污染物主要集中在城市区域，尤其是雅典等城市中心
+3. PM2.5对人口的暴露风险最高，全部人口均暴露在相对较高的污染水平中
+4. NO₂和PM10的人口暴露水平相对较低
+5. 城市区域虽然仅占国土面积的小部分，但承担了大部分的污染负担和人口密度
 
-1. 下载HTML5 UP Massively模板
-2. 创建四个主要HTML页面
-3. 设置导航菜单结构
+### 建议措施
 
-#### 第二步：样式定制
+1. **优化城市交通**：推广电动车和公共交通，限制高排放车辆进入市中心
+2. **加强工业排放控制**：对城市附近工厂实施时段性生产限制和实时监控
+3. **增加绿化覆盖**：发展城市森林和绿化带，吸收污染物并改善扩散条件
+4. **部署高分辨率监测网络**：在高风险区域安装传感器，实现实时跟踪和预警
+5. **加强公共健康保护**：提供及时的污染警告，鼓励在污染高峰期减少户外活动
 
-修改主题样式： [18](#0-17)
+### 项目团队
 
-- 替换背景图片
-- 调整颜色主题
-- 自定义组件样式
+本项目由第5组完成。
 
-#### 第三步：WebGIS实现
+### 许可证
 
-1. 集成OpenLayers库： [19](#0-18)
-2. 配置地图实例和视图
-3. 添加WMS图层服务
-4. 实现图层管理功能
+本项目使用[CCA 3.0许可证](https://html5up.net/license)，网站模板基于[HTML5 UP](https://html5up.net/)的Massively模板。
 
-#### 第四步：数据集成
+---
 
-1. 准备GeoServer服务
-2. 发布WMS图层： [20](#0-19) 配置图层参数
-3. 配置图层组织结构
+<a id="english"></a>
+## English Version
 
-### 3. 关键配置文件
+### Project Overview
 
-#### map.js核心配置
+This is a WebGIS-based air quality analysis and monitoring project for Greece. By integrating multi-source remote sensing data and geographic information system technology, this project provides comprehensive analysis and visualization of air pollution across Greece.
 
-- 底图图层定义
-- WMS服务地址配置
-- 图层分组管理
-- 地图控件添加
-- 视图参数设置
+**Website URL**: [https://guojialegeographer.github.io/polimi-webgis-class-2025/index.html](https://guojialegeographer.github.io/polimi-webgis-class-2025/index.html)
 
-#### custom-styles.css样式配置
+### Project Features
 
-- 地图容器样式： [21](#0-20)
-- 浮动按钮样式： [22](#0-21)
-- 弹窗样式： [23](#0-22)
+- Interactive WebGIS map built with OpenLayers 8.2.0
+- Multi-page presentation including home page, workflow, analysis results, and interactive map
+- Responsive design, compatible with various device screens
+- Integration of multiple base maps and thematic layers
+- Detailed air pollution data analysis and visualization
 
-### 4. 内容替换指南
+### Research Content
 
-要创建不同主题的WebGIS，需要替换：
+This project focuses on analyzing three major air pollutants in Greece:
+- **NO₂** (Nitrogen Dioxide)
+- **PM2.5** (Fine Particulate Matter)
+- **PM10** (Inhalable Particulate Matter)
 
-1. **文本内容**: 项目标题、描述、空气污染分析方法说明
-2. **图片资源**: 研究区域图片、空气质量分布图、结果图表
-3. **地图数据**: GeoServer中的污染物测量数据和监测站点图层
-4. **样式主题**: 配色方案和背景图片
-5. **地图中心**: [24](#0-23) 坐标和缩放级别
+The research includes:
+1. Time series analysis of pollutant concentrations from 2013-2022
+2. Spatial distribution and classification of pollutants in 2020
+3. Comparative analysis between 2022 and the 2017-2021 average
+4. Study of the relationship between land cover and pollutants
+5. Population exposure risk assessment
 
-### 5. 部署建议
+### Technical Architecture
 
-1. **静态文件部署**: 可直接部署到静态Web服务器
-2. **GeoServer配置**: 需要单独的GeoServer实例
-3. **跨域处理**: 确保GeoServer允许跨域访问
-4. **HTTPS配置**: 生产环境建议使用HTTPS
+#### Frontend Technologies
+
+- **HTML5/CSS3/JavaScript**: Basic frontend technologies
+- **HTML5 UP Massively Template**: Responsive website framework
+- **Bootstrap 5.3.3**: UI component library
+- **jQuery**: JavaScript functionality library
+- **Vite 6.3.4**: Frontend build tool
+
+#### Mapping Technologies
+
+- **OpenLayers 8.2.0**: Main map rendering library
+- **ol-layerswitcher 4.1.1**: Layer switching control
+- **GeoServer**: Map server (WMS service)
+- **Bing Maps**: Third-party base map service
+
+### Project Structure
+
+```
+polimi-webgis-class-2025/
+├── index.html              # Home page
+├── pages/                  # Pages directory
+│   ├── workflow.html       # Workflow page
+│   ├── results.html        # Results display page
+│   └── webgis.html         # WebGIS map page
+├── assets/                 # Resource files
+│   ├── css/
+│   │   ├── main.css        # Main stylesheet
+│   │   ├── noscript.css    # No-JS stylesheet
+│   │   └── custom-styles.css  # Custom styles
+│   ├── js/
+│   │   ├── map.js          # Map configuration file
+│   │   └── [Other JS files]
+│   └── libraries/
+│       ├── ol-8.2.0/       # OpenLayers library
+│       └── bootstrap-5.0.2-dist/  # Bootstrap library
+├── images/                 # Website image resources
+├── pictures/               # Analysis result images
+└── symbology/              # Symbol style files
+```
+
+### Main Functions
+
+#### 1. Website Navigation System
+
+The website contains four main pages:
+- **Home**: Project introduction and research area overview
+- **Workflow**: Data processing and analysis workflow
+- **Results**: Analysis results and validation
+- **WebGIS**: Interactive map application
+
+#### 2. WebGIS Map Functions
+
+##### Base Map Layers
+- OpenStreetMap (default base map)
+- Bing Maps road map and satellite imagery (alternative base maps)
+
+##### Thematic Layers
+- Air pollutant concentration distribution layers (NO₂, PM2.5, PM10)
+- Population density distribution layer
+- Land cover classification layer
+- Pollutant and population bivariate analysis layer
+
+##### Map Controls
+- Scale line
+- Full screen control
+- Mouse position display
+- Layer switcher
+
+#### 3. Data Analysis and Visualization
+
+- Pollutant time series trend charts
+- Pollutant spatial distribution heat maps
+- Population exposure risk assessment pie charts
+- Land cover and pollution relationship analysis charts
+
+### Research Methods
+
+#### 1. Data Collection
+
+- **Air Quality Monitoring Data**: CAMS European Air Quality Reanalysis dataset (2013-2022)
+- **Land Cover Data**: ESA CCI Land Cover dataset (2022)
+- **Population Data**: WorldPop 2020 population statistics
+- **Administrative Boundary Data**: GAUL Level 2 administrative division data
+
+#### 2. Data Processing and Integration
+
+- Data clipping to Greece's national boundary
+- Unified coordinate system (WGS84 EPSG:4326)
+- NetCDF data processing and monthly aggregation
+- Raster data annual average calculation and classification
+
+#### 3. Spatial Analysis and Modeling
+
+- Land cover reclassification (IPCC classification system)
+- Zonal statistics (urban built-up areas)
+- Pollutant trend analysis (2013-2022)
+- Population exposure level classification (quintile method)
+
+#### 4. Exposure and Risk Assessment
+
+- Pollutant classification based on EU standards
+- Bivariate mapping (pollution level × population density)
+- Population exposure proportion calculation and pie chart visualization
+
+### Key Findings
+
+1. Between 2013-2022, air pollution levels in Greece showed an overall upward trend
+2. Pollutants are mainly concentrated in urban areas, especially in city centers like Athens
+3. PM2.5 poses the highest exposure risk to the population, with the entire population exposed to relatively high pollution levels
+4. NO₂ and PM10 have relatively lower population exposure levels
+5. Urban areas, while occupying only a small proportion of the national territory, bear most of the pollution burden and population density
+
+### Recommended Measures
+
+1. **Optimize Urban Transportation**: Promote electric vehicles and public transportation, restrict high-emission vehicles in city centers
+2. **Strengthen Industrial Emission Control**: Implement time-based production restrictions and real-time monitoring for factories near urban areas
+3. **Increase Green Coverage**: Develop urban forests and green belts to absorb pollutants and improve dispersion conditions
+4. **Deploy High-Resolution Monitoring Networks**: Install sensors in high-risk areas for real-time tracking and early warning
+5. **Enhance Public Health Protection**: Provide timely pollution warnings and encourage reduced outdoor activities during pollution peaks
+
+### Project Team
+
+This project was completed by Group 5.
+
+### License
+
+This project uses the [CCA 3.0 license](https://html5up.net/license), with the website template based on [HTML5 UP](https://html5up.net/)'s Massively template.

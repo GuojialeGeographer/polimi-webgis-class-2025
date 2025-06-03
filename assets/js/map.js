@@ -22,7 +22,7 @@ let map = new ol.Map({
     })
 });
 
-// 添加地图控件
+// Add map controls
 map.addControl(new ol.control.ScaleLine());
 map.addControl(new ol.control.FullScreen());
 map.addControl(
@@ -34,11 +34,11 @@ map.addControl(
     })
 );
 
-// 添加图层切换控件
+// Add layer switcher control
 var layerSwitcher = new ol.control.LayerSwitcher({});
 map.addControl(layerSwitcher);
 
-// 添加 Bing Maps 图层
+// Add Bing Maps layers
 var BING_MAPS_KEY = "Ajrza5Uk8_QGVZMe5ReBVmyutydBHz1WSIr-2DeCoOYPaAkr1Y8HdB9DXUSfyNpe";
 var bingRoads = new ol.layer.Tile({
     title: 'Bing Maps—Roads',
