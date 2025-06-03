@@ -3235,10 +3235,10 @@ input, select, textarea {
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background-color: transparent; /* 移除背景色 */
+			background-color: transparent; /* Remove background color */
 			background-image: url("../../images/02.jpg");
-			background-size: 100% auto; /* 使图片宽度完全适配网页宽度 */
-			background-position: center top; /* 将图片定位在顶部 */
+			background-size: 100% auto; /* Make image width fit the page width */
+			background-position: center top; /* Position the image at the top */
 			background-repeat: no-repeat;
 			background-attachment: fixed;
 			z-index: -1;
