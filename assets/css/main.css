@@ -3237,7 +3237,7 @@ input, select, textarea {
 			height: 100%;
 			background-color: transparent; /* Remove background color */
 			background-image: url("../../images/02.jpg");
-			background-size: 100% auto; /* Make image width fit the page width */
+			background-size: cover; /* Cover the entire area while maintaining aspect ratio */
 			background-position: center center; /* Position the image at the center for symmetrical spacing */
 			background-repeat: no-repeat;
 			background-attachment: fixed;
