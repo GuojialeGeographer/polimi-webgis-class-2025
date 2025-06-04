@@ -3231,13 +3231,13 @@ input, select, textarea {
 
 		#wrapper > .bg {
 			position: absolute;
-			top: -10vh; /* Move the background image up to create more space at the bottom */
+			top: 0;
 			left: 0;
 			width: 100%;
-			height: 120vh; /* Increase height to ensure full coverage */
+			height: 100%;
 			background-color: transparent; /* Remove background color */
 			background-image: url("../../images/02.jpg");
-			background-size: cover; /* Cover the entire area while maintaining aspect ratio */
+			background-size: 100% auto; /* Make image width fit the page width */
 			background-position: center center; /* Position the image at the center for symmetrical spacing */
 			background-repeat: no-repeat;
 			background-attachment: fixed;
