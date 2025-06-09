@@ -50,16 +50,42 @@
 								<p>Multiple datasets were collected to support a comprehensive analysis:</p>
 								<ul>
 									<li><strong>Air Quality Monitoring Data:</strong> Monthly reanalysis data (2013–2022) for NO₂, PM₂.5, PM₁₀ from the CAMS European Air Quality Reanalysis dataset.</li>
-									<li><strong>Land Cover Data:</strong> ESA CCI Land Cover dataset (2022), classified and later reclassified to IPCC classes.</li>
-									<li><strong>Population Data:</strong> 2020 population counts from WorldPop, used to assess exposure.</li>
-									<li><strong>Administrative Boundaries:</strong> GAUL Level 2 (e.g., provinces) shapefile to support zonal and bivariate statistics.</li>
+									<li style="display: flex; align-items: center; margin-bottom: 1em; list-style-type: none;">
+    <div style="flex: 1; padding-right: 20px;">
+        <p style="text-align: center;"><strong>Land Cover Data:</strong><br />ESA CCI Land Cover dataset (2022), classified and later reclassified to IPCC classes.</p>
+    </div>
+    <div style="flex: 1;">
+        <img src="../pictures/workflow/Greece Land Cover Map.png" alt="Greece Land Cover Map" style="width: 100%; height: auto; border: 1px solid #ddd;" />
+    </div>
+</li>
+									<li style="display: flex; align-items: center; margin-bottom: 1em; list-style-type: none;">
+    <div style="flex: 1;">
+        <img src="../pictures/workflow/Greece Population Classes Map.png" alt="Greece Population Classes Map" style="width: 100%; height: auto; border: 1px solid #ddd;" />
+    </div>
+    <div style="flex: 1; padding-left: 20px;">
+        <p style="text-align: center;"><strong>Population Data:</strong><br />2020 population counts from WorldPop, used to assess exposure.</p>
+    </div>
+</li>
+									<li style="display: flex; align-items: center; margin-bottom: 1em; list-style-type: none;">
+    <div style="flex: 1; padding-right: 20px;">
+        <p style="text-align: center;"><strong>Administrative Boundaries:</strong><br />GAUL Level 2 (e.g., provinces) shapefile to support zonal and bivariate statistics.</p>
+    </div>
+    <div style="flex: 1;">
+        <img src="../pictures/workflow/Greece GAUL Level 2 Map.png" alt="Greece GAUL Level 2 Map" style="width: 100%; height: auto; border: 1px solid #ddd;" />
+    </div>
+</li>
 
 								</ul>
 
 								<h2>2. DATA PROCESSING AND INTEGRATION</h2>
 								<p>Preprocessing steps:</p>
 								<ul>
-									<li><strong>Clipping:</strong> All raster and vector datasets were clipped to Greece's boundary to optimize processing.</li>
+									<li style="list-style-type: none; margin-bottom: 1em;">
+    <p><strong>Clipping:</strong> All raster and vector datasets were clipped to Greece’s boundary to optimize processing.</p>
+    <p style="text-align: center; margin-top: 1em;">
+        <img src="../pictures/workflow/Greece Boundary.png" alt="Greece Boundary" style="max-width: 80%; height: auto; border: 1px solid #ddd;" />
+    </p>
+</li>
 									<li><strong>Projection:</strong> Unified CRS (WGS84 EPSG:4326) was applied to all datasets.</li>
 									<li><strong>NetCDF Handling:</strong> December 2022 data was downloaded and processed manually from raw CAMS NetCDF files, then aggregated into monthly means using QGIS mesh tools.</li>
 									<li><strong>Raster Aggregation:</strong>
@@ -97,7 +123,7 @@
 								</ul>
 
 								<h2>6. VALIDATION AND QUALITY CONTROL</h2>
-								<p>Quality assurance measures included:</p>
+								
 								<ul>
 									<li><strong>Interpolation Validation:</strong> Cross-checks between annual averages and known seasonal peaks.</li>
 									<li><strong>Comparative Benchmarking:</strong> Used both EU and WHO threshold schemes for classification robustness.</li>
